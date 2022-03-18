@@ -1,0 +1,166 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[usestackEOL]{stackengine}
+\usepackage{indentfirst}
+\usepackage[serbian]{babel}
+
+\date{}
+\title{}
+\begin{document}
+\clearpage\maketitle
+\thispagestyle{empty}
+\providecommand{\inlinecode}[1]{\texttt{#1}}
+\begin{center}
+    \huge\textbf{BrainPuzzles}
+
+    \hspace*{1cm}\includegraphics[width=10cm]{Resources/logo.png}\\
+    \footnotesize Verzija 1.0
+
+\end{center}
+{\raggedleft\vfill\Longstack[l]{%
+Veljko Selaković 2019/0331\\
+Teodor Delibašić 2019/0316\\
+Iva Rakić 2019/0152\\
+Lana Jevremović 2019/0345\\
+}\par
+}
+\newpage
+\section*{Istorija izmena}
+\vspace{1cm}
+\begin{center}
+\begin{tabular}{||c |c |c |c||} 
+ \hline
+ Datum & Verzija & Opis & Autor \\ [0.5ex] 
+ \hline\hline
+ 15.3.2022. & 1.0 & Inicijalna verzija & Veljko Selaković \\ 
+ \hline
+ & & &\\
+ \hline
+\end{tabular}
+\end{center}
+\newpage
+\tableofcontents
+
+\newpage
+\section{Uvod}
+Ovaj dokument predstavlja opis projektnog zadatka “BrainPuzzles”. Cilj projekta je raspodela 
+aktivnosti slična onoj koja se koristi u realnim softverskim projektima. Osim kratkog opisa problema, biće 
+definisane i tehnologije sa kojima se radi, kao i način na koji će biti korišćene.
+\subsection{Opis projekta}
+\par \textit{BrainPuzzles} je internet aplikacija koja omogućava korisniku da koristi svoj mozak. 
+Korisnik pokušava da ostvari što više poena u partiji. Partija se sastoji od 3 igre koje se 
+postepeno otključavaju. Tip korisnika određuje koje igre su mu otključane. 
+\par Osim regularnih korisnika postoje i administratori koji održavaju sistem i mogu da 
+dodaju nova pitanja i teme. U budućnosti bi administratori imali veći nivo kontrole nad 
+sistemom. 
+\par Postoji globalna rang lista na kojoj se nalaze svi igrači, a prvih deset su javno prikazani na 
+odvojenoj stranici.
+\newpage
+\section{Tehnologije}
+\begin{itemize}
+    \item Backend
+    \begin{itemize}
+        \item \inlinecode{PHP} za server-side programiranje
+        \item Komunikacija server-client se ostvaruje \inlinecode{AJAX} konceptom
+    \end{itemize}
+    \item Frontend
+    \begin{itemize}
+        \item \inlinecode{HTML5, CSS3}
+        \item \inlinecode{JavaScript}
+        \item \inlinecode{Vue.js} framework \inlinecode{JavaScript}-a za bolji rad na frontend delu
+    \end{itemize}
+    \item Baza podataka
+    \begin{itemize}
+        \item \inlinecode{MySQL} kao menadžer baze podataka
+    \end{itemize}
+\end{itemize}
+\newpage
+\section{Opis igara}
+Trenutni plan je da postoje sledeće tri igre:
+\begin{itemize}
+    \item Fight list
+    \item Mozgić
+    \item Ko zna zna
+\end{itemize}
+\subsection{Fight list}
+Cilj igre je nabrojati što više pojmova na zadatu temu. Teme mogu biti raznovrsne, na 
+primer: voće, ubijeni američki predsednici, marke šminke... Tema se nasumično bira iz baze na 
+početku igre i igrač, odnosno korisnik, ima jedan minut da nabroji što više stvari. Nabrojani 
+pojmovi nose različit broj poena u zavisnosti od težine, to jest retkosti odgovora. Najlakši 
+odgovor donosi dva poena, srednji po težini četiri, dok najteži vredi šest poena.
+\par Pojmovi su u bazi podataka predstavljeni tabelom koja sadrži \inlinecode{
+IdTeme i Naziv}, dok se 
+pojmovi (odgovori) čuvaju u odvojenoj tabeli koja \inlinecode{IdPojma}, \inlinecode{Naziv} (sam tekst odgovora), 
+\inlinecode{Poeni}(broj poena koje taj odgovor donosi korisniku) i \inlinecode{IdTeme} (strani ključ iz tabele Tema; tema 
+na koju se odgovor odnosi).
+\subsection{Mozgić}
+Ova igra je poprilično jednostavna i analogna je igri Skočko iz TV Slagalice. Postoje četiri 
+simbola i igrač treba da pronađe tačnu kombinaciju ovih simbola u šest ili manje koraka. U 
+zavinosti od broja koraka u kom je korisnik pogodio kombinaciju, dobiće odgovarajući broj 
+poena. Ukoliko je pronađena tačna kombinacija u prva četiri koraka igra nosi dvadeset poena, u 
+petom nosi petnaest poena, dok se za šesti korak dobija deset poena. Nakon svakog pokušaja, 
+korisniku se ispisuje broj simbola koje je stavio na dobru poziciju i broj simbola koji se nalaze u 
+tačnoj kombinaciji, ali nisu stavljeni na odgovarajuću poziciju. Kombinaciju treba pogoditi za 
+najviše devedeset sekundi od početka igre.
+\par Igra ne zahteva čuvanje u bazi podataka jer se kombinacija na početku igre generiše 
+nasumično.
+\newpage
+\subsection{Ko zna zna}
+Ovo je igra znanja. Igrač treba da odgovori na deset pitanja koja izlaze jedno po jedno i 
+za svako pitanje ima deset sekundi. Korisnik treba sam da ukuca odgovor u predviđeno polje, a 
+zatim će se taj odgovor uporediti sa tačnim odgovorom na pitanje. Za tačan odgovor se dobija 
+pet poena, dok netačan odgovor donosi dva negativna poena.
+\par Pitanje se čuva u tabeli u bazi koja sadrži \inlinecode{IdPitanja, Tekst i Username} (korisnik koji je 
+dodao ovo pitanje). Odgovor se takođe čuva u bazi i u toj tabeli nalaze se \inlinecode{IdOdgovora, Tekst i 
+IdPitanja}. Iz baze se pitanja izvlače nasumično, a prilikom korisnikovog odgovora se ove dve 
+tabele spajaju po atributu \inlinecode{IdPitanja} i porede se odgovori igrača i onaj u tabeli
+\newpage
+\section{Korisnici}
+\subsection{Gost}
+Gost je korisnik koji se nije registrovao i može da igra samo prvu igru, odnosno \textit{Fight List}. 
+Nema svoj profil, ne pamti mu se high score i ne može se naći na rang listi.
+\subsection{Bronzani korisnik}
+Gost koji se prvi put registruje automatski postaje Bronzani korisnik koji dalje može da 
+napreduje ka Srebrnom i Zlatnom. Ima svoj profil i pristup samo \textit{Fight List} igri. Prilikom svakog 
+ulaska na aplikaciju se može ulogovati kako bi mu se pamtio High score, Total score, bio na rang 
+listi i kasnije otključavao i ostale igrice. 
+\subsection{Srebrni korisnik}
+Bronzani korisnik igranjem prve igre skuplja poene, na kraju svake igre poeni se beleže u 
+njegov Total score i kad dostigne određeni broj poena postaje Srebrni. Njemu se otključava i 
+druga igra, \textit{Mozgić}. 
+\subsection{Zlatni korisnik}
+Prilikom ostvarivanja određenog broja poena, Srebrni Korisnik se unapređuje u Zlatnog i 
+time mu se omogućava i pristup igri \textit{Ko zna zna}. 
+\subsection{Administrator}
+Registrovani korisnik koji osim prava da igra igre, može da dodaje nova pitanja u bazu za 
+prvu i treću igru i dodeli ulogu admina drugom registrovanom korisniku
+\newpage
+\section{Rang lista}
+Samo registrovani korisnici (\textit{Bronzani, Srebrni i Zlatni}) se mogu naći na rang listi. Rangiraju se na osnovu 
+high score-a. Korisnicima se prikazuje prvih 10 mesta rang liste.
+\section{Funkcionalnosti}
+\begin{itemize}
+    \item \textbf{Registracija} \\
+    Kada gost želi da se registruje, potrebno je da ostavi svoje ime, email, i smisli svoje 
+korisničko ime i lozinku. Od tog trenutka on ima svoj profil na koji se može logovati.
+    \item \textbf{Logovanje} \\
+    Nakon što se korisnik prvi put registrovao prilikom svakog ulaska u aplikaciju unošenjem 
+svog korisničkog imena i lozinke se loguje
+    \item \textbf{Pokretanje partije} \\
+    Korisnik pokreće partiju koja se sastoji od tri gorepomenute igre
+
+    \item \textbf{Pokretanje igre} \\
+    Korisnik pokreće jednu od specifičnih igara koje čine jednu partiju
+
+    \item \textbf{Submitovanje rezultata} \\
+    Akcija koju korisnik preduzima na kraju igre
+    \item \textbf{Pregledanje prvih 10 korisnika na rang listi} \\
+    Korisnik može da pogleda ko su trenutno najbolji takmičari i da se poredi sa njima
+    \item \textbf{Pregledanje ličnog profila} \\
+    Dostupna je statistika profila, kao i dodatne funkcionalnosti koje čine profil jedinstvenim 
+poput \textit{About me} sekcije
+\end{itemize}
+
+
+\end{document}
