@@ -1,0 +1,323 @@
+.mac-book-pro16registration410-container {
+  min-height: 100vh;
+}
+.mac-book-pro16registration410-mac-book-pro16registration410 {
+  width: 1728px;
+  height: 1117px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  max-width: 1728px;
+  box-sizing: border-box;
+  align-items: flex-start;
+  border-color: transparent;
+  background-color: rgba(255, 255, 255, 1);
+}
+.mac-book-pro16registration410-image {
+  top: 0px;
+  left: 0px;
+  width: 1728px;
+  height: 1117px;
+  position: absolute;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  object-fit: cover;
+  border-color: transparent;
+  background-color: rgba(252, 221, 236, 1);
+}
+.mac-book-pro16registration410-log-inframe430 {
+  top: 205px;
+  left: 566px;
+  width: 602px;
+  height: 577px;
+  display: flex;
+  position: absolute;
+  box-sizing: border-box;
+  align-items: flex-start;
+  border-color: transparent;
+}
+.mac-book-pro16registration410-svg {
+  width: 596;
+  height: 577;
+  position: absolute;
+}
+.mac-book-pro16registration410-username449 {
+  top: 75px;
+  left: 30px;
+  width: 535px;
+  height: 47px;
+  display: flex;
+  position: absolute;
+  box-sizing: border-box;
+  align-items: flex-start;
+  flex-shrink: 1;
+  border-color: transparent;
+}
+.mac-book-pro16registration410-svg1 {
+  width: 535;
+  height: 47;
+  position: absolute;
+}
+.mac-book-pro16registration410-text {
+  top: 15.5px;
+  left: 21px;
+  color: rgba(0, 0, 0, 0.5);
+  height: auto;
+  position: absolute;
+  font-size: 14px;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-family: Roboto;
+  font-weight: 400px;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-text01 {
+  color: rgba(0, 0, 0, 0.5);
+  height: auto;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-weight: 400px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-password448 {
+  top: 209px;
+  left: 30px;
+  width: 535px;
+  height: 47px;
+  display: flex;
+  position: absolute;
+  box-sizing: border-box;
+  align-items: flex-start;
+  flex-shrink: 1;
+  border-color: transparent;
+  background-color: rgba(255, 241, 248, 1);
+}
+.mac-book-pro16registration410-text02 {
+  top: 15px;
+  left: 14px;
+  color: rgba(0, 0, 0, 0.5);
+  height: auto;
+  position: absolute;
+  font-size: 14px;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-family: Roboto;
+  font-weight: 400px;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-text03 {
+  color: rgba(0, 0, 0, 0.5);
+  height: auto;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-weight: 400px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-password470 {
+  top: 276px;
+  left: 30px;
+  width: 535px;
+  height: 47px;
+  display: flex;
+  position: absolute;
+  box-sizing: border-box;
+  align-items: flex-start;
+  flex-shrink: 1;
+  border-color: transparent;
+  background-color: rgba(255, 241, 248, 1);
+}
+.mac-book-pro16registration410-text04 {
+  top: 15px;
+  left: 14px;
+  color: rgba(0, 0, 0, 0.5);
+  height: auto;
+  position: absolute;
+  font-size: 14px;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-family: Roboto;
+  font-weight: 400px;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-text05 {
+  color: rgba(0, 0, 0, 0.5);
+  height: auto;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-weight: 400px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-email467 {
+  top: 142px;
+  left: 30px;
+  width: 535px;
+  height: 47px;
+  display: flex;
+  position: absolute;
+  box-sizing: border-box;
+  align-items: flex-start;
+  flex-shrink: 1;
+  border-color: transparent;
+}
+.mac-book-pro16registration410-svg2 {
+  width: 535;
+  height: 47;
+  position: absolute;
+}
+.mac-book-pro16registration410-text06 {
+  top: 15.5px;
+  left: 21px;
+  color: rgba(0, 0, 0, 0.5);
+  height: auto;
+  position: absolute;
+  font-size: 14px;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-family: Roboto;
+  font-weight: 400px;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-text07 {
+  color: rgba(0, 0, 0, 0.5);
+  height: auto;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-weight: 400px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-register-button446 {
+  top: 499px;
+  left: 199px;
+  width: 203px;
+  height: 61px;
+  display: flex;
+  position: absolute;
+  box-sizing: border-box;
+  align-items: flex-start;
+  flex-shrink: 1;
+  border-color: transparent;
+}
+.mac-book-pro16registration410-svg3 {
+  width: 203;
+  height: 39;
+  position: absolute;
+}
+.mac-book-pro16registration410-text08 {
+  top: 5px;
+  left: 56px;
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-family: Roboto;
+  font-weight: 700px;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-text09 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-weight: 700px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-image1 {
+  top: 2px;
+  left: 250px;
+  width: 96px;
+  height: 73px;
+  position: absolute;
+  object-fit: cover;
+  border-color: transparent;
+}
+.mac-book-pro16registration410-text13 {
+  top: 104px;
+  left: 666px;
+  color: rgba(38, 38, 38, 1);
+  height: auto;
+  position: absolute;
+  font-size: 64px;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-family: Pacifico;
+  font-weight: 400px;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-text14 {
+  color: rgba(38, 38, 38, 1);
+  height: auto;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-weight: 400px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-downframe443 {
+  top: 972px;
+  left: 0px;
+  width: 1728px;
+  height: 145px;
+  display: flex;
+  position: absolute;
+  box-sizing: border-box;
+  align-items: flex-start;
+  flex-shrink: 1;
+  border-color: transparent;
+  background-color: var(--dl-color-fuschia-1007b1b5);
+}
+.mac-book-pro16registration410-text15 {
+  top: 121px;
+  left: 12px;
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-family: Roboto;
+  font-weight: 400px;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.mac-book-pro16registration410-text16 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  align-self: auto;
+  font-style: normal;
+  text-align: left;
+  font-weight: 400px;
+  font-stretch: normal;
+  text-decoration: none;
+}
