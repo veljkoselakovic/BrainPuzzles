@@ -35,7 +35,9 @@ Lana Jevremović 2019/0345\\
  \hline\hline
  15.3.2022. & 1.0 & Inicijalna verzija & Veljko Selaković \\ 
  \hline
- & & &\\
+ 25.3.2022. & 2.0 & Verzija nakon druge faze & Teodor Delibašić \\
+ \hline
+ & & & \\
  \hline
 \end{tabular}
 \end{center}
@@ -135,31 +137,40 @@ time mu se omogućava i pristup igri \textit{Ko zna zna}.
 \subsection{Administrator}
 Registrovani korisnik koji osim prava da igra igre, može da dodaje nova pitanja u bazu za 
 prvu i treću igru i dodeli ulogu admina drugom registrovanom korisniku
-\newpage
 \section{Rang lista}
 Samo registrovani korisnici (\textit{Bronzani, Srebrni i Zlatni}) se mogu naći na rang listi. Rangiraju se na osnovu 
 high score-a. Korisnicima se prikazuje prvih 10 mesta rang liste.
+\newpage
 \section{Funkcionalnosti}
 \begin{itemize}
     \item \textbf{Registracija} \\
-    Kada gost želi da se registruje, potrebno je da ostavi svoje ime, email, i smisli svoje 
-korisničko ime i lozinku. Od tog trenutka on ima svoj profil na koji se može logovati.
-    \item \textbf{Logovanje} \\
-    Nakon što se korisnik prvi put registrovao prilikom svakog ulaska u aplikaciju unošenjem 
-svog korisničkog imena i lozinke se loguje
-    \item \textbf{Pokretanje partije} \\
-    Korisnik pokreće partiju koja se sastoji od tri gorepomenute igre
+    Kada gost želi da se registruje, potrebno je da napiše korisničko ime, email i šifru, koju treba da potvrdi. Korisničko ime i email treba da budu \\ jedinstveni među svim korisnicima. Od tog trenutka on ima svoj profil na koji se može prijaviti.
+    \item \textbf{Prijavljivanje} \\
+    Korisnik koji se ranije registrovao može da se prijavi koristeći svoje \\ korisničko ime i šifru. Takođe, korisnik može da izabere da se prijavi kao gost.
+    
+    \item \textbf{Započinjanje partije} \\
+    Korisnik započinje partiju koja se u zavisnosti od tipa korisnika sastoji od odgovarajućih igara i zatim te igre igra po željenom redosledu, svaku samo jednom.
 
-    \item \textbf{Pokretanje igre} \\
-    Korisnik pokreće jednu od specifičnih igara koje čine jednu partiju
+    \item \textbf{Igra Fight List} \\
+    Korisnik igra igru Fight List.
+    \item \textbf{Igra Mozgić} \\
+    Korisnik, ukoliko je srebrni ili zlatni, igra igru Mozgić.
+    \item \textbf{Igra Ko Zna Zna} \\
+    Korisnik, ukoliko je zlatni, igra igru Ko Zna Zna.
+    
+    \item \textbf{Dodavanje pitanja za igru Ko Zna Zna} \\
+    Korisnik, ukoliko je admin, može da doda pitanje i tačan odgovor za igru Ko Zna Zna.
+    \item \textbf{Dodavanje teme za igru Fight List} \\
+    Korisnik, ukoliko je admin, može da doda temu i odgovore za igru Fight List.
+    \item \textbf{Dodavanje drugih admina} \\
+    Korisnik, ukoliko je admin, može da doda ulogu admina drugom korisniku.
 
-    \item \textbf{Submitovanje rezultata} \\
-    Akcija koju korisnik preduzima na kraju igre
     \item \textbf{Pregledanje prvih 10 korisnika na rang listi} \\
-    Korisnik može da pogleda ko su trenutno najbolji takmičari i da se poredi sa njima
-    \item \textbf{Pregledanje ličnog profila} \\
-    Dostupna je statistika profila, kao i dodatne funkcionalnosti koje čine profil jedinstvenim 
-poput \textit{About me} sekcije
+    Korisnik može da pogleda ko su trenutno najbolji takmičari po najboljem ostvarenom rezultatu i da se poredi sa njima.
+    \item \textbf{Izmena opisa korisnika} \\
+    Moguće je izmeniti \textit{About me} sekciju.
+    \item \textbf{Menjanje slike korisnika} \\
+    Moguće je dodati profilnu sliku.
 \end{itemize}
 
 
