@@ -10,5 +10,5 @@ Trenutni prototip je moguce videti na [OVOM](https://www.figma.com/proto/orwBUz8
 
   
 <p align="center">
-  <img width="461" height="250" src="https://thumbs.gfycat.com/TalkativeLawfulBichonfrise-size_restricted.gif">
+  <img width="852" height="480" src="https://thumbs.gfycat.com/TalkativeLawfulBichonfrise-size_restricted.gif">
 </p>
