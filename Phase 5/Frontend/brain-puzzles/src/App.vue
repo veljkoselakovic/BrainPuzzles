@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <div class="title"> BrainPuzzles</div>
-  <CanvasComponent width=50vw height=40vh>
+  <CanvasComponent width=30vw height=40vh>
 
 
 
@@ -18,7 +18,17 @@ export default {
   name: 'App',
   components: {
     CanvasComponent
-  }
+  },
+  methods: {
+    printForm(e) {
+      const form = e.target
+      const formData = new FormData(form) // get all named inputs in form
+      for (const [inputName, value] of formData) {
+        console.log({ inputName, value })
+      }
+    }
+  },
+  
 }
 </script>
 
@@ -30,7 +40,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 4%;
 }
 body, html {
   padding: 0;
@@ -46,11 +56,11 @@ body {
 .title {
   position: relative;
   z-index: 4;
-  top:40%;
+  top:10%;
   font-family: 'Pacifico';
   font-style: normal;
   font-weight: 400;
-  font-size: 64px;
+  font-size: 32px;
   letter-spacing: 0.05em;
   color:white;
   margin-bottom: 0;
