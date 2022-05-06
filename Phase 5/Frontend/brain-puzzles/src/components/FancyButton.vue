@@ -18,6 +18,7 @@ export default {
       clicked() {
         var fields = document.getElementsByClassName('inputField');
         console.log(fields[0].value);
+        console.log(fields[1].value);
         
 
       }

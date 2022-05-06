@@ -60,7 +60,7 @@ body {
   font-family: 'Pacifico';
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 4vw;
   letter-spacing: 0.05em;
   color:white;
   margin-bottom: 0;

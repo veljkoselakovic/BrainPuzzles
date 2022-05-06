@@ -45,7 +45,7 @@ export default {
     width:75%;
     padding: 2%;
 
-    border: 2px #7879F1 solid;
+    border: 1px #7879F1 solid;
     font-size:0.8vw;
 
     -webkit-transition: all .2s ease-out;
