@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class = "canvas cell">
-      <img alt="BrainPuzzles logo" class = "logoPicture"  src="../assets/logo.png">
+      <img alt="BrainPuzzles logo" class = "logoPicture"  src="static/src/vue/dist/img/logo.png">
 
       <form id = "formLogIn">
       <InputField text = "Username" type="text" name="user"/>
