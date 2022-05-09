@@ -10,9 +10,8 @@
       <InputField text = "Password" type="password" name="pass"/>
       </form>
       <FancyButton text="Log In" />
-      <p class="registerMessage">Not a member? 
-        <router-link class="registerLink" to="/register">Register</router-link>
- right now!</p>
+      <p class="registerMessage">Niste član? 
+        <router-link class="registerLink" to="/register">Registrujte se</router-link>!</p>
 
       <FancyButton class="guestButton" text="Sign in as Guest" />
 
@@ -27,9 +26,9 @@
 
 
 <script>
-import FancyButton from './FancyButton.vue'
-import FooterComponent from './FooterComponent.vue'
-import InputField from './InputField.vue'
+import FancyButton from '../FancyButton.vue'
+import FooterComponent from '../FooterComponent.vue'
+import InputField from '../InputField.vue'
 
 export default {
   components: { InputField, FancyButton, FooterComponent },

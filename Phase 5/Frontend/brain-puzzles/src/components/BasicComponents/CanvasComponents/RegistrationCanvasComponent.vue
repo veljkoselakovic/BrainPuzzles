@@ -1,17 +1,20 @@
 <template>
   <div class="container">
     <div class = "canvas cell">
-      <img alt="BrainPuzzles logo" class = "logoPicture"  src="static/src/vue/dist/img/logo.png">
+      <img alt="BrainPuzzles logo" class = "logoPicture"  src="static/res/logo.png">
 
 
-      <form id = "formLogIn" method="post">
+      <form id = "formRegister" method="post">
       <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf">
 
       <InputField text = "Username" type="text" name="user"/>
       <InputField text = "Email" type="email" name="email"/>
       <InputField text = "Password" type="password" name="pass"/>
       <InputField text = "Password again" type="password" name="pass_again"/>
-      <p  class="registerMessage">Sva polja moraju biti popunjena!</p>
+      <p  class="registerMessage" style="opacity:0.7">Sva polja moraju biti popunjena!</p>
+      <p class="registerMessage">Imate nalog? 
+        <router-link class="registerLink" to="/">Ulogujte se</router-link>
+ ovde!</p>
       
       <FancyButton text="Register"  />
       </form>
@@ -28,15 +31,15 @@
 
 
 <script>
-import FancyButton from './FancyButton.vue'
-import FooterComponent from './FooterComponent.vue'
-import InputField from './InputField.vue'
+import FancyButton from '../FancyButton.vue'
+import FooterComponent from '../FooterComponent.vue'
+import InputField from '../InputField.vue'
 
 export default {
   components: { InputField, FancyButton, FooterComponent },
   name: 'CanvasComponent',
   props: [
-    'width', 'height'
+    'width'
   ],
   data() {
     return {

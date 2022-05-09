@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> -->
     <div class="title"> BrainPuzzles</div> -->
-     <LogInCanvasComponent width=30vw height=40vh>
+     <LogInCanvasComponent width=30vw >
 
 
 
@@ -14,7 +14,7 @@
   </template>
 
 <script>
-import LogInCanvasComponent from './BasicComponents/LogInCanvasComponent.vue'
+import LogInCanvasComponent from './BasicComponents/CanvasComponents/LogInCanvasComponent.vue'
 
 export default {
   name: 'LogInComponent',

@@ -14,7 +14,7 @@
   </template>
 
 <script>
-import RegistrationCanvasComponent from './BasicComponents/RegistrationCanvasComponent.vue'
+import RegistrationCanvasComponent from './BasicComponents/CanvasComponents/RegistrationCanvasComponent.vue'
 
 export default {
   name: 'RegistrationComponent',
