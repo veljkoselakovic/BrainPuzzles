@@ -8,8 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <router-view />
   <div id="nav" style="position:absolute; left=0;">
-  <router-link to="/" > Home</router-link>
-  <router-link to="/demo">Demo</router-link>
 </div>
 </template>
 

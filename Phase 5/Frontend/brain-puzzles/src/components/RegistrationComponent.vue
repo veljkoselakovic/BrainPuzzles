@@ -3,23 +3,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> -->
-    <div class="title"> BrainPuzzles</div> -->
-     <LogInCanvasComponent width=30vw height=40vh>
+    <div class="title"> BrainPuzzles</div>
+     <RegistrationCanvasComponent width=30vw height=60vh>
 
 
 
-  </LogInCanvasComponent>
+  </RegistrationCanvasComponent>
   
    
   </template>
 
 <script>
-import LogInCanvasComponent from './BasicComponents/LogInCanvasComponent.vue'
+import RegistrationCanvasComponent from './BasicComponents/RegistrationCanvasComponent.vue'
 
 export default {
-  name: 'LogInComponent',
+  name: 'RegistrationComponent',
   components: {
-        LogInCanvasComponent
+        RegistrationCanvasComponent
   },
   methods: {
     

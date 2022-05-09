@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import MainView, AlternateView
+from .views import MainView, RegisterView
 
 urlpatterns = [
     path('', MainView.as_view(), name="main_page"),
+    path('register', RegisterView.as_view(), name="registration_page")
     # path('alternate', AlternateView.as_view(), name="alternate_page"),
 ]

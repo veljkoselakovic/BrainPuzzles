@@ -1,3 +1,4 @@
+from django.http import HttpRequest
 from django.shortcuts import render
 from django.views import View
 
@@ -11,8 +12,12 @@ class MainView(View) :
         return render(request, 'base.html', {})
 
 
-class AlternateView(View) :
+class RegisterView(View) :
     
 
     def get(self, request):
-        return render(request, 'alternate.html', {})
+        return render(request, 'base.html', {})
+
+    def post(self, request):
+
+        return HttpRequest("<h1>Registered</h1>")

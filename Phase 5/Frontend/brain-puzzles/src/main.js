@@ -4,12 +4,12 @@ import App from './App.vue'
 
 import {createRouter, createWebHistory} from 'vue-router'
 import LogInComponent from './components/LogInComponent'
-import FancyButton from './components/FancyButton.vue'
+import RegistrationComponent from './components/RegistrationComponent.vue'
 // const Home = { template: '<div>Veljko</div>' }
 
 const routes =  [
   { path: '/', component: LogInComponent },
-  { path: '/demo', component: FancyButton },
+  { path: '/register', component: RegistrationComponent, name:'registration'},
 
 ]
 // Vue.use(Router)

@@ -3,14 +3,17 @@
     <div class = "canvas cell">
       <img alt="BrainPuzzles logo" class = "logoPicture"  src="static/src/vue/dist/img/logo.png">
 
-      <form id = "formLogIn">
-      <InputField text = "Username" type="text" name="user"/>
-      <InputField text = "Password" type="password" name="pass"/>
-      </form>
-      <FancyButton text="Log In" />
-      <p class="registerMessage">Not a member? <a class="registerLink" href="#">Register</a> right now!</p>
 
-      <FancyButton class="guestButton" text="Sign in as Guest" />
+      <form id = "formLogIn" method="post">
+      <InputField text = "Username" type="text" name="user"/>
+      <InputField text = "Email" type="email" name="email"/>
+      <InputField text = "Password" type="password" name="pass"/>
+      <InputField text = "Password again" type="password" name="pass"/>
+      <p  class="registerMessage">Sva polja moraju biti popunjena!</p>
+      
+      <FancyButton text="Register" />
+      </form>
+
 
 
     </div>
