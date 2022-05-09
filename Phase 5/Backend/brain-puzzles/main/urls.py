@@ -20,5 +20,5 @@ from .views import MainView, AlternateView
 
 urlpatterns = [
     path('', MainView.as_view(), name="main_page"),
-    path('alternate', AlternateView.as_view(), name="alternate_page"),
+    # path('alternate', AlternateView.as_view(), name="alternate_page"),
 ]

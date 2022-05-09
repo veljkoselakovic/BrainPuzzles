@@ -6,7 +6,6 @@
       <form id = "formLogIn">
       <InputField text = "Username" type="text" name="user"/>
       <InputField text = "Password" type="password" name="pass"/>
-
       </form>
       <FancyButton text="Log In" />
       <p class="registerMessage">Not a member? <a class="registerLink" href="#">Register</a> right now!</p>
