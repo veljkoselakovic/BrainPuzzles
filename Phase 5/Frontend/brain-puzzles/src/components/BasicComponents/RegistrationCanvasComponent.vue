@@ -5,13 +5,15 @@
 
 
       <form id = "formLogIn" method="post">
+      <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf">
+
       <InputField text = "Username" type="text" name="user"/>
       <InputField text = "Email" type="email" name="email"/>
       <InputField text = "Password" type="password" name="pass"/>
-      <InputField text = "Password again" type="password" name="pass"/>
+      <InputField text = "Password again" type="password" name="pass_again"/>
       <p  class="registerMessage">Sva polja moraju biti popunjena!</p>
       
-      <FancyButton text="Register" />
+      <FancyButton text="Register"  />
       </form>
 
 
@@ -35,7 +37,14 @@ export default {
   name: 'CanvasComponent',
   props: [
     'width', 'height'
-  ]
+  ],
+  data() {
+    return {
+      csrf: document.cookie.split('; ')
+                  .find(row => row.startsWith('csrftoken'))
+                  .split('=')[1],
+    }
+  }
 }
 </script>
 

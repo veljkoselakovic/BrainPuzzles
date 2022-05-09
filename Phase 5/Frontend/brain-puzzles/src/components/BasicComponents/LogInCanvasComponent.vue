@@ -1,9 +1,11 @@
 <template>
   <div class="container">
     <div class = "canvas cell">
-      <img alt="BrainPuzzles logo" class = "logoPicture"  src="static/src/vue/dist/img/logo.png">
+      <img alt="BrainPuzzles logo" class = "logoPicture"  src="static/res/logo.png">
 
       <form id = "formLogIn">
+      <input type="hidden" name="_token" v-bind:value="csrf">
+
       <InputField text = "Username" type="text" name="user"/>
       <InputField text = "Password" type="password" name="pass"/>
       </form>
@@ -34,7 +36,14 @@ export default {
   name: 'CanvasComponent',
   props: [
     'width', 'height'
-  ]
+  ],
+  data() {
+    return {
+      csrf: document.cookie.split('; ')
+                  .find(row => row.startsWith('csrftoken'))
+                  .split('=')[1],
+    }
+  }
 }
 </script>
 

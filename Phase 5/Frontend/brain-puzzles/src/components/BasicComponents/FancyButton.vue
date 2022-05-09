@@ -1,7 +1,7 @@
 <template>
 
     <div class=buttonContainer>
-        <button class="buttonClass" v-on:click="clicked">{{text}}</button>
+        <button class="buttonClass" >{{text}}</button>
     </div>
 
 
@@ -9,21 +9,14 @@
 
 
 <script>
+    // import axios from 'axios';
+
+    
 export default {
   name: 'FancyButton',
   props: [
-    'text'
+    'text',
   ],
-  methods: {
-      clicked() {
-        var fields = document.getElementsByClassName('inputField');
-        console.log(fields[0].value);
-        console.log(fields[1].value);
-        location.href = "alternate"
-        
-
-      }
-  }
 }
 </script>
 
