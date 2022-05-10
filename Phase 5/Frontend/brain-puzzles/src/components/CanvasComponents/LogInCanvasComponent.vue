@@ -2,6 +2,7 @@
   <div class="container">
     <div class = "canvas cell">
       <img alt="BrainPuzzles logo" class = "logoPicture"  src="static/res/logo.png">
+      <p class="errorClass">{{errors}}</p>
 
       <form id = "formLogIn" method="post">
       <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf">
@@ -11,8 +12,8 @@
       <FancyButton text="Log In" />
       </form>
 
-      <p class="registerMessage">Niste član? 
-        <router-link class="registerLink" to="/register">Registrujte se</router-link>!</p>
+      <p class="registerMessage" >Niste član? 
+        <router-link class="registerLink" @click="clickedRegister" to="/register">Registrujte se</router-link>!</p>
 
       <FancyButton class="guestButton" text="Sign in as Guest" />
 
@@ -38,10 +39,21 @@ export default {
     'width', 'height'
   ],
   data() {
+    var errs = document.getElementsByClassName("error")[0]
+    if(errs !== undefined){
+      errs = errs.textContent
+    }
+
     return {
       csrf: document.cookie.split('; ')
                   .find(row => row.startsWith('csrftoken'))
                   .split('=')[1],
+      errors: errs,
+    }
+  },
+  methods: {
+    clickedRegister() {
+      this.$data.errors = undefined;
     }
   }
 }
@@ -89,7 +101,7 @@ export default {
   width:7vh;
   height:auto;
 }
-.registerMessage{ 
+.registerMessage, .errorClass{ 
   font-weight: bold;
   font-size: 0.5vw;
 

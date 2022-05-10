@@ -19,6 +19,7 @@ class MainView(View) :
     
 
     def get(self, request):
+
         return render(request, 'base.html', {})
 
 
@@ -32,10 +33,11 @@ class MainView(View) :
         user = authenticate(username=user, password=password)
         if user:
             # login(request, user)
-
             return render(request, 'successRegistration.html', {'user' : request.POST.get("pass")})
         else:
-            return redirect('registration_page')
+            messages.error(request, 'Invalid log in information')
+
+            return redirect('main_page')
 
 
 class SuccessRegView(View):
