@@ -3,14 +3,14 @@
     <div class = "canvas cell">
       <img alt="BrainPuzzles logo" class = "logoPicture"  src="static/res/logo.png">
 
-
+      <p class="errorClass">{{errors}}</p>
       <form id = "formRegister" method="post">
       <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf">
 
       <InputField text = "Username" type="text" name="user"/>
       <InputField text = "Email" type="email" name="email"/>
-      <InputField text = "Password" type="password" name="pass"/>
-      <InputField text = "Password again" type="password" name="pass_again"/>
+      <InputField text = "Password" type="password" v-model="password" name="pass"/>
+      <InputField text = "Password again" type="password" v-on:input="validate" v-model="password_again" name="pass_again"/>
       <p  class="registerMessage" style="opacity:0.7">Sva polja moraju biti popunjena!</p>
       <p class="registerMessage">Imate nalog? 
         <router-link class="registerLink" to="/">Ulogujte se</router-link>
@@ -31,9 +31,9 @@
 
 
 <script>
-import FancyButton from '../FancyButton.vue'
-import FooterComponent from '../FooterComponent.vue'
-import InputField from '../InputField.vue'
+import FancyButton from '../BasicComponents/FancyButton.vue'
+import FooterComponent from '../BasicComponents/FooterComponent.vue'
+import InputField from '../BasicComponents/InputField.vue'
 
 export default {
   components: { InputField, FancyButton, FooterComponent },
@@ -42,10 +42,25 @@ export default {
     'width'
   ],
   data() {
+
+    var errs = document.getElementsByClassName("error")[0]
+    if(errs !== undefined){
+      errs = errs.textContent
+    }
+
     return {
       csrf: document.cookie.split('; ')
                   .find(row => row.startsWith('csrftoken'))
                   .split('=')[1],
+      errors: errs,
+      password: '',
+      password_again: '',
+    }
+  },
+  methods: {
+    validate: function() {
+        console.log("is it the same?")
+        console.log(this.$data.password === this.$data.password_again)
     }
   }
 }
@@ -93,13 +108,15 @@ export default {
   width:7vh;
   height:auto;
 }
-.registerMessage{ 
+.registerMessage, .errorClass{ 
   font-weight: bold;
   font-size: 0.5vw;
 
 }
 
 .registerLink {
+  margin-top:10%;
+
   text-decoration: none;
   color:#5D5FEF;
 }

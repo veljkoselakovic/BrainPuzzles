@@ -1,7 +1,7 @@
 <template>
 
     <div class=inputContainer>
-        <input class="inputField" :name="name" :type="type" :placeholder="text" :value="value"/>
+        <input class="inputField" :name="name" :type="type" :placeholder="text" :value="value" @input = "inputChanged"/>
     </div>
 
 
@@ -18,6 +18,9 @@ export default {
     getInfo() {
         return this.value;
     },
+    inputChanged() {
+        this.$emit('input', this.value)
+    }
   }
 }
 

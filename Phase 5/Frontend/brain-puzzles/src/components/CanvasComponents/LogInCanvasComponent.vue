@@ -3,13 +3,14 @@
     <div class = "canvas cell">
       <img alt="BrainPuzzles logo" class = "logoPicture"  src="static/res/logo.png">
 
-      <form id = "formLogIn">
-      <input type="hidden" name="_token" v-bind:value="csrf">
+      <form id = "formLogIn" method="post">
+      <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf">
 
       <InputField text = "Username" type="text" name="user"/>
       <InputField text = "Password" type="password" name="pass"/>
-      </form>
       <FancyButton text="Log In" />
+      </form>
+
       <p class="registerMessage">Niste član? 
         <router-link class="registerLink" to="/register">Registrujte se</router-link>!</p>
 
@@ -26,9 +27,9 @@
 
 
 <script>
-import FancyButton from '../FancyButton.vue'
-import FooterComponent from '../FooterComponent.vue'
-import InputField from '../InputField.vue'
+import FancyButton from '../BasicComponents/FancyButton.vue'
+import FooterComponent from '../BasicComponents/FooterComponent.vue'
+import InputField from '../BasicComponents/InputField'
 
 export default {
   components: { InputField, FancyButton, FooterComponent },

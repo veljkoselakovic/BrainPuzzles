@@ -14,7 +14,7 @@
   </template>
 
 <script>
-import LogInCanvasComponent from './BasicComponents/CanvasComponents/LogInCanvasComponent.vue'
+import LogInCanvasComponent from './CanvasComponents/LogInCanvasComponent.vue'
 
 export default {
   name: 'LogInComponent',
