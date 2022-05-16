@@ -9,6 +9,7 @@
 {% load static %}
 {% for message in messages %}
     <p{% if message.tags %} style="visibility: hidden;" class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+
 {% endfor %}
 <script type="text/javascript" src={% static '/src/vue/dist/js/chunk-vendors.js' %}></script>
 <script type="text/javascript" src={% static '/src/vue/dist/js/app.js' %}></script>

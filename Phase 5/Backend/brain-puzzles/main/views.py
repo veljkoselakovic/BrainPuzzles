@@ -85,7 +85,7 @@ class RegisterView(View) :
             elif 'user' in str(I):
                 messages.error(request, 'Username already exists')
             else:
-                messages.error(request, 'Unkown error')
+                messages.error(request, 'Unknown error')
 
             return redirect("registration_page")
 
