@@ -33,7 +33,8 @@ export default {
     overflow: hidden;
 }
 .inputField::placeholder {
-    color:black;
+    /* color:black; */
+    color: #7879F1;
     font-weight: 500;
     /* font-size:1.2em; */
 
@@ -44,11 +45,15 @@ export default {
     outline:none;
     border: 2px #F178B6 solid;
 }
+.inputField:focus::placeholder{
+    color: #F178B6;
+}
+
 .inputField{
     width:75%;
     padding: 2%;
 
-    border: 1px #7879F1 solid;
+    border: 2px #7879F1 solid;
     font-size:0.8vw;
 
     -webkit-transition: all .2s ease-out;
@@ -58,4 +63,5 @@ export default {
     transition: all .2s ease-out
     
 }
+
 </style>
