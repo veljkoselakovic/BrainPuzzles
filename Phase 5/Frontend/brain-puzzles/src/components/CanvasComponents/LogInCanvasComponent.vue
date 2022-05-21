@@ -6,21 +6,16 @@
 
       <form id = "formLogIn" method="post">
       <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf">
-
       <InputField text = "Username" type="text" name="user"/>
       <InputField text = "Password" type="password" name="pass"/>
       <FancyButton text="Log In" />
       </form>
 
       <p class="registerMessage" >Niste član? 
-        <router-link class="registerLink" @click="clickedRegister" to="/register">Registrujte se</router-link>!</p>
-
+      <router-link class="registerLink" @click="clickedRegister" to="/register">Registrujte se</router-link>!</p>
       <FancyButton class="guestButton" text="Sign in as Guest" />
-
-
     </div>
     <div class="blur cell"></div>
-
   </div>
     <footer><FooterComponent/></footer>
 
@@ -28,15 +23,15 @@
 
 
 <script>
-import FancyButton from '../BasicComponents/FancyButton.vue'
-import FooterComponent from '../BasicComponents/FooterComponent.vue'
-import InputField from '../BasicComponents/InputField'
+ import FancyButton from '../BasicComponents/FancyButton.vue'
+ import FooterComponent from '../BasicComponents/FooterComponent.vue'
+ import InputField from '../BasicComponents/InputField.vue'
 
 export default {
-  components: { InputField, FancyButton, FooterComponent },
-  name: 'CanvasComponent',
+   components: { InputField, FancyButton, FooterComponent },
+  name: 'LogInCanvasComponent',
   props: [
-    'width', 'height'
+    'width'
   ],
   data() {
     var errs = document.getElementsByClassName("error")[0]
@@ -45,9 +40,10 @@ export default {
     }
 
     return {
-      csrf: document.cookie.split('; ')
-                  .find(row => row.startsWith('csrftoken'))
-                  .split('=')[1],
+      csrf: "",
+      // csrf: document.cookie.split('; ')
+      //             .find(row => row.startsWith('csrftoken'))
+      //             .split('=')[1],
       errors: errs,
     }
   },

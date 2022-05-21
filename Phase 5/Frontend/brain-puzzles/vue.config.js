@@ -11,7 +11,7 @@ module.exports =  {
       // see https://github.com/webpack/webpack-dev-server/issues/2958
       writeToDisk: true, 
     }, 
-    port: '8081',
+    port: '8080',
     // disableHostCheck: true,
 
     
