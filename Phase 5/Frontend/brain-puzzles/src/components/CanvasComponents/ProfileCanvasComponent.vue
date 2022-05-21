@@ -42,7 +42,7 @@ export default {
     position:relative;
     z-index: 1;
     margin: 0 auto;
-    width: 20%;
+    width: 250px;
     height: 400px; 
     background-color: white;
     border-radius: 2em;

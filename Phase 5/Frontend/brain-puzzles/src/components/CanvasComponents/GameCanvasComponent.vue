@@ -34,7 +34,7 @@ export default {
     position:relative;
     z-index: 1;
     margin: 0 auto;
-    width: 15%;
+    width: 200px;
     height: 450px; 
     background-color: white;
     border-radius: 2em;
