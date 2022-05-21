@@ -3,7 +3,8 @@ import {createApp} from 'vue'
 import App from './App.vue'
 
 import {createRouter, createWebHistory} from 'vue-router'
-import LogInComponent from './components/LogInComponent'
+ import LogInComponent from './components/LogInComponent.vue'
+// import DemoComponent from './components/DemoComponent.vue'
 import RegistrationComponent from './components/RegistrationComponent.vue'
 // const Home = { template: '<div>Veljko</div>' }
 
@@ -18,8 +19,6 @@ const router = createRouter({
   history: createWebHistory(),
   routes, // short for `routes: routes`
 })
-
-
 
 
 const app = createApp(App)

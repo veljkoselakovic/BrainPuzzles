@@ -1,17 +1,12 @@
 <template>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <div class="title"> BrainPuzzles</div> -->
-     <LogInCanvasComponent width=30vw >
-
-
-
-  </LogInCanvasComponent>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <div class="title"> BrainPuzzles</div>
+  <LogInCanvasComponent width=30vw > </LogInCanvasComponent>
   
-   
-  </template>
+</template>
 
 <script>
 import LogInCanvasComponent from './CanvasComponents/LogInCanvasComponent.vue'
