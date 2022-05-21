@@ -10,9 +10,11 @@ import DashboardComponent from './components/DashboardComponent.vue'
 // const Home = { template: '<div>Veljko</div>' }
 
 const routes =  [
-  { path: '/', component: DashboardComponent },
+  { path: '/', component: LogInComponent },
   { path: '/register', component: RegistrationComponent, name:'registration'},
-  { path: '/login', component: LogInComponent, name:'login'}
+  { path: '/login', component: LogInComponent, name:'login'},
+  { path: '/dashboard', component: DashboardComponent, name:'dashboard'},
+  
 
 ]
 // Vue.use(Router)

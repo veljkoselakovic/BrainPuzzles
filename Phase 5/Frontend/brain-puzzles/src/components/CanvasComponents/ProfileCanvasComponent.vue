@@ -2,7 +2,7 @@
     <div class="canvas">
         <div id="top">
             <div id="divProfilePicture">
-                <img id="profilePicture" src=".\profilna2.jpg" alt="profilna">
+                <img id="profilePicture" src="static/res/profilna2.jpg" alt="profilna">
             </div>
             <div id="info">
                 username : {{username}} <br>
@@ -25,16 +25,18 @@
     </div>
 </template>
 
-<ProfileCanvasComponent username="ivasljiva" email="ivaarakic@yahoo.com" status="Gold"
-  aboutMe="Text text text.........." totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent>
+<!-- <ProfileCanvasComponent username="ivasljiva" email="ivaarakic@yahoo.com" status="Gold"
+  aboutMe="Text text text.........." totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent> -->
 
 <script>
 export default {
     name : 'ProfileCanvasComponent',
     props:[
         'username', 'email', 'status', 'aboutMe', 'totalScore', 'highScore', 'profilePicture'
-    ]
+    ],
+    
 }
+
 </script>
 
 <style scoped>
@@ -42,11 +44,14 @@ export default {
     position:relative;
     z-index: 1;
     margin: 0 auto;
-    width: 250px;
-    height: 400px; 
+    width: 25vw;
+    height: 60vh; 
     background-color: white;
     border-radius: 2em;
     overflow: hidden;
+
+  box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
+
 }
 #top{
     display: flex;

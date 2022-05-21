@@ -7,6 +7,8 @@
 <head>
 <form><div id="app"></div>
 {% load static %}
+{{ jsonInfo|json_script:"jsonInfo" }}
+
 {% for message in messages %}
     <p{% if message.tags %} style="visibility: hidden;" class="{{ message.tags }}"{% endif %}>{{ message }}</p>
 

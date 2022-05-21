@@ -8,6 +8,8 @@ from django.db import IntegrityError
 
 from django.contrib import messages
 
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 
@@ -19,6 +21,9 @@ class MainView(View) :
     
 
     def get(self, request):
+
+        if request.user.is_authenticated:
+            return redirect('dashboard_page')
 
         return render(request, 'base.html', {})
 
@@ -32,12 +37,19 @@ class MainView(View) :
 
         user = authenticate(username=user, password=password)
         if user:
-            # login(request, user)
-            return render(request, 'successRegistration.html', {'user' : request.POST.get("pass")})
+            login(request, user)
+            return redirect('/dashboard')
+            # return render(request, 'successRegistration.html', {'user' : request.POST.get("pass")})
         else:
             messages.error(request, 'Invalid log in information')
 
             return redirect('main_page')
+
+class LogoutView(View):
+
+    def get(self, request):
+        logout(request)
+        return redirect('main_page')
 
 
 class SuccessRegView(View):
@@ -46,10 +58,29 @@ class SuccessRegView(View):
     def get(self, request):
         return render(request, 'succesRegistration.html', {})
 
+class DashboardView(View):
+
+
+    @method_decorator(login_required)
+    def get(self, request):
+        info = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        }
+
+        return render(request, 'base.html', {'jsonInfo': info})
+
 class RegisterView(View) :
     
 
     def get(self, request):
+
+        if request.user.is_authenticated:
+            return redirect('dashboard_page')
+
+
         return render(request, 'base.html', {})
 
     def post(self, request):

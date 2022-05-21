@@ -1,13 +1,13 @@
 <template>
     <header><HeaderComponent/></header>
-    <div class="div">
-        <FancyText width=250px height=3.5vw text='Hello Iva!' fontSize=25px></FancyText>
+    <div class="div leftPanel">
+        <FancyText class="helloUserClass" width=25vw height=3.5vh text='Hello Iva!' fontSize=1.3em></FancyText>
         <br>
-        <ProfileCanvasComponent id="profComp" username="ivasljiva" email="ivaarakic@yahoo.com" status="Gold"
-        aboutMe="Text text text.........." totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent>
+        <ProfileCanvasComponent id="profComp" :username="this.tableData.user" :email="this.tableData.email" :status="this.tableData.status"
+        :aboutMe="this.tableData.opis" totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent>
     </div>   
     <div class="div">
-        <GameCanvasComponent game="Fight list" score="25"></GameCanvasComponent>
+        <GameCanvasComponent game="Fight list" score="25"  ></GameCanvasComponent>
     </div> 
     <div class="div">
         <GameCanvasComponent game="Mozgic" score="20"></GameCanvasComponent>
@@ -27,15 +27,38 @@ import FancyText from './BasicComponents/FancyText.vue'
 
 export default {
     components :{FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, GameCanvasComponent},
-    name: 'DashboardComponent'
+    name: 'DashboardComponent',
+    data(){
+        return {
+            tableData: {},
+        }
+    },
+
+    
+    mounted() {
+        this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
+        console.log(this.tableData.user)
+    },
 }
 </script>
 
 <style scoped>
 
 .div{
+     
      display: inline-block;
-     margin: 0.8%;
+     margin: 0.4% 0.8%;
 }
+.leftPanel{
+    height:45vh;
+}
+
+footer {
+    margin-top:2%;
+}
+header {
+    margin-top:-3%;
+}
+
 
 </style>
