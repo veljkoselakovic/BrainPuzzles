@@ -23,8 +23,6 @@ export default {
 .cont {
     display: flex;
     flex-direction: row;
-    /* display: inline-flex;
-    width: 100%; */
     background-color:white;
     height: 13vh;
 }

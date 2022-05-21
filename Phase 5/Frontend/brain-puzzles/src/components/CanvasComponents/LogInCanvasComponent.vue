@@ -15,6 +15,7 @@
       <router-link class="registerLink" @click="clickedRegister" to="/register">Registrujte se</router-link>!</p>
       <FancyButton class="guestButton" text="Sign in as Guest" />
     </div>
+    
     <div class="blur cell"></div>
   </div>
     <footer><FooterComponent/></footer>

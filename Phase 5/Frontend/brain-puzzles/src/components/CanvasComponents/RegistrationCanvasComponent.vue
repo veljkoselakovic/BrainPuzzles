@@ -14,7 +14,7 @@
       <p  class="registerMessage" style="opacity:0.7">Sva polja moraju biti popunjena!</p>
       <p class="registerMessage">Imate nalog? 
         <router-link class="registerLink" to="/">Ulogujte se</router-link>
- ovde!</p>
+      ovde!</p>
       
       <FancyButton text="Register"  />
       </form>
