@@ -1,11 +1,9 @@
 <template>
     <div class="cont">
-        <div class="divLogo"><img class="logo" src=".\logo.jpg" alt="logo slika"></div>
+        <div class="divLogo"><img class="logo" src="static/res/logo.png"  alt="logo slika"></div>
         <div class="divTxt"> Brain Puzzles</div>
-        <div class="divLogOut">  
-            <router-link to="/register">
+        <div class="divLogOut" @click="logoutClicked()">  
                 <img class="logOut" src=".\logOut.png" alt="logOut">
-            </router-link>
         </div>
     </div>
 </template>
@@ -15,7 +13,13 @@
 export default {
     name: 'HeaderComponent',
     props: [
-    ]
+    ],
+    methods:
+    {
+        logoutClicked() {
+            location.href = "/logout"
+        },
+    }
 }
 </script>
 
@@ -33,12 +37,16 @@ export default {
     margin-top: 1%;
 }
 .logo {
-    max-width:100%;
+    max-width:90%;
     height:auto;
 }
 .divLogOut{
     width: 2%; 
     margin-top: 1.8%;
+}
+.divLogOut:hover{
+    cursor: pointer;
+
 }
 .logOut {
     max-width:100%;

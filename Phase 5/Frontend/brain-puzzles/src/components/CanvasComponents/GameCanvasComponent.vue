@@ -7,13 +7,13 @@
             {{score}}
         </div>
         <div id="but">
-            <FancyButton text="PLAY"></FancyButton>
+            <FancyButton class="playButton" text="       PLAY       "></FancyButton>
         </div>
     </div>
 </template>
 
-<GameCanvasComponent game="Fight list" score="25"></GameCanvasComponent>
-<br><br><br> 
+<!-- <GameCanvasComponent game="Fight list" score="25"></GameCanvasComponent>
+<br><br><br>  -->
 
 <script>
  import FancyButton from '../BasicComponents/FancyButton.vue'
@@ -34,11 +34,14 @@ export default {
     position:relative;
     z-index: 1;
     margin: 0 auto;
-    width: 200px;
-    height: 450px; 
+    width: 15vw;
+    height: 65vh; 
     background-color: white;
     border-radius: 2em;
     overflow: hidden;
+
+  box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
+
 }
 #game{
     text-align: center;
@@ -59,4 +62,5 @@ export default {
     font-weight: 550;
     height: 42%;
 }
+
 </style>
