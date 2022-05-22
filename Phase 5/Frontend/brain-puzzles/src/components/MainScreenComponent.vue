@@ -7,11 +7,11 @@
         aboutMe="Text text text.........." totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent>
     </div>
     <div class="div canv">
-        <FancyButton style="height: 80px; margin-top : 5%;" text="START" />
-        <FancyButton style="transform: scale(0.8); margin-top : 10%;" text="Rankings" />
-        <FancyButton style="transform: scale(0.8); margin-top : 0%;" text="New question" />
-        <FancyButton style="transform: scale(0.8); margin-top : 0%;" text="New theme" />
-        <FancyButton style="transform: scale(0.8); margin-top : 0%;" text="New admin" />
+        <FancyButton @click="startClicked()" style="height: 80px; margin-top : 5%;" text="START" />
+        <FancyButton @click="rankingsClicked()" style="transform: scale(0.8); margin-top : 10%;" text="Rankings" />
+        <FancyButton @click="newQuestionClicked()" style="transform: scale(0.8); margin-top : 0%;" text="New question" />
+        <FancyButton @click="newThemeClicked()" style="transform: scale(0.8); margin-top : 0%;" text="New theme" />
+        <FancyButton @click="newAdminClicked()" style="transform: scale(0.8); margin-top : 0%;" text="New admin" />
     </div>
     <footer><FooterComponent/></footer>
 </template>
@@ -25,7 +25,25 @@ import FancyButton from './BasicComponents/FancyButton.vue'
 
 export default {
     components: {FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, FancyButton},
-    name: 'MainScreenComponent'
+    name: 'MainScreenComponent',
+    methods:
+    {
+        startClicked() {
+            location.href = "/dashboard"
+        },
+        rankingsClicked() {
+            location.href = "/ranking"
+        },
+        newQuestionClicked() {
+            location.href = "/addquestion"
+        },
+        newThemeClicked() {
+            location.href = "/addtheme"
+        },
+        newAdminClicked() {
+            location.href = "/addadmin"
+        },
+    }
 }
 </script>
 

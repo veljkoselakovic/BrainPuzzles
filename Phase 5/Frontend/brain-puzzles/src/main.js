@@ -4,7 +4,6 @@ import App from './App.vue'
 
 import {createRouter, createWebHistory} from 'vue-router'
  import LogInComponent from './components/LogInComponent.vue'
-// import DemoComponent from './components/DemoComponent.vue'
 import RegistrationComponent from './components/RegistrationComponent.vue'
 import DashboardComponent from './components/DashboardComponent.vue'
 import MainScreenComponent  from './components/MainScreenComponent.vue'
@@ -14,7 +13,7 @@ import AddQuestionComponent  from './components/AddQuestionComponent.vue'
 // const Home = { template: '<div>Veljko</div>' }
 
 const routes =  [
-  { path: '/', component: LogInComponent },
+  { path: '/', component: AddThemeComponent },
   { path: '/register', component: RegistrationComponent, name:'registration'},
   { path: '/login', component: LogInComponent, name:'login'},
   { path: '/dashboard', component: DashboardComponent, name:'dashboard'},

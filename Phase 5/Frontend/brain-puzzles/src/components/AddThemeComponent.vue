@@ -12,7 +12,7 @@
         <InputField style="margin-top:1%" text = "1pt answers" type="text" name="onePoint" />
         <InputField style="margin-top:1%" text = "2pt answers" type="text" name="twoPoints" />
         <InputField style="margin-top:1%" text = "3pt answers" type="text" name="threePoints" />
-        <div style="font: 100px" id="txtt">*All answers should be delimited with a semicolon (;)</div>
+        <div id="txtt">*All answers should be delimited with a semicolon (;)</div>
         <FancyButton style="margin-top:12%" text="Submit" />
     </div>
     <footer><FooterComponent/></footer>
@@ -49,13 +49,13 @@ export default {
     overflow: hidden;
     margin-left: 1%;
 
-    font: 100px;
+    font: 30px;
     font-weight: 100;
 }
 #txtt{
     margin-top: 2%;
     color: rgba(0, 0, 0, 0.25);
-    font: 100px;
+    font: 10% !important;
 }
 
-</style>
+</style> 
