@@ -11,10 +11,12 @@ import MainScreenComponent  from './components/MainScreenComponent.vue'
 import AddAdminComponent  from './components/AddAdminComponent.vue'
 import AddThemeComponent  from './components/AddThemeComponent.vue'
 import AddQuestionComponent  from './components/AddQuestionComponent.vue'
+// import FightListComponent from './components/GameComponents/FightListComponent.vue'
+import KZZComponent from './components/GameComponents/KZZComponent.vue'
 // const Home = { template: '<div>Veljko</div>' }
 
 const routes =  [
-  { path: '/', component: LogInComponent },
+  { path: '/', component: KZZComponent },
   { path: '/register', component: RegistrationComponent, name:'registration'},
   { path: '/login', component: LogInComponent, name:'login'},
   { path: '/dashboard', component: DashboardComponent, name:'dashboard'},

@@ -20,6 +20,7 @@ export default {
 .container {
   background-color:white;
   height: 10vh;
+  margin-bottom: 10px;
   }
 .makers {
     font-size: 0.6vw;
