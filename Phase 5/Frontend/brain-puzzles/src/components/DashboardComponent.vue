@@ -1,7 +1,7 @@
 <template>
     <header><HeaderComponent/></header>
     <div class="div leftPanel">
-        <FancyText class="helloUserClass" width=25vw height=3.5vh text='Hello Iva!' fontSize=1.3em></FancyText>
+        <FancyText class="helloUserClass" width=22vw height=5vh text='Hello Iva!' fontSize=1.3em></FancyText>
         <br>
         <ProfileCanvasComponent id="profComp" :username="this.tableData.user" :email="this.tableData.email" :status="this.tableData.status"
         :aboutMe="this.tableData.opis" totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent>
