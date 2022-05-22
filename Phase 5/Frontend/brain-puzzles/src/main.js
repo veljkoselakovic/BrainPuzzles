@@ -10,10 +10,11 @@ import MainScreenComponent  from './components/MainScreenComponent.vue'
 import AddAdminComponent  from './components/AddAdminComponent.vue'
 import AddThemeComponent  from './components/AddThemeComponent.vue'
 import AddQuestionComponent  from './components/AddQuestionComponent.vue'
+import RankingComponent  from './components/RankingComponent.vue'
 // const Home = { template: '<div>Veljko</div>' }
 
 const routes =  [
-  { path: '/', component: MainScreenComponent },
+  { path: '/', component: RankingComponent },
   { path: '/register', component: RegistrationComponent, name:'registration'},
   { path: '/login', component: LogInComponent, name:'login'},
   { path: '/dashboard', component: DashboardComponent, name:'dashboard'},
