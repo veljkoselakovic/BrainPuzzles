@@ -14,14 +14,15 @@ import RankingComponent  from './components/RankingComponent.vue'
 // const Home = { template: '<div>Veljko</div>' }
 
 const routes =  [
-  { path: '/', component: RankingComponent },
+  { path: '/', component: LogInComponent },
   { path: '/register', component: RegistrationComponent, name:'registration'},
   { path: '/login', component: LogInComponent, name:'login'},
   { path: '/dashboard', component: DashboardComponent, name:'dashboard'},
   { path: '/mainscreen', component: MainScreenComponent, name:'mainscreen'},
   { path: '/addadmin', component: AddAdminComponent, name:'addadmin'},
   { path: '/addtheme', component: AddThemeComponent, name:'addtheme'},
-  { path: '/addquestion', component: AddQuestionComponent, name:'addquestion'}
+  { path: '/addquestion', component: AddQuestionComponent, name:'addquestion'},
+  { path: '/ranking', component: RankingComponent, name:'ranking'},
 
 ]
 // Vue.use(Router)
