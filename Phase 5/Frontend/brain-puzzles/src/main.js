@@ -13,7 +13,7 @@ import AddQuestionComponent  from './components/AddQuestionComponent.vue'
 // const Home = { template: '<div>Veljko</div>' }
 
 const routes =  [
-  { path: '/', component: AddThemeComponent },
+  { path: '/', component: MainScreenComponent },
   { path: '/register', component: RegistrationComponent, name:'registration'},
   { path: '/login', component: LogInComponent, name:'login'},
   { path: '/dashboard', component: DashboardComponent, name:'dashboard'},

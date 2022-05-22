@@ -1,7 +1,7 @@
 <template>
     <header><HeaderComponent/></header>
     <div class="div">
-        <FancyText width=250px height=3.5vw text='Hello Iva!' fontSize=25px></FancyText>
+        <FancyText  width=22vw height=3vw text='Hello Iva!' fontSize=25px></FancyText>
         <br>
         <ProfileCanvasComponent id="profComp" username="ivasljiva" email="ivaarakic@yahoo.com" status="Gold"
         aboutMe="Text text text.........." totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent>
@@ -39,14 +39,14 @@ export default {
     position:relative;
     z-index: 1;
     margin: 0 auto;
-    width: 650px;
-    height: 470px; 
+    width:  42.3vw;
+    height: 65.1vh; 
     background-color: white;
     border-radius: 2em;
     overflow: hidden;
     margin-left: 1%;
 
-    font: 25px;
+    font: 1.3em;
     font-weight: 100;
 }
 

@@ -44,8 +44,8 @@ export default {
     position:relative;
     z-index: 1;
     margin: 0 auto;
-    width: 25vw;
-    height: 60vh; 
+    width: 22vw;
+    height: 57vh; 
     background-color: white;
     border-radius: 2em;
     overflow: hidden;
