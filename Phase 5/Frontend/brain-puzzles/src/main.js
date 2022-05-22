@@ -10,12 +10,9 @@ import MainScreenComponent  from './components/MainScreenComponent.vue'
 import AddAdminComponent  from './components/AddAdminComponent.vue'
 import AddThemeComponent  from './components/AddThemeComponent.vue'
 import AddQuestionComponent  from './components/AddQuestionComponent.vue'
-<<<<<<< HEAD
-import RankingComponent  from './components/RankingComponent.vue'
-=======
 // import FightListComponent from './components/GameComponents/FightListComponent.vue'
 import KZZComponent from './components/GameComponents/KZZComponent.vue'
->>>>>>> Teodor
+import RankingComponent  from './components/RankingComponent.vue'
 // const Home = { template: '<div>Veljko</div>' }
 
 const routes =  [
