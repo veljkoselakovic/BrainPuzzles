@@ -14,9 +14,10 @@ import AddQuestionComponent  from './components/AddQuestionComponent.vue'
 import KZZComponent from './components/GameComponents/KZZComponent.vue'
 import RankingComponent  from './components/RankingComponent.vue'
 // const Home = { template: '<div>Veljko</div>' }
+import MozgicComponent from './components/GameComponents/MozgicComponent.vue'
 
 const routes =  [
-  { path: '/', component: KZZComponent },
+  { path: '/', component: MozgicComponent},
   { path: '/register', component: RegistrationComponent, name:'registration'},
   { path: '/login', component: LogInComponent, name:'login'},
   { path: '/dashboard', component: DashboardComponent, name:'dashboard'},
@@ -25,6 +26,8 @@ const routes =  [
   { path: '/addtheme', component: AddThemeComponent, name:'addtheme'},
   { path: '/addquestion', component: AddQuestionComponent, name:'addquestion'},
   { path: '/ranking', component: RankingComponent, name:'ranking'},
+  { path: '/kzz', component: KZZComponent, name:'kzz'},
+  { path: '/mozgic', component: MozgicComponent, name:'mozgic'},
 
 ]
 // Vue.use(Router)

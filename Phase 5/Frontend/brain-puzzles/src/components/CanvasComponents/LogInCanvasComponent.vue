@@ -40,10 +40,10 @@ export default {
     }
 
     return {
-      // csrf: "",
-      csrf: document.cookie.split('; ')
-                  .find(row => row.startsWith('csrftoken'))
-                  .split('=')[1],
+      csrf: "",
+      //csrf: document.cookie.split('; ')
+       //           .find(row => row.startsWith('csrftoken'))
+       //           .split('=')[1],
       errors: errs,
     }
   },
