@@ -8,8 +8,11 @@
     </div>
     <div class="div canv">
         <h1>New admin</h1>
-        <InputField style="margin-top:5%" text = "Username" type="text" name="user" />
-        <FancyButton style="margin-top:40%" text="Submit" />
+        <form method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf">
+            <InputField style="margin-top:5%" text = "Username" type="text" name="user" />
+            <FancyButton style="margin-top:40%" text="Submit" />
+        </form>
     </div>
     <footer><FooterComponent/></footer>
 </template>
@@ -24,7 +27,25 @@ import FancyButton from './BasicComponents/FancyButton.vue'
 
 export default {
     components: {FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, InputField, FancyButton},
-    name: 'MainScreenComponent'
+    name: 'MainScreenComponent',
+
+    data()  {
+        var cookies = document.cookie
+        var csrf_token
+        if(cookies == null || cookies == ""){
+        csrf_token = ""
+        }
+        else{
+        csrf_token =document.cookie.split('; ')
+                    .find(row => row.startsWith('csrftoken'))
+                    .split('=')[1]
+        }
+
+        return {
+            csrf: csrf_token,
+
+        }
+    }
 }
 </script>
 

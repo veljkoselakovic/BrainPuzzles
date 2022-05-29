@@ -16,21 +16,20 @@ from django.utils.decorators import method_decorator
 
 from .models import Korisnik
 
-
 class MainView(View) :
     
-
+    # brain-puzzles.com/
     def get(self, request):
 
         if request.user.is_authenticated:
-            return redirect('dashboard_page')
+            return redirect('mainscreen_page')
 
         return render(request, 'base.html', {})
 
 
     def post(self, request):
         
-        print(request.POST.get("user"))
+        # print(request.POST.get("user"))
 
         user = request.POST.get("user")
         password = request.POST.get("pass")
@@ -103,7 +102,7 @@ class RegisterView(View) :
             newKorisnik.is_staff = True
             newKorisnik.date_joined = datetime.datetime.now()
             newKorisnik.opis = ""
-            newKorisnik.titula = "b"
+            newKorisnik.titula = "bronza"
             newKorisnik.slika = ""
         
             newKorisnik.save()
@@ -121,5 +120,49 @@ class RegisterView(View) :
             return redirect("registration_page")
 
 
+        # HttpResponse
+        # JSONResponse
 
         return render(request, 'successRegistration.html', {})
+
+class MainScreenView(View):
+
+    @method_decorator(login_required)
+    def get(self, request):
+        return render(request, 'base.html', {})
+
+
+
+
+class AddAdminView(View):
+    
+    @method_decorator(login_required)
+    def get(self, request):
+        return render(request, 'base.html', {})
+
+
+    @method_decorator(login_required)
+    def post(self, request):
+
+        user = request.POST.get('user')
+
+        try:
+            newAdmin = Korisnik.objects.filter(username=user)[0]
+            newAdmin.is_superuser = True
+            newAdmin.save()
+
+        except IndexError:
+            return redirect('addadmin')
+
+        return render(request, 'base.html', {})
+
+class FightListView(View):
+
+    def get(self, request):
+        pass
+
+class CheckAnswer(View):
+
+    def get(self, request):
+        pass
+

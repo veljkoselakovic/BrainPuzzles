@@ -420,3 +420,18 @@
 /Phase 5/Backend/brain-puzzles/static/src/vue/dist/js/app.js
 /Phase 5/Backend/brain-puzzles/static/src/vue/dist/js/chunk-vendors.js
 >>>>>>> Teodor
+*.pyc
+Phase 5/Backend/brain-puzzles/config/__pycache__/__init__.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/config/__pycache__/settings.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/config/__pycache__/urls.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/config/__pycache__/wsgi.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/main/__pycache__/__init__.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/main/__pycache__/admin.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/main/__pycache__/apps.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/main/__pycache__/models.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/main/__pycache__/urls.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/main/__pycache__/views.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/main/migrations/__pycache__/0001_initial.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/main/migrations/__pycache__/0002_delete_authuser_delete_authusergroups_and_more.cpython-310.pyc
+Phase 5/Backend/brain-puzzles/main/migrations/__pycache__/__init__.cpython-310.pyc
+*.pyc

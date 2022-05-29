@@ -39,11 +39,20 @@ export default {
       errs = errs.textContent
     }
 
+    var cookies = document.cookie
+    var csrf_token
+    if(cookies == null || cookies == ""){
+      csrf_token = ""
+    }
+    else{
+      csrf_token =document.cookie.split('; ')
+                 .find(row => row.startsWith('csrftoken'))
+                 .split('=')[1]
+    }
+
     return {
       //csrf: "",
-      csrf: document.cookie.split('; ')
-                 .find(row => row.startsWith('csrftoken'))
-                 .split('=')[1],
+      csrf: csrf_token,
       errors: errs,
     }
   },
