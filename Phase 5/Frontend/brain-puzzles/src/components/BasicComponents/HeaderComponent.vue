@@ -8,17 +8,14 @@
     </div>
 </template>
 
-
 <script>
 export default {
     name: 'HeaderComponent',
-    props: [
-    ],
     methods:
     {
         logoutClicked() {
             location.href = "/logout"
-        },
+        }
     }
 }
 </script>
@@ -29,11 +26,10 @@ export default {
     flex-direction: row;
     background-color:white;
     height: 10vh;
-    margin-top:-2%;
+    margin-top:-3%;
 }
 .divLogo{
     width: 5%; 
-    /* margin-top: 1%; */
 }
 .logo {
     max-width:90%;

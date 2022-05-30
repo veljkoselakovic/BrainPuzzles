@@ -38,9 +38,6 @@ export default {
             timerCount: 30,
         }
     },
-    // props: [
-    //     'themeId', 'themeName'
-    // ]
     mounted() {
         this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent);
         this.themeName += this.tableData.themeName;

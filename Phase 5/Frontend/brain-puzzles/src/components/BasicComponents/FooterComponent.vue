@@ -1,33 +1,27 @@
 <template>
   <div class="container">
-    <div class="makers"> © Ćivot 2022</div>
+    © Ćivot 2022
   </div>
-
 </template>
 
-
 <script>
-
-
 export default {
-  name: 'FooterComponent',
-  props: [
-  ]
+  name: 'FooterComponent'
 }
 </script>
 
 <style scoped>
 .container {
-  background-color:white;
-  height: 7vh;
-  /* margin-bottom: 10px; */
-  margin-top: 0.75%;
-  }
-.makers {
-    font-size: 0.6vw;
-    font-weight: bold;
-    position:relative;
-    top:80%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 
+  background-color:white;
+  height: 5vh;
+  margin-top: 0.75%;
+
+  font-size: 0.6vw;
+  font-weight: bold;
 }
 </style>
