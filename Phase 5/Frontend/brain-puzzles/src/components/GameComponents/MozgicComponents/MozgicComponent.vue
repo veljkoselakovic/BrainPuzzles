@@ -141,9 +141,9 @@ export default {
             this.slika=p;
             //alert("slika "+slikaId);
             //alert("stigao do " +a + " i " + b);
-            alert(combination);
+            //alert(combination);
             guess.push(p);
-            alert(guess);
+            //alert(guess);
 
             
 
@@ -202,8 +202,8 @@ export default {
                         }
                     }
                 } 
-                alert(goodPlace);
-                alert(wrongPlace);
+                //alert(goodPlace);
+                //alert(wrongPlace);
                 let v=a-1;
                 let idField=v*28+169;
                 //const idFields=[];
@@ -213,40 +213,29 @@ export default {
 
                 for(let i=0;i<goodPlace;i++)
                 {
-                    alert("U goodplace sam");
+                    //alert("U goodplace sam");
                     idField = v*28+7*i+169;
-                    console.log("v = " + v +", i = " + i + ", idField = " + idField);
+                    
                     item=document.getElementById(idField);
                     item.style.backgroundColor="pink";
-                    //items.push(item);
+                    
                 }
-                item.style.backgroundColor="pink";
+                //item.style.backgroundColor="pink";
 
-                /*
-                for(let i=0;i<items.length;i++)
-                {
-                    alert("Prva petalja");
-                    alert(i);
-                    items[i]
-                    alert("izlazim");
-                }*/
                 
                 for(let j=0;j<wrongPlace;j++)
                 {
-                    alert("U wrongplace sam");
-                    idField = v*28+goodPlace+7*j+169;
+                    //alert("U wrongplace sam");
+                    idField = v*28+goodPlace*7+7*j+169;
                     item=document.getElementById(idField);
                     //items2.push(item);
+                    item.style.backgroundColor="yellow";
                 }
-                /*
-                for(let i=0;i<items2.length;i++)
-                {
-                    items2[i].style.backgroundColor="yellow";
-                }*/
+               
 
-                alert("Ovde sam");
-                while(guess.length>0) { alert("uspela1"); guess.pop(); alert("uspela2");}
-                alert("Ovo je +"); alert(guess);
+                
+                while(guess.length>0) {  guess.pop(); }
+                
         },
 
     }
