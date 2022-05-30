@@ -194,6 +194,9 @@ export default {
                         answer[i]=0;
                     }
                 }
+
+               
+
                 for(let i=0;i<4;i++)
                 {
                     for(let j=0;j<4;j++){
@@ -252,7 +255,14 @@ export default {
             //if(b==3)
             if(b>0) b--;
             else if(b==0){b=3;a--;}
-        }
+            guess.pop();
+        },
+
+        /*
+        endGame()
+        {
+            alert("Kraj igre");
+        }*/
 
     }
 }
