@@ -2,9 +2,7 @@
     <HeaderComponent/>
     <div class="fightListDiv">
         <div>
-            <div>
-                <FancyText style="margin-top: 2%" width=50vw height=10vh :text="this.themeName" fontSize=36px></FancyText>
-            </div>
+            <FancyText style="margin-top: 2%" width=50vw height=10vh :text="this.themeName" fontSize=36px></FancyText>
             <FightListCanvas :themeId="this.themeId"></FightListCanvas>
         </div>
         <div class="timer">
@@ -24,7 +22,6 @@ import axios from "axios";
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
-
 
 export default {
     components: {FooterComponent, HeaderComponent, FightListCanvas, FancyText},
@@ -52,7 +49,7 @@ export default {
     },
     watch: {
         timerCount: {
-            handler(value){
+            handler(value) {
                 if(value > 0){
                     setTimeout(() => {
                         this.timerCount--;
