@@ -12,7 +12,6 @@
         </div>
     </div>
     <FooterComponent/>
- <!-- <FightListItem text=Toyota points=0> -->
 </template>
 
 <script>
@@ -49,7 +48,6 @@ export default {
                 console.log('logged')
                 location.href = "/dashboard"
             })
-
         }
     },
     watch: {

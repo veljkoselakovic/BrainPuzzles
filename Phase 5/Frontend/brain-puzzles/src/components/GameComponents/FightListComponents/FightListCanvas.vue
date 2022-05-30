@@ -2,17 +2,22 @@
     <div class="fightListCanvas">
         <div class="flexFightList">
             <div class="item">
+                <component 
+                    v-for="field in fields1" 
+                    v-bind:is="field.type" 
+                    v-bind:key="field.key" 
+                    v-bind="field.itemProps">
 
-            <component v-for="field in fields" 
-            v-bind:is="field.type" v-bind:key="field.key" v-bind="field.itemProps">
-            </component>
-
-
+                </component>
             </div>
             <div class="item">
-                <component v-for="field in fields2" 
-            v-bind:is="field.type" v-bind:key="field.key" v-bind="field.itemProps">
-            </component>
+                <component 
+                    v-for="field in fields2" 
+                    v-bind:is="field.type" 
+                    v-bind:key="field.key" 
+                    v-bind="field.itemProps">
+
+                </component>
             </div>
         </div>
         <hr>
@@ -20,8 +25,8 @@
             <!-- <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf"> -->
 
             <InputField type="text" text="Guess" id="fightListGuess" style="margin-top: 2%"></InputField>
-            <FancyButton text="Enter" @click="enterItem($event)"></FancyButton>
-            <FancyButton @click="submitAll($event)" text="Submit"></FancyButton>
+            <FancyButton text="Enter"  @click="enterItem($event)"></FancyButton>
+            <FancyButton text="Submit" @click="submitAll($event)"></FancyButton>
         </div>
     </div>
 </template>
@@ -32,7 +37,6 @@ import FancyButton from '../../BasicComponents/FancyButton.vue'
 import InputField from '../../BasicComponents/InputField.vue'
 import axios from "axios";
 
-
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
@@ -42,9 +46,9 @@ export default {
     props: ['themeId'],
     data() {
         return {
-            fields : [],
+            fields1 : [],
             fields2 : [],
-            count : 0,
+            count : 0
         }
     },
     methods: {
@@ -58,47 +62,26 @@ export default {
                 guessValue : guess,
                 themeId : this.themeId
             }).then((response) => {
-                if(this.count % 2 == 1){
-                    console.log(this.count)
-                    this.fields2.push({
-                        'type':FightListItem,
-                        'key':this.count++,
-                        'itemProps': {
-                            text : response.data['guess'],
-                            points : response.data['points']
-                        }
-                    })
-                }
-                else
-                {
-                    this.fields.push({
-                        'type':FightListItem,
-                        'key':this.count++,
-                        'itemProps': {
-                            text : response.data['guess'],
-                            points : response.data['points']
-                        }
-                    })
-                }
+                let fields = (this.count % 2 == 1 ? this.fields2 : this.fields1);
+                fields.push({
+                    'type':FightListItem,
+                    'key':this.count++,
+                    'itemProps': {
+                        text : response.data['guess'],
+                        points : response.data['points']
+                    }
+                });
                 document.getElementById("fightListGuess").firstChild.value = "";
-                
-            })
-                
-                
-        
-
-
-            },
+            });
+        },
         submitAll(event) {
             event.preventDefault();
             axios.post('/fightlist_end', {}).then(() => {
                 console.log('logged')
                 location.href = "/dashboard"
-            })
-
+            });
         }
-    },
-    
+    }
 }
 </script>
 
