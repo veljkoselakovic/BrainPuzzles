@@ -4,7 +4,7 @@
       <tr v-for="(row, i) in rows" v-bind:key="i">
         <td v-for="(col,k) in cols" v-bind:key="k">
             <div id="circle"></div>
-            <!--<div v-if="value2" id="simbol"><img src="./igramozgic.jpg" alt="igramozgic" id="pict"></div>-->
+            <!--<div v-if="value1==='A'" id="simbol"><img src="./igramozgic.jpg" alt="igramozgic" id="pict"></div>-->
             {{ col[k] }}
         </td>
       </tr>
@@ -18,11 +18,11 @@
 export default {
     components :{},
     name:'MozgicCanvasComponent',
+
+
     data(){
         
         return{
-        //value1:true,
-        //value2:false,
         rows:6,
         cols:4
         }
