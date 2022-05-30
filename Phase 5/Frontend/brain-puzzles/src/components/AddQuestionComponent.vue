@@ -8,10 +8,12 @@
     </div>
     <div class="div canv">
         <h1>New question</h1>
-        <InputField style="margin-top:5%" text = "Question text" type="text" name="question" />
-        <InputField style="margin-top:1%" text = "Answer" type="text" name="answer" />
-    
-        <FancyButton style="margin-top:32%" text="Submit" />
+        <form method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf">
+            <InputField style="margin-top:5%" text = "Question text" type="text" name="question" />
+            <InputField style="margin-top:1%" text = "Answer" type="text" name="answer" />
+            <FancyButton style="margin-top:32%" text="Submit" />
+        </form>
     </div>
     <footer><FooterComponent/></footer>
 </template>
@@ -27,18 +29,31 @@ import FancyButton from './BasicComponents/FancyButton.vue'
 export default {
     components: {FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, InputField, FancyButton},
     name: 'AddQuestionComponent',
-    data(){
-        return {
-            tableData: {},
-            usernameGreeting: "Hello, ",
-        }
-    },
     
     mounted() {
         this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
         this.usernameGreeting += this.tableData.user + "!"
         console.log(this.tableData.user)
     },
+
+    data()  {
+        var cookies = document.cookie
+        var csrf_token
+        if(cookies == null || cookies == ""){
+        csrf_token = ""
+        }
+        else{
+        csrf_token =document.cookie.split('; ')
+                    .find(row => row.startsWith('csrftoken'))
+                    .split('=')[1]
+        }
+
+        return {
+            csrf: csrf_token,
+            tableData: {},
+            usernameGreeting: "Hello, ",
+        }
+    }
 }
 </script>
 

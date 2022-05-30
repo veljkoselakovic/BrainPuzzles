@@ -11,7 +11,7 @@ from django.utils.decorators import method_decorator
 
 # Create your views here.
 
-from .models import Korisnik
+from .models import *
 
 class MainView(View) :
     
@@ -68,12 +68,9 @@ class DashboardView(View):
 
 class RegisterView(View) :
     
-
     def get(self, request):
-
         if request.user.is_authenticated:
             return redirect('dashboard_page')
-
 
         return render(request, 'base.html', {})
 
@@ -143,7 +140,65 @@ class AddThemeView(View):
         'status' : request.user.titula,
         'opis' : request.user.opis,
         }
-        return render(request, 'base.html', {})
+        return render(request, 'base.html', {'jsonInfo': info})
+
+    @method_decorator(login_required)
+    def post(self, request):
+        info = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        }
+        trenutni_user = request.user
+        tema_tekst = request.POST.get('themeName')
+        jedanPoen = request.POST.get('onePoint')
+        dvaPoena = request.POST.get('twoPoints')
+        triPoena = request.POST.get('threePoints')
+        if(jedanPoen): 
+            jedanPoen = jedanPoen.split(";")
+        else:
+            jedanPoen = []
+        if(dvaPoena): 
+            dvaPoena = dvaPoena.split(";")
+        else: 
+            dvaPoena = []
+        if(triPoena): 
+            triPoena = triPoena.split(";")
+        else:
+            triPoena = []
+
+        if(len(tema_tekst) == 0):
+            return redirect('addtheme_page')
+
+        tema = FightListTema()
+        tema.idk = trenutni_user
+        tema.tema = tema_tekst
+        tema.save()
+
+        for elem in jedanPoen:
+            elem = elem.strip()
+            pojam = FightListPojam()
+            pojam.idt = tema
+            pojam.tekst = elem
+            pojam.poeni = 1
+            pojam.save()
+        for elem in dvaPoena:
+            elem = elem.strip()
+            pojam = FightListPojam()
+            pojam.idt = tema
+            pojam.tekst = elem
+            pojam.poeni = 2
+            pojam.save()
+        for elem in triPoena:
+            elem = elem.strip()
+            pojam = FightListPojam()
+            pojam.idt = tema
+            pojam.tekst = elem
+            pojam.poeni = 3
+            pojam.save()
+        
+        return redirect('mainscreen_page')
 
 class AddQuestionView(View):
     
@@ -155,7 +210,34 @@ class AddQuestionView(View):
         'status' : request.user.titula,
         'opis' : request.user.opis,
         }
-        return render(request, 'base.html', {})
+        return render(request, 'base.html', {'jsonInfo': info})
+        
+    @method_decorator(login_required)
+    def post(self, request):
+        info = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        }
+        trenutni_user = request.user
+        pitanje_tekst = request.POST.get('question')
+        odgovor_tekst = request.POST.get('answer')
+        if(not pitanje_tekst or not odgovor_tekst):
+            return redirect('addquestion_page')
+
+        pitanje = KzzPitanje()
+        pitanje.idk = trenutni_user
+        pitanje.tekst = pitanje_tekst
+        pitanje.save()
+        print("pitanje glasi " + pitanje_tekst)
+
+        odgovor = KzzOdgovor()
+        odgovor.idp = pitanje
+        odgovor.tekst = odgovor_tekst
+        odgovor.save()
+
+        return redirect('mainscreen_page')
 
 class AddAdminView(View):
     
@@ -167,23 +249,27 @@ class AddAdminView(View):
         'status' : request.user.titula,
         'opis' : request.user.opis,
         }
-        return render(request, 'base.html', {})
+        return render(request, 'base.html', {'jsonInfo': info})
 
 
     @method_decorator(login_required)
     def post(self, request):
-
+        info = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        }
         user = request.POST.get('user')
-
         try:
             newAdmin = Korisnik.objects.filter(username=user)[0]
             newAdmin.is_superuser = True
             newAdmin.save()
 
         except IndexError:
-            return redirect('addadmin')
+            return redirect('addadmin_page')
 
-        return render(request, 'base.html', {})
+        return redirect('mainscreen_page')
 
 class FightListView(View):
 

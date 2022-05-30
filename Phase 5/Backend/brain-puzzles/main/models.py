@@ -124,7 +124,6 @@ class FightListTema(models.Model):
         db_table = 'fight_list_tema'
 
 
-
 class KzzOdgovor(models.Model):
     ido = models.AutoField(db_column='idO', primary_key=True)  # Field name made lowercase.
     idp = models.ForeignKey('KzzPitanje', models.DO_NOTHING, db_column='idP')  # Field name made lowercase.

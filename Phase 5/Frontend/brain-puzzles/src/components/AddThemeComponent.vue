@@ -8,12 +8,15 @@
     </div>
     <div class="divv canvv">
         <h1>New theme</h1>
-        <InputField style="margin-top:5%" text = "Theme name" type="text" name="themeName" />
-        <InputField style="margin-top:1%" text = "1pt answers" type="text" name="onePoint" />
-        <InputField style="margin-top:1%" text = "2pt answers" type="text" name="twoPoints" />
-        <InputField style="margin-top:1%" text = "3pt answers" type="text" name="threePoints" />
-        <div id="txtt">*All answers should be delimited with a semicolon (;)</div>
-        <FancyButton style="margin-top:12%" text="Submit" />
+        <form method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf">
+            <InputField style="margin-top:5%" text = "Theme name" type="text" name="themeName" />
+            <InputField style="margin-top:1%" text = "1pt answers" type="text" name="onePoint" />
+            <InputField style="margin-top:1%" text = "2pt answers" type="text" name="twoPoints" />
+            <InputField style="margin-top:1%" text = "3pt answers" type="text" name="threePoints" />
+            <div id="txtt">*All answers should be delimited with a semicolon (;)</div>
+            <FancyButton style="margin-top:12%" text="Submit" />
+        </form>
     </div>
     <footer><FooterComponent/></footer>
 </template>
@@ -29,18 +32,31 @@ import FancyButton from './BasicComponents/FancyButton.vue'
 export default {
     components: {FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, InputField, FancyButton},
     name: 'AddThemeComponent',
-    data(){
-        return {
-            tableData: {},
-            usernameGreeting: "Hello, ",
-        }
-    },
     
     mounted() {
         this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
         this.usernameGreeting += this.tableData.user + "!"
         console.log(this.tableData.user)
     },
+
+    data()  {
+        var cookies = document.cookie
+        var csrf_token
+        if(cookies == null || cookies == ""){
+        csrf_token = ""
+        }
+        else{
+        csrf_token =document.cookie.split('; ')
+                    .find(row => row.startsWith('csrftoken'))
+                    .split('=')[1]
+        }
+
+        return {
+            csrf: csrf_token,
+            tableData: {},
+            usernameGreeting: "Hello, ",
+        }
+    }
 }
 </script>
 
