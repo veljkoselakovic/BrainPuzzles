@@ -18,10 +18,10 @@
 
 
 <script>
-import FooterComponent from '../BasicComponents/FooterComponent.vue'
-import HeaderComponent from '../BasicComponents/HeaderComponent.vue'
-import FancyText from '../BasicComponents/FancyText.vue'
-import KZZCanvasComponent from './KZZCanvasComponent.vue'
+import FooterComponent from '../../BasicComponents/FooterComponent.vue'
+import HeaderComponent from '../../BasicComponents/HeaderComponent.vue'
+import FancyText from '../../BasicComponents/FancyText.vue'
+import KZZCanvasComponent from '../KZZComponents/KZZCanvasComponent.vue'
 
 export default {
     components: {FooterComponent, HeaderComponent, KZZCanvasComponent, FancyText},

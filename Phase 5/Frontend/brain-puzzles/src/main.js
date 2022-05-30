@@ -11,8 +11,8 @@ import MainScreenComponent from './components/MainScreenComponent.vue'
 import AddAdminComponent from './components/AddAdminComponent.vue'
 import AddThemeComponent from './components/AddThemeComponent.vue'
 import AddQuestionComponent from './components/AddQuestionComponent.vue'
-import MozgicComponent from './components/GameComponents/MozgicComponent.vue'
-import FightListComponent from './components/GameComponents/FightListComponent.vue'
+import MozgicComponent from './components/GameComponents/MozgicComponents/MozgicComponent.vue'
+import FightListComponent from './components/GameComponents/FightListComponents/FightListComponent.vue'
 
 // const Home = { template: '<div>Veljko</div>' }
 

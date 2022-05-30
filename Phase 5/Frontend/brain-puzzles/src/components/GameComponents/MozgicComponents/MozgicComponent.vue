@@ -12,12 +12,12 @@
                     <td v-for="(col,k) in cols" v-bind:key="k">
                         <div class="field">
                         <div class="circle" :id="(row-1)*28+(col-1)*7" @click="isprobavam"></div>
-                        <img :id="(row-1)*28+(col-1)*7+1" @click="isprobavam" src="./igramozgic.jpg" alt="mozgicsimb" style="width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute; visibility:hidden;">
-                        <img :id="(row-1)*28+(col-1)*7+2" @click="isprobavam" src="./zvezda.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute;visibility:hidden;">
-                        <img :id="(row-1)*28+(col-1)*7+3" @click="isprobavam" src="./tref.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
-                        <img :id="(row-1)*28+(col-1)*7+4" @click="isprobavam" src="./pik.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
-                        <img :id="(row-1)*28+(col-1)*7+5" @click="isprobavam" src="./herc.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
-                        <img :id="(row-1)*28+(col-1)*7+6" @click="isprobavam" src="./karo.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+1" @click="isprobavam" src="./Icons/igramozgic.jpg" alt="mozgicsimb" style="width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute; visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+2" @click="isprobavam" src="./Icons/zvezda.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute;visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+3" @click="isprobavam" src="./Icons/tref.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+4" @click="isprobavam" src="./Icons/pik.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+5" @click="isprobavam" src="./Icons/herc.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+6" @click="isprobavam" src="./Icons/karo.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
                         
                         {{ col[k] }}
                         </div>
@@ -51,17 +51,17 @@
 
 
     <div class="div"><div class="canvas" id="forClicking">
-        <img class="simbol" id="1" src="./igramozgic.jpg" alt="mozgicsimb" style="width:4.68vw" @click = "symbolClicked">
+        <img class="simbol" id="1" src="./Icons/igramozgic.jpg" alt="mozgicsimb" style="width:4.68vw" @click = "symbolClicked">
         <br>
-        <img class="simbol" id="2" src="./zvezda.jpg" alt="mozgicsimb" @click = "symbolClicked">
+        <img class="simbol" id="2" src="./Icons/zvezda.jpg" alt="mozgicsimb" @click = "symbolClicked">
         <br>
-        <img class="simbol" id="3" src="./tref.jpg" alt="mozgicsimb" @click = "symbolClicked">
+        <img class="simbol" id="3" src="./Icons/tref.jpg" alt="mozgicsimb" @click = "symbolClicked">
         <br>
-        <img class="simbol" id="4" src="./pik.jpg" alt="mozgicsimb" @click = "symbolClicked">
+        <img class="simbol" id="4" src="./Icons/pik.jpg" alt="mozgicsimb" @click = "symbolClicked">
         <br>
-        <img class="simbol" id="5" src="./herc.jpg" alt="mozgicsimb" @click = "symbolClicked">
+        <img class="simbol" id="5" src="./Icons/herc.jpg" alt="mozgicsimb" @click = "symbolClicked">
         <br>
-        <img class="simbol" id="6" src="./karo.jpg" alt="mozgicsimb" style="width:2.8vw" @click = "symbolClicked">
+        <img class="simbol" id="6" src="./Icons/karo.jpg" alt="mozgicsimb" style="width:2.8vw" @click = "symbolClicked">
     </div></div>
 
     </div>
@@ -79,10 +79,10 @@
 </template>
 
 <script>
-import FooterComponent from '../BasicComponents/FooterComponent.vue'
-import HeaderComponent from '../BasicComponents/HeaderComponent.vue'
+import FooterComponent from '../../BasicComponents/FooterComponent.vue'
+import HeaderComponent from '../../BasicComponents/HeaderComponent.vue'
 import MozgicItem from './MozgicItem.vue'
-import FancyButton from '../BasicComponents/FancyButton.vue'
+import FancyButton from '../../BasicComponents/FancyButton.vue'
 
 var a=0, b=0;
 //var value=0;
@@ -307,7 +307,7 @@ header {
 
 .simbol{
     width: 3.125vw;
-    //height: 80px;
+    /* height: 80px; */
 }
 
 #mozgic {

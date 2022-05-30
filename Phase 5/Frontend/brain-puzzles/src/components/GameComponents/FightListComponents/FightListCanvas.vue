@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import FightListItem from './FightListItem.vue'
-import FancyButton from '../BasicComponents/FancyButton.vue'
-import InputField from '../BasicComponents/InputField.vue'
+import FightListItem from '../FightListComponents/FightListItem.vue'
+import FancyButton from '../../BasicComponents/FancyButton.vue'
+import InputField from '../../BasicComponents/InputField.vue'
 import axios from "axios";
 
 

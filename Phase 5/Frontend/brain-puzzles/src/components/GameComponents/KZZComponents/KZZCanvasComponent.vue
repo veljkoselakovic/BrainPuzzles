@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import FancyButton from '../BasicComponents/FancyButton.vue'
-import InputField from '../BasicComponents/InputField.vue'
+import FancyButton from '../../BasicComponents/FancyButton.vue'
+import InputField from '../../BasicComponents/InputField.vue'
 
 export default {
     components: {FancyButton, InputField},
