@@ -45,18 +45,17 @@ export default {
     z-index: 1;
     margin: 0 auto;
     width: 22vw;
-    height: 57vh; 
+    height: 60vh; 
     background-color: white;
     border-radius: 2em;
     overflow: hidden;
-
-  box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
 
 }
 #top{
     display: flex;
     flex-direction: row;
-    margin-top: 8%;
+    margin-top: 6%;
     margin-left: 8%;
     margin-bottom: 3%;
 }

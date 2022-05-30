@@ -9,6 +9,8 @@ import RegistrationComponent from './components/RegistrationComponent.vue'
 import DashboardComponent from './components/DashboardComponent.vue'
 import MainScreenComponent from './components/MainScreenComponent.vue'
 import AddAdminComponent from './components/AddAdminComponent.vue'
+import AddThemeComponent from './components/AddThemeComponent.vue'
+import AddQuestionComponent from './components/AddQuestionComponent.vue'
 
 // const Home = { template: '<div>Veljko</div>' }
 
@@ -19,6 +21,8 @@ const routes =  [
   { path: '/dashboard', component: DashboardComponent, name:'dashboard'},
   { path: '/mainscreen', component: MainScreenComponent, name:'mainscreen'},
   { path: '/addadmin', component: AddAdminComponent, name:'addadmin'},
+  { path: '/addtheme', component: AddThemeComponent, name:'addtheme'},
+  { path: '/addquestion', component: AddQuestionComponent, name:'addquestion'},
     
 
 ]

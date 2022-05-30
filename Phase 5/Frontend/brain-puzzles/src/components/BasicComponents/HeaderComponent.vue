@@ -1,7 +1,7 @@
 <template>
     <div class="cont">
         <div class="divLogo"><img class="logo" src="static/res/logo.png"  alt="logo slika"></div>
-        <div class="divTxt"> Brain Puzzles</div>
+        <div class="divTxt" style="color: rgba(0, 0, 0, 0.85);"> Brain Puzzles</div>
         <div class="divLogOut" @click="logoutClicked()">  
                 <img class="logOut" src=".\logOut.png" alt="logOut">
         </div>
@@ -29,10 +29,11 @@ export default {
     flex-direction: row;
     background-color:white;
     height: 10vh;
+    margin-top:-2%;
 }
 .divLogo{
-    width: 6%; 
-    margin-top: 1%;
+    width: 5%; 
+    /* margin-top: 1%; */
 }
 .logo {
     max-width:90%;
@@ -40,7 +41,7 @@ export default {
 }
 .divLogOut{
     width: 2%; 
-    margin-top: 1.8%;
+    margin-top: 1.2%;
 }
 .divLogOut:hover{
     cursor: pointer;
@@ -57,7 +58,7 @@ export default {
     font-family: 'Pacifico';
     font-style: normal;
     font-weight: 350;
-    font-size: 3vw;
+    font-size: 2.5vw;
     letter-spacing: 0.04em;
     color:black;
     margin-bottom: 0;

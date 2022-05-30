@@ -5,14 +5,11 @@ from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib.auth import login, authenticate, logout
 from django.db import IntegrityError
-
 from django.contrib import messages
-
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 # Create your views here.
-
 
 from .models import Korisnik
 
@@ -24,7 +21,8 @@ class MainView(View) :
         if request.user.is_authenticated:
             return redirect('mainscreen_page')
 
-        return render(request, 'base.html', {})
+        else:
+            return render(request, 'base.html', {})
 
 
     def post(self, request):
@@ -37,11 +35,10 @@ class MainView(View) :
         user = authenticate(username=user, password=password)
         if user:
             login(request, user)
-            return redirect('/dashboard')
+            return redirect('mainscreen_page') # return redirect('/dashboard')
             # return render(request, 'successRegistration.html', {'user' : request.POST.get("pass")})
         else:
             messages.error(request, 'Invalid log in information')
-
             return redirect('main_page')
 
 class LogoutView(View):
@@ -53,12 +50,10 @@ class LogoutView(View):
 
 class SuccessRegView(View):
 
-
     def get(self, request):
         return render(request, 'succesRegistration.html', {})
 
 class DashboardView(View):
-
 
     @method_decorator(login_required)
     def get(self, request):
@@ -88,7 +83,6 @@ class RegisterView(View) :
             'email' : request.POST.get('email'),
             'password' : request.POST.get('pass')
         }
-
 
         try:
             newKorisnik = Korisnik()
@@ -129,15 +123,50 @@ class MainScreenView(View):
 
     @method_decorator(login_required)
     def get(self, request):
+        info = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        }
+
+        return render(request, 'base.html', {'jsonInfo': info})
+
+class AddThemeView(View):
+    
+    @method_decorator(login_required)
+    def get(self, request):
+        print("get addtheme")
+        info = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        }
         return render(request, 'base.html', {})
 
-
-
+class AddQuestionView(View):
+    
+    @method_decorator(login_required)
+    def get(self, request):
+        info = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        }
+        return render(request, 'base.html', {})
 
 class AddAdminView(View):
     
     @method_decorator(login_required)
     def get(self, request):
+        info = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        }
         return render(request, 'base.html', {})
 
 

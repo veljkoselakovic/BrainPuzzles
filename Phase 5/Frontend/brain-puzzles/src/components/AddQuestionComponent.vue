@@ -1,10 +1,10 @@
 <template>
     <header><HeaderComponent/></header>
     <div class="div">
-        <FancyText  width=22vw height=3vw text='Hello Iva!' fontSize=25px></FancyText>
+        <FancyText class="helloUserClass" width=22vw height=5vh :text="this.usernameGreeting" fontSize=1.3em></FancyText>
         <br>
-        <ProfileCanvasComponent id="profComp" username="ivasljiva" email="ivaarakic@yahoo.com" status="Gold"
-        aboutMe="Text text text.........." totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent>
+        <ProfileCanvasComponent id="profComp" :username="this.tableData.user" :email="this.tableData.email" :status="this.tableData.status"
+        :aboutMe="this.tableData.opis" totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent>
     </div>
     <div class="div canv">
         <h1>New question</h1>
@@ -26,7 +26,19 @@ import FancyButton from './BasicComponents/FancyButton.vue'
 
 export default {
     components: {FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, InputField, FancyButton},
-    name: 'AddQuestionComponent'
+    name: 'AddQuestionComponent',
+    data(){
+        return {
+            tableData: {},
+            usernameGreeting: "Hello, ",
+        }
+    },
+    
+    mounted() {
+        this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
+        this.usernameGreeting += this.tableData.user + "!"
+        console.log(this.tableData.user)
+    },
 }
 </script>
 
@@ -49,6 +61,7 @@ export default {
 
     font: 100px;
     font-weight: 100;
+    box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
 }
 #txt{
     margin-top: 2%;

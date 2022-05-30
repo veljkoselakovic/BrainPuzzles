@@ -31,7 +31,7 @@ export default {
     font-size: v-bind(fontSize);
     font-weight: 600;
 
-    box-shadow: 0px 41px 45px -39px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
 
 }
 </style>

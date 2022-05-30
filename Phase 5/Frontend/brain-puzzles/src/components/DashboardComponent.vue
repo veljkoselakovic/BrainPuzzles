@@ -34,7 +34,6 @@ export default {
             usernameGreeting: "Hello, ",
         }
     },
-
     
     mounted() {
         this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
@@ -49,18 +48,10 @@ export default {
 .div{
      
      display: inline-block;
-     margin: 0.4% 0.8%;
+     margin: 0.8%;
 }
 .leftPanel{
     height:45vh;
 }
-
-footer {
-    margin-top:2%;
-}
-header {
-    margin-top:-3%;
-}
-
 
 </style>

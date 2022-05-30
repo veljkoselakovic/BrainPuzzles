@@ -19,8 +19,9 @@ export default {
 <style scoped>
 .container {
   background-color:white;
-  height: 10vh;
-  margin-bottom: 10px;
+  height: 7vh;
+  /* margin-bottom: 10px; */
+  margin-top: 0.75%;
   }
 .makers {
     font-size: 0.6vw;
