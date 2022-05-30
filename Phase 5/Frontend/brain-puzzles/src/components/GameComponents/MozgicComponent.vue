@@ -34,10 +34,10 @@
     
         <div class="canvas" id="mozgic">
             <table style="width:60%; height:60%">
-                <tr v-for="(row, i) in rows" v-bind:key="i">
-                    <td v-for="(col,k) in cols" v-bind:key="k">
-                        <div class="circle" :id="(row-1)*28+(col-1)*7+169"></div>
-                        {{ col[k] }}
+                <tr v-for="(row2, i2) in rows2" v-bind:key="i2">
+                    <td v-for="(col2,k2) in cols2" v-bind:key="k2">
+                        <div class="circle" :id="(row2-1)*28+(col2-1)*7+169"></div>
+                        {{ col2[k2] }}
                      </td>
                  </tr>
             </table>
@@ -87,13 +87,15 @@ import FancyButton from '../BasicComponents/FancyButton.vue'
 var a=0, b=0;
 //var value=0;
 var slikaId=0;
-const answer=[];
+const combination=[];
 const guess=[];
+//var results=[];
 
 for(let i=0;i<4;i++)
 {
-    answer.push(Math.floor(Math.random()*6)+1);
+    combination.push(Math.floor(Math.random()*6)+1);
 }
+
 
 export default {
     components :{FooterComponent, HeaderComponent, FancyButton, MozgicItem},
@@ -105,6 +107,8 @@ export default {
         polje: a*4+b,
         slika:slikaId,
         rows:6,
+        rows2:6,
+        cols2:4,
         cols:4}
     },
 
@@ -137,7 +141,7 @@ export default {
             this.slika=p;
             //alert("slika "+slikaId);
             //alert("stigao do " +a + " i " + b);
-            alert(answer);
+            alert(combination);
             guess.push(p);
             alert(guess);
 
@@ -174,8 +178,8 @@ export default {
             
         },
 
-        submitGuess:function(event){
-
+        submitGuess(){
+                const answer=combination.slice();
                 let goodPlace=0;
                 let wrongPlace=0;
                 while(guess.length>4) guess.pop();
@@ -199,12 +203,54 @@ export default {
                 } 
                 alert(goodPlace);
                 alert(wrongPlace);
-                document.getElementById(169).style.background="pink";
-                alert(event.target.id);
-                while(guess.length>0) guess.pop();
-        }
+                let v=a-1;
+                let idField=v*28+169;
+                //const idFields=[];
+                var item;
+                //var items=[];
+                //var items2=[];
+
+                for(let i=0;i<goodPlace;i++)
+                {
+                    alert("U goodplace sam");
+                    idField = v*28+i+169;
+                    item=document.getElementById(idField);
+                    item.style.backgroundColor="pink";
+                    //items.push(item);
+                }
+                item.style.backgroundColor="pink";
+
+                /*
+                for(let i=0;i<items.length;i++)
+                {
+                    alert("Prva petalja");
+                    alert(i);
+                    items[i]
+                    alert("izlazim");
+                }*/
+                
+                for(let j=0;j<wrongPlace;j++)
+                {
+                    alert("U wrongplace sam");
+                    idField = v*28+goodPlace+j+169;
+                    item=document.getElementById(idField);
+                    //items2.push(item);
+                }
+                /*
+                for(let i=0;i<items2.length;i++)
+                {
+                    items2[i].style.backgroundColor="yellow";
+                }*/
+
+                alert("Ovde sam");
+                while(guess.length>0) { alert("uspela1"); guess.pop(); alert("uspela2");}
+                alert("Ovo je +"); alert(guess);
+        },
+
     }
 }
+
+
 </script>
 
 <style scoped>
