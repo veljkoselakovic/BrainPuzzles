@@ -1,6 +1,6 @@
 import datetime
 from MySQLdb import IntegrityError
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib.auth import login, authenticate, logout
@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
+import json
 # Create your views here.
 
 from .models import *
@@ -271,10 +272,106 @@ class AddAdminView(View):
 
         return redirect('mainscreen_page')
 
-class FightListView(View):
+class MozgicView(View):
 
     def get(self, request):
-        pass
+        return render(request, 'base.html', {})
+
+class FightListView(View):
+
+    
+    @method_decorator(login_required)
+    def get(self, request):
+
+        matchId = request.session.get('mId', -1)
+        print("matchId = " + str(matchId))
+        if matchId == -1:
+            newMatch = Rezultat()
+            newMatch.idk = request.user
+            newMatch.fightlistrezultat = 0
+            newMatch.mozgicrezultat = 0
+            newMatch.kzzrezultat = 0
+            newMatch.rezultat = 0
+            newMatch.vremeigranja = datetime.datetime.now()
+
+            newMatch.save()
+            request.session['mId'] = newMatch.idm
+
+            
+            
+
+
+
+        import random
+
+        themes = list(FightListTema.objects.all())
+        random_themes = random.sample(themes, 1)
+        random_theme = random.choice(random_themes)
+        request.session['themeId'] =int(random_theme.idt)
+        request.session['triedGuesses'] = []
+        request.session['totalPoints'] = 0
+
+        info = {
+            'themeName' : random_theme.tema,
+            'themeId' : random_theme.idt
+        }
+
+        return render(request, 'base.html', {'jsonInfo': info})
+    @method_decorator(login_required)
+    def post(self, request):
+
+
+        data = json.loads(request.body)
+        print(data)
+
+        guess = data['guessValue']
+        guess = guess.lower().capitalize()
+        if guess in request.session['triedGuesses']:
+
+            returnJSON = {
+            'ok' : True,
+            'guess' : guess,
+            'points' : 0
+            }
+            return JsonResponse(returnJSON)
+
+        # themeId = data['themeId']
+        try:
+            # print(self.themeId)
+            item = FightListPojam.objects.filter(idt=request.session['themeId']).get(tekst=guess)
+            returnJSON = {
+            'ok' : True,
+            'guess' : item.tekst,
+            'points' : item.poeni
+            }
+            request.session['triedGuesses'] += [item.tekst]
+            request.session['totalPoints'] += item.poeni
+
+            return JsonResponse(returnJSON)
+        except FightListPojam.DoesNotExist:
+
+            returnJSON = {
+            'ok' : True,
+            'guess' : guess,
+            'points' : 0
+            }
+            return JsonResponse(returnJSON)
+
+class FighListSubmitView(View):
+
+    @method_decorator(login_required)
+    def post(self, request):
+        match = Rezultat.objects.get(pk=request.session['mId'])
+        match.fightlistrezultat+= request.session['totalPoints']
+        request.session['totalPoints'] = 0;
+        match.save()
+
+        return JsonResponse({'ok' : True})
+
+
+        
+    
+
 
 class CheckAnswer(View):
 

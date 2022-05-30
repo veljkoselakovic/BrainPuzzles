@@ -3,12 +3,12 @@
     <div class="fightListDiv">
         <div>
             <div>
-                <FancyText style="margin-top: 2%" width=50vw height=10vh text='Japanese car manufacturers' fontSize=36px></FancyText>
+                <FancyText style="margin-top: 2%" width=50vw height=10vh :text="this.themeName" fontSize=36px></FancyText>
             </div>
-            <FightListCanvas></FightListCanvas>
+            <FightListCanvas :themeId="this.themeId"></FightListCanvas>
         </div>
         <div class="timer">
-            10s
+            {{this.timerCount}}s
         </div>
     </div>
     <FooterComponent/>
@@ -21,12 +21,54 @@ import HeaderComponent from '../BasicComponents/HeaderComponent.vue'
 import FancyText from '../BasicComponents/FancyText.vue'
 import FightListCanvas from './FightListCanvas.vue'
 
+import axios from "axios";
+
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+
+
 export default {
     components: {FooterComponent, HeaderComponent, FightListCanvas, FancyText},
     name: 'FightListComponent',
-    props: [
-        'themeId', 'themeName'
-    ]
+    data() {
+        return {
+            themeName: "",
+            themeId: -1,
+            tableData: {},
+            timerCount: 30,
+        }
+    },
+    // props: [
+    //     'themeId', 'themeName'
+    // ]
+    mounted() {
+        this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent);
+        this.themeName += this.tableData.themeName;
+        this.themeId = this.tableData.themeId;
+    },
+    methods: {
+        submitResults() {
+            axios.post('/fightlist_end', {}).then(() => {
+                console.log('logged')
+                location.href = "/dashboard"
+            })
+
+        }
+    },
+    watch: {
+        timerCount: {
+            handler(value){
+                if(value > 0){
+                    setTimeout(() => {
+                        this.timerCount--;
+                    }, 1000);
+                }
+                else{
+                    this.submitResults();
+                }
+            }, immediate:true
+        }
+    }
 }
 </script>
 

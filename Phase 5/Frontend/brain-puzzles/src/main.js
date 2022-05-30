@@ -12,11 +12,12 @@ import AddAdminComponent from './components/AddAdminComponent.vue'
 import AddThemeComponent from './components/AddThemeComponent.vue'
 import AddQuestionComponent from './components/AddQuestionComponent.vue'
 import MozgicComponent from './components/GameComponents/MozgicComponent.vue'
+import FightListComponent from './components/GameComponents/FightListComponent.vue'
 
 // const Home = { template: '<div>Veljko</div>' }
 
 const routes =  [
-  { path: '/', component: MozgicComponent },
+  { path: '/', component: LogInComponent },
   { path: '/register', component: RegistrationComponent, name:'registration'},
   { path: '/login', component: LogInComponent, name:'login'},
   { path: '/dashboard', component: DashboardComponent, name:'dashboard'},
@@ -25,6 +26,7 @@ const routes =  [
   { path: '/addtheme', component: AddThemeComponent, name:'addtheme'},
   { path: '/addquestion', component: AddQuestionComponent, name:'addquestion'},
   { path: '/mozgic', component: MozgicComponent, name:'mozgic'},
+  { path: '/fightlist', component: FightListComponent, name:'mozgic'},
     
 
 ]

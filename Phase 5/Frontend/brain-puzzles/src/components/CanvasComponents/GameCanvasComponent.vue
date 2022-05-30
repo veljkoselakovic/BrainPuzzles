@@ -7,7 +7,7 @@
             {{score}}
         </div>
         <div id="but">
-            <FancyButton class="playButton" text="       PLAY       "></FancyButton>
+            <FancyButton @click="playFL($event)" class="playButton" text="       PLAY       "></FancyButton>
         </div>
     </div>
 </template>
@@ -23,7 +23,16 @@ export default {
     name: 'GameCanvasComponent', 
     props:[
         'game', 'score'
-    ]
+    ],
+    methods: {
+        playFL(event) {
+
+            event.preventDefault();
+            window.location.href = "/fightlist";
+        },
+
+        
+    }
 }
 </script>
 

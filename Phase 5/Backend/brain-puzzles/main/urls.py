@@ -27,7 +27,11 @@ urlpatterns = [
     path('mainscreen', MainScreenView.as_view(), name="mainscreen_page"),
     path('addadmin', AddAdminView.as_view(), name="addadmin_page"),
     path('addtheme', AddThemeView.as_view(), name="addtheme_page"),
-    path('addquestion', AddQuestionView.as_view(), name="addquestion_page")
+    path('addquestion', AddQuestionView.as_view(), name="addquestion_page"),
+    path('mozgic', MozgicView.as_view(), name="addquestion_page"),
+    path('fightlist', FightListView.as_view(), name="fightlist_page"),
+    path('fightlist_end', FighListSubmitView.as_view(), name="fightlist_submit")
+
 
     # path('fightlist/id=?&guess=?')
     # brain-puzzles.com/register
