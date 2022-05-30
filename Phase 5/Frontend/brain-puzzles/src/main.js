@@ -17,7 +17,7 @@ import FightListComponent from './components/GameComponents/FightListComponents/
 // const Home = { template: '<div>Veljko</div>' }
 
 const routes =  [
-  { path: '/', component: LogInComponent },
+  { path: '/', component: MozgicComponent },
   { path: '/register', component: RegistrationComponent, name:'registration'},
   { path: '/login', component: LogInComponent, name:'login'},
   { path: '/dashboard', component: DashboardComponent, name:'dashboard'},

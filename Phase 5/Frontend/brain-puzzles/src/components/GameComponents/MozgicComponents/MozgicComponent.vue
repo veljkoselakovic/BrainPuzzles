@@ -72,7 +72,7 @@
 
     <div class="div1"><MozgicItem></MozgicItem></div>
     <div class="div1"><FancyButton style="width:25vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Submit" @click="submitGuess($event)"></FancyButton></div>
-    <div class="div1"><FancyButton style="width:9.375vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Back"></FancyButton></div>
+    <div class="div1"><FancyButton style="width:9.375vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Back" @click="eraseSymbol"></FancyButton></div>
     </div>
 
     <footer><FooterComponent/></footer>
@@ -90,6 +90,7 @@ var slikaId=0;
 const combination=[];
 const guess=[];
 //var results=[];
+//var submitted=0;
 
 for(let i=0;i<4;i++)
 {
@@ -144,9 +145,9 @@ export default {
             //alert(combination);
             guess.push(p);
             //alert(guess);
-
             
-
+            if(b!=-1)
+            {
             if(p==1)
             {
                 document.getElementById(a*28+b*7+1).style.visibility="visible";
@@ -171,14 +172,16 @@ export default {
             {
                 document.getElementById(a*28+b*7+6).style.visibility="visible";
             }
-
+            }
             
-            if(b==3) { a++; b=0;}
+            if(b==3) {a++; b=0;}
             else b++;
+            
             
         },
 
         submitGuess(event){
+                //submitted=1;
                 event.preventDefault();
                 const answer=combination.slice();
                 let goodPlace=0;
@@ -237,6 +240,19 @@ export default {
                 while(guess.length>0) {  guess.pop(); }
                 
         },
+
+        eraseSymbol(){
+            document.getElementById(a*28+(b-1)*7+1).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7+2).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7+3).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7+4).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7+5).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7+6).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7).style.visibility="visible";
+            //if(b==3)
+            if(b>0) b--;
+            else if(b==0){b=3;a--;}
+        }
 
     }
 }
