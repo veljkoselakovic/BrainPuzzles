@@ -71,7 +71,7 @@
     <div class="div2">
 
     <div class="div1"><MozgicItem></MozgicItem></div>
-    <div class="div1"><FancyButton style="width:25vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Submit" @click="submitGuess"></FancyButton></div>
+    <div class="div1"><FancyButton style="width:25vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Submit" @click="submitGuess($event)"></FancyButton></div>
     <div class="div1"><FancyButton style="width:9.375vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Back"></FancyButton></div>
     </div>
 
@@ -178,7 +178,8 @@ export default {
             
         },
 
-        submitGuess(){
+        submitGuess(event){
+                event.preventDefault();
                 const answer=combination.slice();
                 let goodPlace=0;
                 let wrongPlace=0;
@@ -213,7 +214,8 @@ export default {
                 for(let i=0;i<goodPlace;i++)
                 {
                     alert("U goodplace sam");
-                    idField = v*28+i+169;
+                    idField = v*28+7*i+169;
+                    console.log("v = " + v +", i = " + i + ", idField = " + idField);
                     item=document.getElementById(idField);
                     item.style.backgroundColor="pink";
                     //items.push(item);
@@ -232,7 +234,7 @@ export default {
                 for(let j=0;j<wrongPlace;j++)
                 {
                     alert("U wrongplace sam");
-                    idField = v*28+goodPlace+j+169;
+                    idField = v*28+goodPlace+7*j+169;
                     item=document.getElementById(idField);
                     //items2.push(item);
                 }
