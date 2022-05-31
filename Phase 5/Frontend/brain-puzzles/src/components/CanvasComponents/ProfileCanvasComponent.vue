@@ -12,7 +12,10 @@
         </div>
         <div id="aboutMe">
             About me: <br>
-            <div id="txt">{{aboutMe}}</div>
+            <div id="txt" @dblclick="dbl()">
+                <div class="slozi" :class="{prikazi:prikazi}">{{aboutMe}}</div>
+                <textarea id="area" :class="{prikazi:!prikazi}" @keydown.enter="save($event)" cols="35" rows="8"></textarea>
+            </div>
         </div>
         <div id="points">
             <p class="pointsName" style="text-align:left; border-bottom: 1.2px solid rgba(0, 0, 0, 0.751);">
@@ -25,21 +28,54 @@
     </div>
 </template>
 
-<!-- <ProfileCanvasComponent username="ivasljiva" email="ivaarakic@yahoo.com" status="Gold"
-  aboutMe="Text text text.........." totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent> -->
-
 <script>
+import axios from "axios";
+
 export default {
     name : 'ProfileCanvasComponent',
     props:[
         'username', 'email', 'status', 'aboutMe', 'totalScore', 'highScore', 'profilePicture'
     ],
+    data(){
+        return{
+            prikazi : false,
+        }
+    },
+    methods:{
+        save(event) {
+            event.preventDefault();
+            document.getElementById('area').disabled = true;
+            document.getElementById('area').disabled = false;
+            let txt = document.getElementById('area').value;
+            console.log(txt);
+            axios.post('/aboutme', {
+                aboutMe : txt
+            }).then(() => {
+                location.reload();
+                this.prikazi = !this.prikazi;
+            })
+        },
+        dbl(){
+            document.getElementById('area').value = this.aboutMe;
+            this.prikazi = !this.prikazi;
+        }
+    }
     
 }
 
 </script>
 
 <style scoped>
+.prikazi{
+    visibility: hidden;
+}
+#area{
+    background-color: white;
+}
+.slozi{
+    position: absolute;
+}
+
 .canvas {
     position:relative;
     z-index: 1;
@@ -88,6 +124,10 @@ export default {
     color: rgba(0, 0, 0, 0.317);
     font-size: 10px;
 }
+#txt:hover{
+    cursor: pointer;
+}
+
 #points{
     color: rgba(0, 0, 0, 0.751);
     font-size: 18px;

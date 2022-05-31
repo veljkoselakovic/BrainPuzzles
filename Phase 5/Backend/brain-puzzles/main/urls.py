@@ -30,7 +30,8 @@ urlpatterns = [
     path('addquestion', AddQuestionView.as_view(), name="addquestion_page"),
     path('mozgic', MozgicView.as_view(), name="addquestion_page"),
     path('fightlist', FightListView.as_view(), name="fightlist_page"),
-    path('fightlist_end', FighListSubmitView.as_view(), name="fightlist_submit")
+    path('fightlist_end', FighListSubmitView.as_view(), name="fightlist_submit"),
+    path('aboutme', AboutMeView.as_view(), name="aboutme_page")
 
 
     # path('fightlist/id=?&guess=?')

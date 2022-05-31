@@ -365,8 +365,16 @@ class FighListSubmitView(View):
         return JsonResponse({'ok' : True})
 
 
-        
-    
+class AboutMeView(View):
+
+    @method_decorator(login_required)
+    def post(self, request):
+        data = json.loads(request.body)
+        aboutMe = data['aboutMe']
+        request.user.opis = aboutMe
+        request.user.save()
+        print("posle " + request.user.opis)
+        return JsonResponse({'ok' : True})
 
 
 class CheckAnswer(View):
