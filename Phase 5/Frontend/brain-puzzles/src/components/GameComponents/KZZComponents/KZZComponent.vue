@@ -18,7 +18,7 @@
             <KZZCanvasComponent></KZZCanvasComponent>
         </div>
         <div id="kzzTimer">
-            10s
+            {{this.timerCount}}s
         </div>
     </div>
     <FooterComponent/>
@@ -33,9 +33,55 @@ import KZZCanvasComponent from '../KZZComponents/KZZCanvasComponent.vue'
 export default {
     components: {FooterComponent, HeaderComponent, KZZCanvasComponent, FancyText},
     name: 'KZZComponent',
+    data() {
+        return {
+            questionText: "",
+            questionId: -1,
+            tableData: {},
+            timerCount: 30,
+            questionNumber: 1,
+            classes: ["incorrect", "correct"]
+        }
+    },
+    mounted() {
+        this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent);
+        this.questionText += this.tableData.questionText;
+        this.questionId = this.tableData.questionId;
+    },
     methods: {
-        submitAnswer() {
+        submitAnswer(answer) {
             console.log("Here");
+
+            axios.post('/kzz', {
+                answerValue : answer,
+                questionId : this.questionId
+            }).then((response) => {
+                let currentAnswer = "answer" + this.questionNumber++;
+                document.getElementById(currentAnswer).classList.remove("current");
+                document.getElementById(currentAnswer).classList.add(this.classes[response.data['isCorrect']]);
+
+                if (this.questionNumber <= 10) {
+                    let nextAnswer = "answer" + this.questionNumber;
+                    document.getElementById(nextAnswer).classList.add("current");
+                }
+                else {
+                    axios.post('/kzz_end', {}).then(() => {
+                        console.log('logged');
+                        location.href = "/dashboard";
+                    });
+                }
+            });
+        }
+    },
+    watch: {
+        timerCount: {
+            handler(value) {
+                if(value > 0){
+                    setTimeout(() => {
+                        this.timerCount--;
+                    }, 1000);
+                }
+            }, immediate:true
         }
     }
 }
@@ -71,6 +117,12 @@ export default {
 .current {
     border: 6px solid #EF5DA8;
     box-sizing: border-box;
+}
+.correct {
+    background: #A5A6F6;
+}
+.incorrect {
+    background: #EF5DA8;
 }
 #kzzTimer {
     display: flex;

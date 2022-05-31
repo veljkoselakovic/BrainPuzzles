@@ -9,6 +9,11 @@
 import FancyButton from '../../BasicComponents/FancyButton.vue'
 import InputField from '../../BasicComponents/InputField.vue'
 
+import axios from "axios";
+
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+
 export default {
     components: {FancyButton, InputField},
     name: 'KZZCanvas',
@@ -16,10 +21,9 @@ export default {
         submitAnswer(event) {
             event.preventDefault();
 
-            var answer = document.getElementById("kzzAnswer").firstChild.value;
-            console.log(answer);
-
-            this.$parent.submitAnswer();
+            this.$parent.submitAnswer(document.getElementById("kzzAnswer").firstChild.value);
+            
+            document.getElementById("fightListGuess").firstChild.value = "";
         }
     }
 }

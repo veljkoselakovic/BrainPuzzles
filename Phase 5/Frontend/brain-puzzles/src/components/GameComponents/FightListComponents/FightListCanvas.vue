@@ -32,6 +32,7 @@
 import FightListItem from '../FightListComponents/FightListItem.vue'
 import FancyButton from '../../BasicComponents/FancyButton.vue'
 import InputField from '../../BasicComponents/InputField.vue'
+
 import axios from "axios";
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
@@ -74,8 +75,8 @@ export default {
         submitAll(event) {
             event.preventDefault();
             axios.post('/fightlist_end', {}).then(() => {
-                console.log('logged')
-                location.href = "/dashboard"
+                console.log('logged');
+                location.href = "/dashboard";
             });
         }
     }
