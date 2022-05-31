@@ -39,9 +39,6 @@ export default {
         this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
         this.usernameGreeting += this.tableData.user + "!"
         console.log(this.tableData.user)
-
-
-        
     },
 }
 </script>

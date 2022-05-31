@@ -12,7 +12,7 @@ export default {
     name: 'FancyText',
     props: [
         'width', 'height', 'text', 'fontSize'
-    ]
+    ],
 }
 </script>
 
