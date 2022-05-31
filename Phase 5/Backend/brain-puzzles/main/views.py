@@ -412,13 +412,13 @@ class KZZQuestionView(View):
 
         import random
 
-        while True:
-            questions = list(KzzPitanje.objects.all())
+        questions = list(KzzPitanje.objects.all())
+        random_questions = random.sample(questions, 1)
+        random_question = random.choice(random_questions)
+
+        while int(random_question.idp) in request.session['pastQuestions']:
             random_questions = random.sample(questions, 1)
             random_question = random.choice(random_questions)
-
-            if int(random_question.idp) not in request.session['pastQuestions']:
-                break
 
         request.session['questionId'] = int(random_question.idp)
         request.session['pastQuestions'] += [int(random_question.idp)]
@@ -428,7 +428,7 @@ class KZZQuestionView(View):
             'questionId' : random_question.idp
         }
 
-        return render(request, 'base.html', {'jsonInfo': info})
+        return JsonResponse(info)
 
     @method_decorator(login_required)
     def post(self, request):
@@ -448,11 +448,11 @@ class KZZQuestionView(View):
             request.session['totalPoints'] += 6
 
             return JsonResponse(returnJSON)
-        except FightListPojam.DoesNotExist:
+        except KzzOdgovor.DoesNotExist:
 
             returnJSON = {
                 'isCorrect' : 0,
-                'correctAnswer' : item.tekst
+                'correctAnswer' : KzzPitanje.objects.get(idp=request.session['questionId']).tekst
             }
             request.session['totalPoints'] -= 3
 
