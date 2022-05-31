@@ -64,6 +64,10 @@
         <img class="simbol" id="6" src="./Icons/karo.jpg" alt="mozgicsimb" style="width:2.8vw" @click = "symbolClicked">
     </div></div>
 
+    <div class="timer" id="sec">
+            {{this.timerCount}}s
+    </div>
+
     </div>
 
     <br>
@@ -129,6 +133,7 @@ export default {
         return{
         polje: a*4+b,
         slika:slikaId,
+        timerCount: 90,
         rows:6,
         rows2:6,
         cols2:4,
@@ -257,40 +262,7 @@ export default {
 
                 if(goodPlace==4 || a==6) //Kraj igre; izracunaj poene, ne dozvoljavaj vise da se ukucava i prikazi tacno resenje
                 {
-                    kraj = 1;
-                    /* Racunanje poena
-                    if(a<=4) poeni+=20;
-                    if(a==5) poeni+=15;
-                    if(a==6) poeni+=10;
-                    */
-
-                    for(let i=0;i<4;i++)
-                    {
-                        if(combination[i]==1)
-                        {
-                            document.getElementById(i*7+331).style.visibility="visible";
-                        }
-                        if(combination[i]==2)
-                        {
-                            document.getElementById(i*7+332).style.visibility="visible";
-                        }
-                        if(combination[i]==3)
-                        {
-                            document.getElementById(i*7+333).style.visibility="visible";
-                        }
-                        if(combination[i]==4)
-                        {
-                            document.getElementById(i*7+334).style.visibility="visible";
-                        }
-                        if(combination[i]==5)
-                        {
-                            document.getElementById(i*7+335).style.visibility="visible";
-                        }
-                        if(combination[i]==6)
-                        {
-                            document.getElementById(i*7+336).style.visibility="visible";
-                        }
-                    }
+                    this.submitResults();
                 }
 
                 
@@ -324,12 +296,53 @@ export default {
             guess.pop();
         },
 
-        /*
-        endGame()
-        {
-            alert("Kraj igre");
-        }*/
+        submitResults(){ 
+                    kraj=1; 
+                    document.getElementById("sec").style.visibility="hidden";
+                    for(let i=0;i<4;i++)
+                    {
+                        if(combination[i]==1)
+                        {
+                            document.getElementById(i*7+331).style.visibility="visible";
+                        }
+                        if(combination[i]==2)
+                        {
+                            document.getElementById(i*7+332).style.visibility="visible";
+                        }
+                        if(combination[i]==3)
+                        {
+                            document.getElementById(i*7+333).style.visibility="visible";
+                        }
+                        if(combination[i]==4)
+                        {
+                            document.getElementById(i*7+334).style.visibility="visible";
+                        }
+                        if(combination[i]==5)
+                        {
+                            document.getElementById(i*7+335).style.visibility="visible";
+                        }
+                        if(combination[i]==6)
+                        {
+                            document.getElementById(i*7+336).style.visibility="visible";
+                        }
+                    }
+        }
 
+    },
+
+    watch: {
+        timerCount: {
+            handler(value) {
+                if(value > 0){
+                    setTimeout(() => {
+                        this.timerCount--;
+                    }, 1000);
+                }
+                else{
+                    this.submitResults();
+                }
+            }, immediate:true
+        }
     }
 }
 
@@ -459,6 +472,20 @@ td, tr{
   border-radius: 2em;
   overflow: hidden;
   box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 5vh;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+    margin-left: 5vw;
 }
 
 
