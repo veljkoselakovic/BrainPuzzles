@@ -90,7 +90,7 @@ var slikaId=0;
 const combination=[];
 const guess=[];
 //var results=[];
-//var submitted=0;
+var kraj=0;
 
 for(let i=0;i<4;i++)
 {
@@ -140,14 +140,16 @@ export default {
             let p = event.target.id;
             slikaId=p;
             this.slika=p;
-            //alert("slika "+slikaId);
-            //alert("stigao do " +a + " i " + b);
-            //alert(combination);
-            guess.push(p);
-            //alert(guess);
+
             
-            if(b!=-1)
-            {
+            
+
+            if(kraj==1) return;
+            if(b>3) return;
+
+            guess.push(p);
+            
+            
             if(p==1)
             {
                 document.getElementById(a*28+b*7+1).style.visibility="visible";
@@ -172,20 +174,25 @@ export default {
             {
                 document.getElementById(a*28+b*7+6).style.visibility="visible";
             }
-            }
             
-            if(b==3) {a++; b=0;}
-            else b++;
+            
+            b++;
+            
             
             
         },
 
         submitGuess(event){
-                //submitted=1;
+                //alert(guess);
+                //alert(combination);
                 event.preventDefault();
                 const answer=combination.slice();
                 let goodPlace=0;
                 let wrongPlace=0;
+                if(guess.length<4) return;
+                
+                a++; b=0;
+    
                 while(guess.length>4) guess.pop();
                 for(let i=0;i<4;i++){
                     if(guess[i]==answer[i]) 
@@ -194,8 +201,6 @@ export default {
                         answer[i]=0;
                     }
                 }
-
-               
 
                 for(let i=0;i<4;i++)
                 {
@@ -208,14 +213,12 @@ export default {
                         }
                     }
                 } 
-                //alert(goodPlace);
-                //alert(wrongPlace);
+  
                 let v=a-1;
                 let idField=v*28+169;
-                //const idFields=[];
+                
                 var item;
-                //var items=[];
-                //var items2=[];
+                
 
                 for(let i=0;i<goodPlace;i++)
                 {
@@ -227,6 +230,11 @@ export default {
                     
                 }
                 //item.style.backgroundColor="pink";
+
+                if(goodPlace==4)
+                {
+                    kraj = 1;
+                }
 
                 
                 for(let j=0;j<wrongPlace;j++)
@@ -245,6 +253,8 @@ export default {
         },
 
         eraseSymbol(){
+            if(b==0) return;
+            if(b>4) b=4;
             document.getElementById(a*28+(b-1)*7+1).style.visibility="hidden";
             document.getElementById(a*28+(b-1)*7+2).style.visibility="hidden";
             document.getElementById(a*28+(b-1)*7+3).style.visibility="hidden";
@@ -254,7 +264,6 @@ export default {
             document.getElementById(a*28+(b-1)*7).style.visibility="visible";
             //if(b==3)
             if(b>0) b--;
-            else if(b==0){b=3;a--;}
             guess.pop();
         },
 
