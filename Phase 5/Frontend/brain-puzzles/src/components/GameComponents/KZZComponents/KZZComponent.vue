@@ -55,6 +55,8 @@ export default {
     },
     methods: {
         submitAnswer(answer) {
+            clearTimeout(this.timerHandler);
+
             axios.post('/kzzquestion', {
                 answerValue : answer,
                 questionId : this.questionId
@@ -73,7 +75,7 @@ export default {
         timer() {
             if(--this.timerCount == 0) {
                 clearTimeout(this.timerHandler);
-                this.next();
+                this.checkAnswer(0);
             }
         },
         next() {
@@ -84,9 +86,7 @@ export default {
                 this.getNextQuestion();
 
                 this.timerCount = 10;
-                this.timerHandler = setTimeout(() => {
-                    this.timerCount--;
-                }, 1000);
+                this.timerHandler = setInterval(this.timer, 1000);
             }
             else {
                 axios.post('/kzz_end', {}).then(() => {
@@ -99,7 +99,6 @@ export default {
                 this.questionText = response.data['questionText'];
                 this.questionId = response.data['questionId'];
             });
-            console.log(this.questionId);
         },
         clearInput() {
             document.getElementById("kzzInput").firstChild.firstChild.firstChild.value = "";

@@ -435,7 +435,7 @@ class KZZQuestionView(View):
 
             returnJSON = {
                 'isCorrect' : 0,
-                'correctAnswer' : KzzOdgovor.objects.filter(idp=request.session['questionId']).tekst
+                'correctAnswer' : KzzPitanje.objects.get(idp=request.session['questionId']).tekst
             }
             request.session['totalPoints'] -= 3
 
