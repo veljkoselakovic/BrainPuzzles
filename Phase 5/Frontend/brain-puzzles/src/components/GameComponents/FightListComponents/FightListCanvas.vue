@@ -7,7 +7,6 @@
                     v-bind:is="field.type" 
                     v-bind:key="field.key" 
                     v-bind="field.itemProps">
-
                 </component>
             </div>
             <div class="item">
@@ -16,14 +15,12 @@
                     v-bind:is="field.type" 
                     v-bind:key="field.key" 
                     v-bind="field.itemProps">
-
                 </component>
             </div>
         </div>
         <hr>
         <div class="bottomFightList">
             <!-- <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf"> -->
-
             <InputField id="fightListGuess" type="text" text="Guess" style="margin-top: 2%"></InputField>
             <FancyButton text="Enter"  @click="enterItem($event)"></FancyButton>
             <FancyButton text="Submit" @click="submitAll($event)"></FancyButton>

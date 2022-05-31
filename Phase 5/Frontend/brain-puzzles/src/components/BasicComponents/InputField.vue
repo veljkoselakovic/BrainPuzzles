@@ -26,13 +26,12 @@ export default {
     margin-top: 1%;
     width: 100%;
     overflow: hidden;
+    font-size:1vw;
 }
 .inputField::placeholder {
     /* color:black; */
     color: #7879F1;
     font-weight: 500;
-    /* font-size:1.2em; */
-
 }
 .inputField:focus{ 
     width:77%;
@@ -47,7 +46,7 @@ export default {
     padding: 2%;
 
     border: 2px #7879F1 solid;
-    font-size:1.5vw;
+    font-size:1vw;
     text-align: center;
 
     -webkit-transition: all .2s ease-out;

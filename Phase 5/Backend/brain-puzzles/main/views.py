@@ -126,6 +126,7 @@ class MainScreenView(View):
         'email' : request.user.email,
         'status' : request.user.titula,
         'opis' : request.user.opis,
+        'isAdmin' : request.user.is_superuser
         }
 
         return render(request, 'base.html', {'jsonInfo': info})
@@ -277,9 +278,9 @@ class MozgicView(View):
     def get(self, request):
         return render(request, 'base.html', {})
 
+
 class FightListView(View):
 
-    
     @method_decorator(login_required)
     def get(self, request):
 
@@ -297,11 +298,6 @@ class FightListView(View):
             newMatch.save()
             request.session['mId'] = newMatch.idm
 
-            
-            
-
-
-
         import random
 
         themes = list(FightListTema.objects.all())
@@ -317,9 +313,9 @@ class FightListView(View):
         }
 
         return render(request, 'base.html', {'jsonInfo': info})
+
     @method_decorator(login_required)
     def post(self, request):
-
 
         data = json.loads(request.body)
         print(data)

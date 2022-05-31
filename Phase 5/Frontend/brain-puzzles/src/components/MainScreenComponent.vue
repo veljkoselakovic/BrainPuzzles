@@ -13,13 +13,13 @@
         <router-link to="/ranking">
             <FancyButton style="transform: scale(0.8); margin-top : 10%;" text="Rankings" />
         </router-link>
-        <router-link to="/addquestion">
+        <router-link :class="{sakrij: !isAdmin}" to="/addquestion">
             <FancyButton style="transform: scale(0.8); margin-top : 0%;" text="New question" />
         </router-link>
-        <router-link to="/addtheme">
+        <router-link :class="{sakrij: !isAdmin}" to="/addtheme">
             <FancyButton style="transform: scale(0.8); margin-top : 0%;" text="New theme" />
         </router-link>
-        <router-link to="/addadmin">
+        <router-link :class="{sakrij: !isAdmin}" to="/addadmin">
             <FancyButton style="transform: scale(0.8); margin-top : 0%;" text="New admin" />
         </router-link>
     </div>
@@ -41,13 +41,16 @@ export default {
         return {
             tableData: {},
             usernameGreeting: "Hello, ",
+            isAdmin:false
         }
     },
 
     mounted() {
         this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
         this.usernameGreeting += this.tableData.user + "!"
+        this.isAdmin = this.tableData.isAdmin
         console.log(this.tableData.user)
+        console.log("da li je admin: " + this.isAdmin)
     },
 }
 </script>
@@ -55,6 +58,9 @@ export default {
 
 <style scoped>
 
+.sakrij{
+    visibility: hidden;
+}
 .div{
      display: inline-block;
      margin: 0.8%;
