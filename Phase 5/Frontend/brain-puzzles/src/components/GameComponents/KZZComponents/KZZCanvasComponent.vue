@@ -20,7 +20,7 @@ export default {
 
             this.$parent.submitAnswer(document.getElementById("kzzAnswer").firstChild.value);
             
-            document.getElementById("fightListGuess").firstChild.value = "";
+            document.getElementById("kzzAnswer").firstChild.value = "";
         }
     }
 }
