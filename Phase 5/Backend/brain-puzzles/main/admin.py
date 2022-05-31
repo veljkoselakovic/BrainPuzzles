@@ -8,3 +8,5 @@ from .models import *
 admin.site.register(Korisnik)
 admin.site.register(FightListTema)
 admin.site.register(FightListPojam)
+admin.site.register(KzzPitanje)
+admin.site.register(KzzOdgovor)

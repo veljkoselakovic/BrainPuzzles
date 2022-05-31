@@ -303,7 +303,7 @@ class FightListView(View):
         themes = list(FightListTema.objects.all())
         random_themes = random.sample(themes, 1)
         random_theme = random.choice(random_themes)
-        request.session['themeId'] =int(random_theme.idt)
+        request.session['themeId'] = int(random_theme.idt)
         request.session['triedGuesses'] = []
         request.session['totalPoints'] = 0
 
@@ -359,11 +359,98 @@ class FighListSubmitView(View):
     def post(self, request):
         match = Rezultat.objects.get(pk=request.session['mId'])
         match.fightlistrezultat+= request.session['totalPoints']
-        request.session['totalPoints'] = 0;
+        request.session['totalPoints'] = 0
         match.save()
 
         return JsonResponse({'ok' : True})
 
+class KZZView(View):
+
+    @method_decorator(login_required)
+    def get(self, request):
+
+        matchId = request.session.get('mId', -1)
+        print("matchId = " + str(matchId))
+        if matchId == -1:
+            newMatch = Rezultat()
+            newMatch.idk = request.user
+            newMatch.fightlistrezultat = 0
+            newMatch.mozgicrezultat = 0
+            newMatch.kzzrezultat = 0
+            newMatch.rezultat = 0
+            newMatch.vremeigranja = datetime.datetime.now()
+
+            newMatch.save()
+            request.session['mId'] = newMatch.idm
+        
+        request.session['totalPoints'] = 0
+        request.session['pastQuestions'] = []
+
+        return render(request, 'base.html', {})
+
+class KZZQuestionView(View):
+
+    @method_decorator(login_required)
+    def get(self, request):
+
+        import random
+
+        while True:
+            questions = list(KzzPitanje.objects.all())
+            random_questions = random.sample(questions, 1)
+            random_question = random.choice(random_questions)
+
+            if int(random_question.idp) not in request.session['pastQuestions']:
+                break
+
+        request.session['questionId'] = int(random_question.idp)
+        request.session['pastQuestions'] += [int(random_question.idp)]
+
+        info = {
+            'questionText' : random_question.tekst,
+            'questionId' : random_question.idp
+        }
+
+        return render(request, 'base.html', {'jsonInfo': info})
+
+    @method_decorator(login_required)
+    def post(self, request):
+
+        data = json.loads(request.body)
+        print(data)
+
+        answer = data['answerValue']
+        answer = answer.lower().capitalize()
+
+        try:
+            item = KzzOdgovor.objects.filter(idp=request.session['questionId']).get(tekst=answer)
+            returnJSON = {
+                'isCorrect' : 1,
+                'correctAnswer' : item.tekst
+            }
+            request.session['totalPoints'] += 6
+
+            return JsonResponse(returnJSON)
+        except FightListPojam.DoesNotExist:
+
+            returnJSON = {
+                'isCorrect' : 0,
+                'correctAnswer' : item.tekst
+            }
+            request.session['totalPoints'] -= 3
+
+            return JsonResponse(returnJSON)
+
+class KZZEnd(View):
+
+    @method_decorator(login_required)
+    def post(self, request):
+        match = Rezultat.objects.get(pk=request.session['mId'])
+        match.kzzrezultat += request.session['totalPoints']
+        request.session['totalPoints'] = 0
+        match.save()
+
+        return JsonResponse({'ok' : True})
 
 class AboutMeView(View):
 
@@ -375,10 +462,3 @@ class AboutMeView(View):
         request.user.save()
         print("posle " + request.user.opis)
         return JsonResponse({'ok' : True})
-
-
-class CheckAnswer(View):
-
-    def get(self, request):
-        pass
-

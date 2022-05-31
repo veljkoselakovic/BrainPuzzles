@@ -16,6 +16,8 @@ export default {
         submitAnswer(event) {
             event.preventDefault();
 
+            console.log(document.getElementById("kzzAnswer").firstChild.value);
+
             this.$parent.submitAnswer(document.getElementById("kzzAnswer").firstChild.value);
             
             document.getElementById("fightListGuess").firstChild.value = "";

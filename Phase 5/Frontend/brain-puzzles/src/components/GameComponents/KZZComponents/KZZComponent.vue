@@ -15,7 +15,7 @@
                 <span class="answer" id="answer10"></span>
             </div>
             <FancyText style="margin-top: 2%" width=50vw height=10vh :text="this.questionText" fontSize=36px></FancyText>
-            <KZZCanvasComponent></KZZCanvasComponent>
+            <KZZCanvasComponent id="kzzCanvas" ></KZZCanvasComponent>
         </div>
         <div id="kzzTimer">
             {{this.timerCount}}s
@@ -43,50 +43,66 @@ export default {
             questionText: "",
             questionId: -1,
             tableData: {},
-            timerCount: 30,
+            timerCount: 10,
             questionNumber: 1,
-            classes: ["incorrect", "correct"]
+            classes: ["incorrect", "correct"],
+            timerHandler: null
         }
     },
     mounted() {
-        this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent);
-        this.questionText += this.tableData.questionText;
-        this.questionId = this.tableData.questionId;
+        this.getNextQuestion();
+        this.timerHandler = setInterval(this.timer, 1000);
     },
     methods: {
         submitAnswer(answer) {
-            console.log("Here");
-
-            axios.post('/kzz', {
+            axios.post('/kzzquestion', {
                 answerValue : answer,
                 questionId : this.questionId
             }).then((response) => {
-                let currentAnswer = "answer" + this.questionNumber++;
-                document.getElementById(currentAnswer).classList.remove("current");
-                document.getElementById(currentAnswer).classList.add(this.classes[response.data['isCorrect']]);
-
-                if (this.questionNumber <= 10) {
-                    let nextAnswer = "answer" + this.questionNumber;
-                    document.getElementById(nextAnswer).classList.add("current");
-                }
-                else {
-                    axios.post('/kzz_end', {}).then(() => {
-                        console.log('logged');
-                        location.href = "/dashboard";
-                    });
-                }
+                this.checkAnswer(response.data['isCorrect']);
             });
-        }
-    },
-    watch: {
-        timerCount: {
-            handler(value) {
-                if(value > 0){
-                    setTimeout(() => {
-                        this.timerCount--;
-                    }, 1000);
-                }
-            }, immediate:true
+        },
+        checkAnswer(isCorrect) {
+            let currentAnswer = "answer" + this.questionNumber++;
+
+            document.getElementById(currentAnswer).classList.remove("current");
+            document.getElementById(currentAnswer).classList.add(this.classes[isCorrect]);
+
+            this.next();
+        },
+        timer() {
+            if(--this.timerCount == 0) {
+                clearTimeout(this.timerHandler);
+                this.next();
+            }
+        },
+        next() {
+            if (this.questionNumber <= 10) {
+
+                document.getElementById("answer" + this.questionNumber).classList.add("current");
+
+                this.getNextQuestion();
+
+                this.timerCount = 10;
+                this.timerHandler = setTimeout(() => {
+                    this.timerCount--;
+                }, 1000);
+            }
+            else {
+                axios.post('/kzz_end', {}).then(() => {
+                    location.href = "/dashboard";
+                });
+            }
+        },
+        getNextQuestion() {
+            axios.get('/kzzquestion', {}).then((response) => {
+                this.questionText = response.data['questionText'];
+                this.questionId = response.data['questionId'];
+            });
+            console.log(this.questionId);
+        },
+        clearInput() {
+            document.getElementById("kzzInput").firstChild.firstChild.firstChild.value = "";
         }
     }
 }

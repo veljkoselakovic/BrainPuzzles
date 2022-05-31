@@ -7,13 +7,13 @@
         :aboutMe="this.tableData.opis" totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent>
     </div>   
     <div class="div">
-        <GameCanvasComponent game="Fight list" score="25" :disabled="!flAble" ></GameCanvasComponent>
+        <GameCanvasComponent gameLocation="/fightlist" game="Fight list" score="25" :disabled="!flAble" ></GameCanvasComponent>
     </div> 
     <div class="div">
-        <GameCanvasComponent game="Mozgic" score="20" :disabled="!mozgicAble"></GameCanvasComponent>
+        <GameCanvasComponent gameLocation="/mozgic" game="Mozgic" score="20" :disabled="!mozgicAble"></GameCanvasComponent>
     </div> 
     <div class="div">
-        <GameCanvasComponent game="Ko zna zna" score="15" :disabled="!kzzAble"></GameCanvasComponent>
+        <GameCanvasComponent gameLocation="/kzz" game="Ko zna zna" score="15" :disabled="!kzzAble"></GameCanvasComponent>
     </div> 
     <footer><FooterComponent/></footer>
 </template>
