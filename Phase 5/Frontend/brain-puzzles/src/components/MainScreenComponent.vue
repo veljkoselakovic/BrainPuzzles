@@ -8,7 +8,7 @@
     </div>
     <div class="div canv">
         <router-link to="/dashboard">
-            <FancyButton style="height: 80px; margin-top : 5%;" text="START" />
+            <FancyButton @click= "startGame" style="height: 80px; margin-top : 5%;" text="START" />
         </router-link>
         <router-link to="/ranking">
             <FancyButton style="transform: scale(0.8); margin-top : 10%;" text="Rankings" />

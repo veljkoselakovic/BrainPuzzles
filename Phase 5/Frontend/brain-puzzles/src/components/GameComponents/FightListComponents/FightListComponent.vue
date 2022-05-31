@@ -41,6 +41,7 @@ export default {
     },
     methods: {
         submitResults() {
+            console.log('submitting...')
             axios.post('/fightlist_end', {}).then(() => {
                 console.log('logged')
                 location.href = "/dashboard"

@@ -58,11 +58,27 @@ class DashboardView(View):
 
     @method_decorator(login_required)
     def get(self, request):
+        matchId = request.session.get('mId', -1)
+        print("matchId = " + str(matchId))
+        if matchId == -1:
+            newMatch = Rezultat()
+            newMatch.idk = request.user
+            newMatch.rezultat = 0
+            newMatch.vremeigranja = datetime.datetime.now()
+
+            newMatch.save()
+            request.session['mId'] = newMatch.idm
+
+        match = Rezultat.objects.get(idm=request.session['mId'])
+
         info = {
         'user' :  request.user.username,
         'email' : request.user.email,
         'status' : request.user.titula,
         'opis' : request.user.opis,
+        'flRez' : match.fightlistrezultat,
+        'kzzRez' : match.kzzrezultat,
+        'mRez' : match.mozgicrezultat
         }
 
         return render(request, 'base.html', {'jsonInfo': info})
@@ -284,19 +300,16 @@ class FightListView(View):
     @method_decorator(login_required)
     def get(self, request):
 
-        matchId = request.session.get('mId', -1)
-        print("matchId = " + str(matchId))
-        if matchId == -1:
-            newMatch = Rezultat()
-            newMatch.idk = request.user
-            newMatch.fightlistrezultat = 0
-            newMatch.mozgicrezultat = 0
-            newMatch.kzzrezultat = 0
-            newMatch.rezultat = 0
-            newMatch.vremeigranja = datetime.datetime.now()
+        try:
+            match = Rezultat.objects.get(idm=request.session['mId'])
+        except KeyError:
+            print('wtf')
+            return redirect('mainscreen_page')
 
-            newMatch.save()
-            request.session['mId'] = newMatch.idm
+
+        if match.fightlistrezultat != None:
+            return redirect("/dashboard")
+
 
         import random
 
@@ -358,7 +371,11 @@ class FighListSubmitView(View):
     @method_decorator(login_required)
     def post(self, request):
         match = Rezultat.objects.get(pk=request.session['mId'])
-        match.fightlistrezultat+= request.session['totalPoints']
+        if match.fightlistrezultat is not None:
+            match.fightlistrezultat += request.session['totalPoints']
+        else:
+            match.fightlistrezultat = request.session['totalPoints']
+
         request.session['totalPoints'] = 0
         match.save()
 
