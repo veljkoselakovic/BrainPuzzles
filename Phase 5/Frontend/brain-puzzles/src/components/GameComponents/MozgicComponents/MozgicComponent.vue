@@ -70,7 +70,27 @@
 
     <div class="div2">
 
-    <div class="div1"><MozgicItem></MozgicItem></div>
+    <div class="div1">  
+        <div class="canvas" id="mi">
+            <table style="width:60%; height:60%">
+                <tr v-for="(row3, i3) in rows3" v-bind:key="i3">
+                    <td v-for="(col3,k3) in cols3" v-bind:key="k3">
+                        <div class="circle" :id="(row3-1)*28+(col3-1)*7+330"></div>
+                        <img :id="(row3-1)*28+(col3-1)*7+1+330" @click="isprobavam" src="./Icons/igramozgic.jpg" alt="mozgicsimb" style="width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute; visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+2+330" @click="isprobavam" src="./Icons/zvezda.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute;visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+3+330" @click="isprobavam" src="./Icons/tref.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+4+330" @click="isprobavam" src="./Icons/pik.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+5+330" @click="isprobavam" src="./Icons/herc.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+6+330" @click="isprobavam" src="./Icons/karo.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
+                        {{ col3[k3] }}
+                     </td>
+                 </tr>
+            </table>
+        </div>
+    </div>
+
+
+
     <div class="div1"><FancyButton style="width:25vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Submit" @click="submitGuess($event)"></FancyButton></div>
     <div class="div1"><FancyButton style="width:9.375vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Back" @click="eraseSymbol"></FancyButton></div>
     </div>
@@ -81,7 +101,6 @@
 <script>
 import FooterComponent from '../../BasicComponents/FooterComponent.vue'
 import HeaderComponent from '../../BasicComponents/HeaderComponent.vue'
-import MozgicItem from './MozgicItem.vue'
 import FancyButton from '../../BasicComponents/FancyButton.vue'
 
 var a=0, b=0;
@@ -92,6 +111,9 @@ const guess=[];
 //var results=[];
 var kraj=0;
 
+
+//var poeni; //otkomentarisati za poene
+
 for(let i=0;i<4;i++)
 {
     combination.push(Math.floor(Math.random()*6)+1);
@@ -99,7 +121,7 @@ for(let i=0;i<4;i++)
 
 
 export default {
-    components :{FooterComponent, HeaderComponent, FancyButton, MozgicItem},
+    components :{FooterComponent, HeaderComponent, FancyButton},
     name: 'MozgicComponent',
 
     data(){
@@ -110,6 +132,8 @@ export default {
         rows:6,
         rows2:6,
         cols2:4,
+        rows3: 1,
+        cols3: 4,
         cols:4}
     },
 
@@ -231,9 +255,42 @@ export default {
                 }
                 //item.style.backgroundColor="pink";
 
-                if(goodPlace==4)
+                if(goodPlace==4 || a==6) //Kraj igre; izracunaj poene, ne dozvoljavaj vise da se ukucava i prikazi tacno resenje
                 {
                     kraj = 1;
+                    /* Racunanje poena
+                    if(a<=4) poeni+=20;
+                    if(a==5) poeni+=15;
+                    if(a==6) poeni+=10;
+                    */
+
+                    for(let i=0;i<4;i++)
+                    {
+                        if(combination[i]==1)
+                        {
+                            document.getElementById(i*7+331).style.visibility="visible";
+                        }
+                        if(combination[i]==2)
+                        {
+                            document.getElementById(i*7+332).style.visibility="visible";
+                        }
+                        if(combination[i]==3)
+                        {
+                            document.getElementById(i*7+333).style.visibility="visible";
+                        }
+                        if(combination[i]==4)
+                        {
+                            document.getElementById(i*7+334).style.visibility="visible";
+                        }
+                        if(combination[i]==5)
+                        {
+                            document.getElementById(i*7+335).style.visibility="visible";
+                        }
+                        if(combination[i]==6)
+                        {
+                            document.getElementById(i*7+336).style.visibility="visible";
+                        }
+                    }
                 }
 
                 
@@ -360,6 +417,21 @@ header {
       background: #FCDDEC;
     }
 
+#circleAnswer {
+  float: left;
+
+  width: 3.625vw;
+  height: 6.5vh;
+
+  margin-left: 65%;
+  margin-top:10%;
+
+  shape-outside: circle();
+  clip-path: circle();
+  
+  background: #FCDDEC;
+}    
+
 #pict {
       float: left;
       width: 3.625vw;
@@ -374,6 +446,19 @@ table{
 
 td, tr{
     text-align:center;
+}
+
+#mi {
+  position:relative;
+  margin-left:3.125vw;
+
+  width: 20.9375vw;
+  height: 9.25vh; 
+
+  background-color: white;
+  border-radius: 2em;
+  overflow: hidden;
+  box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
 
