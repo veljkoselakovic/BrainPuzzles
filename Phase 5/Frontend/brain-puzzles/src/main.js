@@ -1,43 +1,37 @@
-// import { createApp, VueElement } from 'vue'
-import {createApp} from 'vue'
-import App from './App.vue'
+import {createApp}                        from 'vue'
+import {createRouter, createWebHistory}   from 'vue-router'
 
-import {createRouter, createWebHistory} from 'vue-router'
- import LogInComponent from './components/LogInComponent.vue'
-// import DemoComponent from './components/DemoComponent.vue'
-import RegistrationComponent from './components/RegistrationComponent.vue'
-import DashboardComponent from './components/DashboardComponent.vue'
-import MainScreenComponent from './components/MainScreenComponent.vue'
-import AddAdminComponent from './components/AddAdminComponent.vue'
-import AddThemeComponent from './components/AddThemeComponent.vue'
-import AddQuestionComponent from './components/AddQuestionComponent.vue'
-import MozgicComponent from './components/GameComponents/MozgicComponents/MozgicComponent.vue'
-import FightListComponent from './components/GameComponents/FightListComponents/FightListComponent.vue'
-
-// const Home = { template: '<div>Veljko</div>' }
+import App                                from './App.vue'
+import LogInComponent                     from './components/LogInComponent.vue'
+import RegistrationComponent              from './components/RegistrationComponent.vue'
+import DashboardComponent                 from './components/DashboardComponent.vue'
+import MainScreenComponent                from './components/MainScreenComponent.vue'
+import AddAdminComponent                  from './components/AddAdminComponent.vue'
+import AddThemeComponent                  from './components/AddThemeComponent.vue'
+import AddQuestionComponent               from './components/AddQuestionComponent.vue'
+import FightListComponent                 from './components/GameComponents/FightListComponents/FightListComponent.vue'
+import MozgicComponent                    from './components/GameComponents/MozgicComponents/MozgicComponent.vue'
+import KZZComponent                       from './components/GameComponents/KZZComponents/KZZComponent.vue'
 
 const routes =  [
-  { path: '/', component: LogInComponent },
-  { path: '/register', component: RegistrationComponent, name:'registration'},
-  { path: '/login', component: LogInComponent, name:'login'},
-  { path: '/dashboard', component: DashboardComponent, name:'dashboard'},
-  { path: '/mainscreen', component: MainScreenComponent, name:'mainscreen'},
-  { path: '/addadmin', component: AddAdminComponent, name:'addadmin'},
-  { path: '/addtheme', component: AddThemeComponent, name:'addtheme'},
-  { path: '/addquestion', component: AddQuestionComponent, name:'addquestion'},
-  { path: '/mozgic', component: MozgicComponent, name:'mozgic'},
-  { path: '/fightlist', component: FightListComponent, name:'mozgic'},
-    
+  { path: '/',            component: LogInComponent                             },
+  { path: '/register',    component: RegistrationComponent, name:'registration' },
+  { path: '/login',       component: LogInComponent,        name:'login'        },
+  { path: '/dashboard',   component: DashboardComponent,    name:'dashboard'    },
+  { path: '/mainscreen',  component: MainScreenComponent,   name:'mainscreen'   },
+  { path: '/addadmin',    component: AddAdminComponent,     name:'addadmin'     },
+  { path: '/addtheme',    component: AddThemeComponent,     name:'addtheme'     },
+  { path: '/addquestion', component: AddQuestionComponent,  name:'addquestion'  },
+  { path: '/fightlist',   component: FightListComponent,    name:'fightlist'    },
+  { path: '/mozgic',      component: MozgicComponent,       name:'mozgic'       },
+  { path: '/kzz',         component: KZZComponent,          name:'kzz'          }
+];
 
-]
-// Vue.use(Router)
 const router = createRouter({
-  // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
   history: createWebHistory(),
-  routes, // short for `routes: routes`
-})
+  routes,
+});
 
-
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
+const app = createApp(App);
+app.use(router);
+app.mount('#app');
