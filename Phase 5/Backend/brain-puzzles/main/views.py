@@ -303,7 +303,6 @@ class FightListView(View):
         try:
             match = Rezultat.objects.get(idm=request.session['mId'])
         except KeyError:
-            print('wtf')
             return redirect('mainscreen_page')
 
 
