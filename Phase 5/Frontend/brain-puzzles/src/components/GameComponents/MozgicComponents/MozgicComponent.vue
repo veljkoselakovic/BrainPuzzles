@@ -72,7 +72,7 @@
 
     <div class="div1"><MozgicItem></MozgicItem></div>
     <div class="div1"><FancyButton style="width:25vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Submit" @click="submitGuess($event)"></FancyButton></div>
-    <div class="div1"><FancyButton style="width:9.375vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Back"></FancyButton></div>
+    <div class="div1"><FancyButton style="width:9.375vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Back" @click="eraseSymbol"></FancyButton></div>
     </div>
 
     <footer><FooterComponent/></footer>
@@ -90,6 +90,7 @@ var slikaId=0;
 const combination=[];
 const guess=[];
 //var results=[];
+//var submitted=0;
 
 for(let i=0;i<4;i++)
 {
@@ -141,12 +142,12 @@ export default {
             this.slika=p;
             //alert("slika "+slikaId);
             //alert("stigao do " +a + " i " + b);
-            alert(combination);
+            //alert(combination);
             guess.push(p);
-            alert(guess);
-
+            //alert(guess);
             
-
+            if(b!=-1)
+            {
             if(p==1)
             {
                 document.getElementById(a*28+b*7+1).style.visibility="visible";
@@ -171,14 +172,16 @@ export default {
             {
                 document.getElementById(a*28+b*7+6).style.visibility="visible";
             }
-
+            }
             
-            if(b==3) { a++; b=0;}
+            if(b==3) {a++; b=0;}
             else b++;
+            
             
         },
 
         submitGuess(event){
+                //submitted=1;
                 event.preventDefault();
                 const answer=combination.slice();
                 let goodPlace=0;
@@ -191,6 +194,9 @@ export default {
                         answer[i]=0;
                     }
                 }
+
+               
+
                 for(let i=0;i<4;i++)
                 {
                     for(let j=0;j<4;j++){
@@ -202,8 +208,8 @@ export default {
                         }
                     }
                 } 
-                alert(goodPlace);
-                alert(wrongPlace);
+                //alert(goodPlace);
+                //alert(wrongPlace);
                 let v=a-1;
                 let idField=v*28+169;
                 //const idFields=[];
@@ -213,41 +219,50 @@ export default {
 
                 for(let i=0;i<goodPlace;i++)
                 {
-                    alert("U goodplace sam");
+                    //alert("U goodplace sam");
                     idField = v*28+7*i+169;
-                    console.log("v = " + v +", i = " + i + ", idField = " + idField);
+                    
                     item=document.getElementById(idField);
                     item.style.backgroundColor="pink";
-                    //items.push(item);
+                    
                 }
-                item.style.backgroundColor="pink";
+                //item.style.backgroundColor="pink";
 
-                /*
-                for(let i=0;i<items.length;i++)
-                {
-                    alert("Prva petalja");
-                    alert(i);
-                    items[i]
-                    alert("izlazim");
-                }*/
                 
                 for(let j=0;j<wrongPlace;j++)
                 {
-                    alert("U wrongplace sam");
-                    idField = v*28+goodPlace+7*j+169;
+                    //alert("U wrongplace sam");
+                    idField = v*28+goodPlace*7+7*j+169;
                     item=document.getElementById(idField);
                     //items2.push(item);
+                    item.style.backgroundColor="yellow";
                 }
-                /*
-                for(let i=0;i<items2.length;i++)
-                {
-                    items2[i].style.backgroundColor="yellow";
-                }*/
+               
 
-                alert("Ovde sam");
-                while(guess.length>0) { alert("uspela1"); guess.pop(); alert("uspela2");}
-                alert("Ovo je +"); alert(guess);
+                
+                while(guess.length>0) {  guess.pop(); }
+                
         },
+
+        eraseSymbol(){
+            document.getElementById(a*28+(b-1)*7+1).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7+2).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7+3).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7+4).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7+5).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7+6).style.visibility="hidden";
+            document.getElementById(a*28+(b-1)*7).style.visibility="visible";
+            //if(b==3)
+            if(b>0) b--;
+            else if(b==0){b=3;a--;}
+            guess.pop();
+        },
+
+        /*
+        endGame()
+        {
+            alert("Kraj igre");
+        }*/
 
     }
 }
