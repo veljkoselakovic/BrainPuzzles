@@ -24,7 +24,7 @@
         <div class="bottomFightList">
             <!-- <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf"> -->
 
-            <InputField type="text" text="Guess" id="fightListGuess" style="margin-top: 2%"></InputField>
+            <InputField id="fightListGuess" type="text" text="Guess" style="margin-top: 2%"></InputField>
             <FancyButton text="Enter"  @click="enterItem($event)"></FancyButton>
             <FancyButton text="Submit" @click="submitAll($event)"></FancyButton>
         </div>
@@ -52,7 +52,7 @@ export default {
         }
     },
     methods: {
-        enterItem(event){
+        enterItem(event) {
             event.preventDefault();
 
             var guess = document.getElementById("fightListGuess").firstChild.value;
