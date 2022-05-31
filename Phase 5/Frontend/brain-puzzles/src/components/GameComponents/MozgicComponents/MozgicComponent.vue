@@ -1,6 +1,7 @@
 <template>
     <header><HeaderComponent/></header>
 
+
     <div class="div3">
 
     <div class="div">
@@ -11,13 +12,13 @@
                  
                     <td v-for="(col,k) in cols" v-bind:key="k">
                         <div class="field">
-                        <div class="circle" :id="(row-1)*28+(col-1)*7" @click="isprobavam"></div>
-                        <img :id="(row-1)*28+(col-1)*7+1" @click="isprobavam" src="./Icons/igramozgic.jpg" alt="mozgicsimb" style="width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute; visibility:hidden;">
-                        <img :id="(row-1)*28+(col-1)*7+2" @click="isprobavam" src="./Icons/zvezda.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute;visibility:hidden;">
-                        <img :id="(row-1)*28+(col-1)*7+3" @click="isprobavam" src="./Icons/tref.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
-                        <img :id="(row-1)*28+(col-1)*7+4" @click="isprobavam" src="./Icons/pik.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
-                        <img :id="(row-1)*28+(col-1)*7+5" @click="isprobavam" src="./Icons/herc.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
-                        <img :id="(row-1)*28+(col-1)*7+6" @click="isprobavam" src="./Icons/karo.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
+                        <div class="circle" :id="(row-1)*28+(col-1)*7"></div>
+                        <img :id="(row-1)*28+(col-1)*7+1"  src="./Icons/igramozgic.jpg" alt="mozgicsimb" style="width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute; visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+2"  src="./Icons/zvezda.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute;visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+3"  src="./Icons/tref.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+4"  src="./Icons/pik.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+5"  src="./Icons/herc.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
+                        <img :id="(row-1)*28+(col-1)*7+6"  src="./Icons/karo.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
                         
                         {{ col[k] }}
                         </div>
@@ -46,10 +47,6 @@
     </div>
 
 
-
-
-
-
     <div class="div"><div class="canvas" id="forClicking">
         <img class="simbol" id="1" src="./Icons/igramozgic.jpg" alt="mozgicsimb" style="width:4.68vw" @click = "symbolClicked">
         <br>
@@ -70,7 +67,14 @@
 
     </div>
 
+
+
+
     <br>
+
+
+
+
 
     <div class="div2">
 
@@ -80,12 +84,12 @@
                 <tr v-for="(row3, i3) in rows3" v-bind:key="i3">
                     <td v-for="(col3,k3) in cols3" v-bind:key="k3">
                         <div class="circle" :id="(row3-1)*28+(col3-1)*7+330"></div>
-                        <img :id="(row3-1)*28+(col3-1)*7+1+330" @click="isprobavam" src="./Icons/igramozgic.jpg" alt="mozgicsimb" style="width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute; visibility:hidden;">
-                        <img :id="(row3-1)*28+(col3-1)*7+2+330" @click="isprobavam" src="./Icons/zvezda.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute;visibility:hidden;">
-                        <img :id="(row3-1)*28+(col3-1)*7+3+330" @click="isprobavam" src="./Icons/tref.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
-                        <img :id="(row3-1)*28+(col3-1)*7+4+330" @click="isprobavam" src="./Icons/pik.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
-                        <img :id="(row3-1)*28+(col3-1)*7+5+330" @click="isprobavam" src="./Icons/herc.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
-                        <img :id="(row3-1)*28+(col3-1)*7+6+330" @click="isprobavam" src="./Icons/karo.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+1+330"  src="./Icons/igramozgic.jpg" alt="mozgicsimb" style="width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute; visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+2+330"  src="./Icons/zvezda.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;position:absolute;visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+3+330"  src="./Icons/tref.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+4+330"  src="./Icons/pik.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+5+330"  src="./Icons/herc.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh; position:absolute;visibility:hidden;">
+                        <img :id="(row3-1)*28+(col3-1)*7+6+330"  src="./Icons/karo.jpg" alt="mozgicsimb" style="float: left; width: 3.625vw; margin-left:-3.6vw; height: 7.2vh;  position:absolute;visibility:hidden;">
                         {{ col3[k3] }}
                      </td>
                  </tr>
@@ -97,9 +101,11 @@
 
     <div class="div1"><FancyButton style="width:25vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Submit" @click="submitGuess($event)"></FancyButton></div>
     <div class="div1"><FancyButton style="width:9.375vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Back" @click="eraseSymbol"></FancyButton></div>
+    
     </div>
 
     <footer><FooterComponent/></footer>
+
 </template>
 
 <script>
@@ -107,229 +113,208 @@ import FooterComponent from '../../BasicComponents/FooterComponent.vue'
 import HeaderComponent from '../../BasicComponents/HeaderComponent.vue'
 import FancyButton from '../../BasicComponents/FancyButton.vue'
 
-var a=0, b=0;
-//var value=0;
-var slikaId=0;
-const combination=[];
-const guess=[];
-//var results=[];
-var kraj=0;
+var a = 0, b = 0; //do koje vrste i kolone smo stigli
+const combination = []; //kombinacija koja treba da se pogodi
+const guess = []; //nas pokusaj
+var end = 0; //kraj igre (pogodjeno/nemamo vise pokusaja/isteklo vreme)
+//var points = 0; //otkomentarisati za poene
 
-
-//var poeni; //otkomentarisati za poene
-
-for(let i=0;i<4;i++)
+for (let i = 0; i < 4; i++) //generisanje random niza/kombinacije koja treba da se pogodi
 {
     combination.push(Math.floor(Math.random()*6)+1);
 }
 
 
 export default {
-    components :{FooterComponent, HeaderComponent, FancyButton},
+    components : {FooterComponent, HeaderComponent, FancyButton},
     name: 'MozgicComponent',
 
     data(){
 
         return{
-        polje: a*4+b,
-        slika:slikaId,
-        timerCount: 90,
-        rows:6,
-        rows2:6,
-        cols2:4,
-        rows3: 1,
-        cols3: 4,
-        cols:4}
-    },
 
-    computed:{
-        getIdS: { 
-            get(){ return this.slika },
-
-            set(newValue) { this.slika=newValue }
-        },
-
-        polja: { 
-            get(){ return this.polje },
-
-            set(newValue) { this.polje=newValue }
+            timerCount: 90,
+            rows:6,
+            rows2:6,
+            cols2:4,
+            rows3: 1,
+            cols3: 4,
+            cols:4
         }
     },
 
     methods:
     {
-
-        isprobavam:function(event){
-            let t = event.target.id;
-            alert(t);
-        },
-
+        //kad se klikne na slicicu koju zelimo da stavimo u nas niz za pogadjanje 
 
         symbolClicked: function(event){
-            let p = event.target.id;
-            slikaId=p;
-            this.slika=p;
 
-            
-            
+            let p = event.target.id; //pamtimo id kliknute slike
 
-            if(kraj==1) return;
-            if(b>3) return;
+            if (end == 1) return; //ukoliko smo dosli do kraja igre, ne zelimo da se slicica prikazuje
+            if (b > 3) return; //ako smo kliknuli vise slicica od 4, a nismo kliknuli submit, ne registruje se to kliktanje
 
-            guess.push(p);
+            guess.push(p); //u nas niz za pogadjanje ubacujemo slicicu s kliknutim idjem
             
             
-            if(p==1)
+            if (p == 1) //ako je id kliknute slicice ==1, prikazi tu slicicu u okviru pokusaja na odgovarajucem mestu
             {
-                document.getElementById(a*28+b*7+1).style.visibility="visible";
+                document.getElementById(a*28+b*7+1).style.visibility = "visible";
             }
-            if(p==2)
+            if (p == 2)
             {
-                document.getElementById(a*28+b*7+2).style.visibility="visible";
+                document.getElementById(a*28+b*7+2).style.visibility = "visible";
             }
-            if(p==3)
+            if (p == 3)
             {
-                document.getElementById(a*28+b*7+3).style.visibility="visible";
+                document.getElementById(a*28+b*7+3).style.visibility = "visible";
             }
-            if(p==4)
+            if (p == 4)
             {
-                document.getElementById(a*28+b*7+4).style.visibility="visible";
+                document.getElementById(a*28+b*7+4).style.visibility = "visible";
             }
-            if(p==5)
+            if (p == 5)
             {
-                document.getElementById(a*28+b*7+5).style.visibility="visible";
+                document.getElementById(a*28+b*7+5).style.visibility = "visible";
             }
-            if(p==6)
+            if (p == 6)
             {
-                document.getElementById(a*28+b*7+6).style.visibility="visible";
+                document.getElementById(a*28+b*7+6).style.visibility = "visible";
             }
             
             
-            b++;
+            b++; //sledeca kolona
             
             
             
         },
 
+        //kliknut submit
         submitGuess(event){
-                //alert(guess);
-                //alert(combination);
+
                 event.preventDefault();
-                const answer=combination.slice();
-                let goodPlace=0;
-                let wrongPlace=0;
-                if(guess.length<4) return;
+                const answer = combination.slice(); //niz za trazenu kombinaciju, pamtimo ga 
+                let goodPlace = 0; //broj pogodjenih na dobrom mestu
+                let wrongPlace = 0; //broj pogodjenih na losem mestu
+                if (guess.length < 4) return; //izignorisi submit ako je kliknut pre nego sto su se sva 4 simbola unela
                 
-                a++; b=0;
+                a++; b = 0; //
     
-                while(guess.length>4) guess.pop();
-                for(let i=0;i<4;i++){
-                    if(guess[i]==answer[i]) 
+                while (guess.length > 4) guess.pop(); //ukoliko je uneto vise, izbaci
+
+                //logika za goodPlace i wrongPlace
+                for (let i = 0; i < 4; i++)
+                {
+                    if(guess[i] == answer[i]) 
                     {
                         goodPlace++;
-                        answer[i]=0;
+                        answer[i] = 0;
                     }
                 }
 
-                for(let i=0;i<4;i++)
+                for (let i = 0; i < 4; i++)
                 {
-                    for(let j=0;j<4;j++){
-                        if(guess[i]==answer[j]) 
+                    for (let j = 0; j < 4; j++){
+                        if(guess[i] == answer[j]) 
                         {
                             wrongPlace++;
-                            answer[j]=0;
-                            j=4;
+                            answer[j] = 0;
+                            j = 4;
                         }
                     }
                 } 
-  
-                let v=a-1;
-                let idField=v*28+169;
+
+                //logika za koja polja u koju boju treba obojiti
+                let v = a - 1;
+                let idField = v*28 + 169;
                 
                 var item;
                 
-
-                for(let i=0;i<goodPlace;i++)
+                for (let i = 0; i < goodPlace; i++)
                 {
-                    //alert("U goodplace sam");
-                    idField = v*28+7*i+169;
-                    
-                    item=document.getElementById(idField);
-                    item.style.backgroundColor="pink";
-                    
+                    idField = v*28 + 7*i + 169;                    
+                    item = document.getElementById(idField);
+                    item.style.backgroundColor="pink"; 
                 }
-                //item.style.backgroundColor="pink";
+                
 
-                if(goodPlace==4 || a==6) //Kraj igre; izracunaj poene, ne dozvoljavaj vise da se ukucava i prikazi tacno resenje
+                if (goodPlace == 4 || a == 6) //Kraj igre; izracunaj poene, ne dozvoljavaj vise da se ukucava i prikazi tacno resenje
                 {
+                    //poeni ako je pogodjeno, treba otkomentarisati
+                    //if (goodPlace == 4) { if(a <= 4) points = 20; if (a == 5) points = 15; if (a == 6) points = 10;}
                     this.submitResults();
                 }
 
-                
-                for(let j=0;j<wrongPlace;j++)
+                //nastavak logike za prikazivanje zutih polja                    
+                for (let j = 0; j < wrongPlace; j++)
                 {
-                    //alert("U wrongplace sam");
-                    idField = v*28+goodPlace*7+7*j+169;
-                    item=document.getElementById(idField);
-                    //items2.push(item);
+                    idField = v*28 + goodPlace*7 + 7*j + 169;
+                    item = document.getElementById(idField);
                     item.style.backgroundColor="yellow";
                 }
                
-
-                
-                while(guess.length>0) {  guess.pop(); }
+                while (guess.length > 0) {  guess.pop(); } //izbrisi nas pokusaj skroz, spremni smo za novi
                 
         },
 
+
+        //back 
         eraseSymbol(){
-            if(b==0) return;
-            if(b>4) b=4;
-            document.getElementById(a*28+(b-1)*7+1).style.visibility="hidden";
-            document.getElementById(a*28+(b-1)*7+2).style.visibility="hidden";
-            document.getElementById(a*28+(b-1)*7+3).style.visibility="hidden";
-            document.getElementById(a*28+(b-1)*7+4).style.visibility="hidden";
-            document.getElementById(a*28+(b-1)*7+5).style.visibility="hidden";
-            document.getElementById(a*28+(b-1)*7+6).style.visibility="hidden";
-            document.getElementById(a*28+(b-1)*7).style.visibility="visible";
-            //if(b==3)
-            if(b>0) b--;
+            if (b == 0) return; //ne moze da se brise ako nista nismo uneli
+            if (b > 4) b = 4; 
+
+            //poslednji dodati stavi na hidden i prikazi kruzic
+            document.getElementById(a*28+(b-1)*7+1).style.visibility = "hidden";
+            document.getElementById(a*28+(b-1)*7+2).style.visibility = "hidden";
+            document.getElementById(a*28+(b-1)*7+3).style.visibility = "hidden";
+            document.getElementById(a*28+(b-1)*7+4).style.visibility = "hidden";
+            document.getElementById(a*28+(b-1)*7+5).style.visibility = "hidden";
+            document.getElementById(a*28+(b-1)*7+6).style.visibility = "hidden";
+            document.getElementById(a*28+(b-1)*7).style.visibility = "visible";
+
+            
+            if(b > 0) b--;
             guess.pop();
         },
 
+        //kraj igre
         submitResults(){ 
-                    kraj=1; 
-                    document.getElementById("sec").style.visibility="hidden";
-                    for(let i=0;i<4;i++)
+
+                    end = 1; 
+                    document.getElementById("sec").style.visibility="hidden"; //ne prikazuj tajmer vise
+
+                    for (let i = 0; i < 4; i++) //prikazi trazenu kombinaciju
                     {
-                        if(combination[i]==1)
+                        if (combination[i] == 1)
                         {
-                            document.getElementById(i*7+331).style.visibility="visible";
+                            document.getElementById(i*7+331).style.visibility = "visible";
                         }
-                        if(combination[i]==2)
+                        if (combination[i] == 2)
                         {
-                            document.getElementById(i*7+332).style.visibility="visible";
+                            document.getElementById(i*7+332).style.visibility = "visible";
                         }
-                        if(combination[i]==3)
+                        if (combination[i] == 3)
                         {
-                            document.getElementById(i*7+333).style.visibility="visible";
+                            document.getElementById(i*7+333).style.visibility = "visible";
                         }
-                        if(combination[i]==4)
+                        if (combination[i] == 4)
                         {
-                            document.getElementById(i*7+334).style.visibility="visible";
+                            document.getElementById(i*7+334).style.visibility = "visible";
                         }
-                        if(combination[i]==5)
+                        if (combination[i] == 5)
                         {
-                            document.getElementById(i*7+335).style.visibility="visible";
+                            document.getElementById(i*7+335).style.visibility = "visible";
                         }
-                        if(combination[i]==6)
+                        if (combination[i] == 6)
                         {
-                            document.getElementById(i*7+336).style.visibility="visible";
+                            document.getElementById(i*7+336).style.visibility = "visible";
                         }
                     }
         }
 
     },
 
+    //tajmer
     watch: {
         timerCount: {
             handler(value) {
