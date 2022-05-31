@@ -1,7 +1,7 @@
 <template>
 
-    <div class=buttonContainer>
-        <button class="buttonClass" >{{text}}</button>
+    <div class=buttonContainer :class="{disabled,disabled}">
+        <button class="buttonClass" :disabled="disabled">{{text}}</button>
     </div>
 
 
@@ -9,13 +9,10 @@
 
 
 <script>
-    // import axios from 'axios';
-
-    
 export default {
   name: 'FancyButton',
   props: [
-    'text',
+    'text', 'disabled'
   ],
 }
 </script>
@@ -54,6 +51,16 @@ export default {
     background-color: #F178B6;
     box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
+}
+button:disabled{
+  background-color: #cccccc;
+  color: #666666;
+}
+button:disabled:hover{
+    cursor:default;
+    background-color: #cccccc;
+    color: #666666;
+    border-radius: 0px;
 }
 
 </style>

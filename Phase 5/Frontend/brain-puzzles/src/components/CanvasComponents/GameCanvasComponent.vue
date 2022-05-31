@@ -1,5 +1,5 @@
 <template>
-    <div class="canvas">
+    <div class="canvas" :class="{disabled:disabled, abled:!disabled}">
         <div id="game"> {{game}} </div>
         <div class="space"></div>
         <div id="score">
@@ -7,45 +7,43 @@
             {{score}}
         </div>
         <div id="but">
-            <FancyButton @click="playFL($event)" class="playButton" text="       PLAY       "></FancyButton>
+            <FancyButton  @click="playFL($event)" class="playButton" text="       PLAY       " :disabled="disabled"></FancyButton>
         </div>
     </div>
 </template>
 
-<!-- <GameCanvasComponent game="Fight list" score="25"></GameCanvasComponent>
-<br><br><br>  -->
 
 <script>
- import FancyButton from '../BasicComponents/FancyButton.vue'
+import FancyButton from '../BasicComponents/FancyButton.vue'
 
 export default {
     components :{FancyButton},
     name: 'GameCanvasComponent', 
     props:[
-        'game', 'score'
+        'game', 'score', 'disabled'
     ],
     methods: {
         playFL(event) {
-
             event.preventDefault();
             window.location.href = "/fightlist";
         },
-
-        
     }
 }
 </script>
 
-
-
 <style scoped>
+.disabled{
+    background-color: gray;
+}
+.abled{
+    background-color: white;
+}
 .canvas {
     position:relative;
     z-index: 1;
     margin: 0 auto;
     width: 15vw;
     height: 65vh; 
-    background-color: white;
     border-radius: 2em;
     overflow: hidden;
 

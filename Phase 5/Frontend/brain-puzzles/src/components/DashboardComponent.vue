@@ -7,13 +7,13 @@
         :aboutMe="this.tableData.opis" totalScore="2500" highScore="1200" profilePicture=".\profilna2.jpg"></ProfileCanvasComponent>
     </div>   
     <div class="div">
-        <GameCanvasComponent game="Fight list" score="25"  ></GameCanvasComponent>
+        <GameCanvasComponent game="Fight list" score="25" :disabled="!flAble" ></GameCanvasComponent>
     </div> 
     <div class="div">
-        <GameCanvasComponent game="Mozgic" score="20"></GameCanvasComponent>
+        <GameCanvasComponent game="Mozgic" score="20" :disabled="!mozgicAble"></GameCanvasComponent>
     </div> 
     <div class="div">
-        <GameCanvasComponent game="Ko zna zna" score="15"></GameCanvasComponent>
+        <GameCanvasComponent game="Ko zna zna" score="15" :disabled="!kzzAble"></GameCanvasComponent>
     </div> 
     <footer><FooterComponent/></footer>
 </template>
@@ -32,6 +32,9 @@ export default {
         return {
             tableData: {},
             usernameGreeting: "Hello, ",
+            flAble : false,
+            mozgicAble : false,
+            kzzAble : false
         }
     },
     
@@ -39,6 +42,15 @@ export default {
         this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
         this.usernameGreeting += this.tableData.user + "!"
         console.log(this.tableData.user)
+        let status = this.tableData.status;
+        console.log(status);
+        if(status == 'b'){
+            this.flAble = true;
+        }else if(status == 's'){
+            this.flAble = true; this.mozgicAble = true;
+        }else if(status == 'z'){
+            this.flAble = true; this.mozgicAble = true; this.kzzAble = true;
+        }
     },
 }
 </script>
