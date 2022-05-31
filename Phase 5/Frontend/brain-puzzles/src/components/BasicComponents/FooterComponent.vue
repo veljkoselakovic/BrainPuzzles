@@ -21,7 +21,7 @@ export default {
   height: 5vh;
   margin-top: 0.75%;
 
-  font-size: 0.6vw;
+  font-size: 1vw;
   font-weight: bold;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="kzzCanvas">
-        <InputField type="text" text="Answer" style="margin-top: 2%"></InputField>
-        <FancyButton text="Enter"></FancyButton>
+        <InputField id="kzzAnswer" type="text" text="Answer" style="margin-top: 2%"></InputField>
+        <FancyButton text="Enter" @click="submitAnswer($event)"></FancyButton>
     </div>
 </template>
 
@@ -11,7 +11,17 @@ import InputField from '../../BasicComponents/InputField.vue'
 
 export default {
     components: {FancyButton, InputField},
-    name: 'KZZCanvas'
+    name: 'KZZCanvas',
+    methods: {
+        submitAnswer(event) {
+            event.preventDefault();
+
+            var answer = document.getElementById("kzzAnswer").firstChild.value;
+            console.log(answer);
+
+            this.$parent.submitAnswer();
+        }
+    }
 }
 </script>
 

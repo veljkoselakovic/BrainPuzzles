@@ -32,7 +32,12 @@ import KZZCanvasComponent from '../KZZComponents/KZZCanvasComponent.vue'
 
 export default {
     components: {FooterComponent, HeaderComponent, KZZCanvasComponent, FancyText},
-    name: 'KZZComponent'
+    name: 'KZZComponent',
+    methods: {
+        submitAnswer() {
+            console.log("Here");
+        }
+    }
 }
 </script>
 

@@ -1,9 +1,15 @@
 <template>
-    <div class="cont">
-        <div class="divLogo"><img class="logo" src="static/res/logo.png"  alt="logo slika"></div>
-        <div class="divTxt" style="color: rgba(0, 0, 0, 0.85);"> Brain Puzzles</div>
-        <div class="divLogOut" @click="logoutClicked()">  
-                <img class="logOut" src=".\logOut.png" alt="logOut">
+    <div class="headerContainer">
+        <div class="headerLogoDiv">
+            <img class="headerLogo" src="static/res/logo.png"  alt="logo slika">
+        </div>
+        <div class="headerText" style="color: rgba(0, 0, 0, 0.85);"> Brain Puzzles</div>
+        <div class="headerLogOutDiv" @click="logoutClicked()">  
+            <div>
+                <img class="headerLogOut" src=".\logOut.png" alt="logOut">
+                <br>
+                Sign out
+            </div>
         </div>
     </div>
 </template>
@@ -11,54 +17,71 @@
 <script>
 export default {
     name: 'HeaderComponent',
-    methods:
-    {
+    methods: {
         logoutClicked() {
-            location.href = "/logout"
+            location.href = "/logout";
         }
     }
 }
 </script>
 
 <style scoped>
-.cont {
+.headerContainer {
     display: flex;
     flex-direction: row;
+
     background-color:white;
     height: 10vh;
     margin-top:-3%;
-}
-.divLogo{
-    width: 5%; 
-}
-.logo {
-    max-width:90%;
-    height:auto;
-}
-.divLogOut{
-    width: 2%; 
-    margin-top: 1.2%;
-}
-.divLogOut:hover{
-    cursor: pointer;
 
+    padding-right: 5px;
 }
-.logOut {
-    max-width:100%;
-    height:auto;
-}
-.divTxt {
-    text-align: left;
-    position: relative;
-    top:20%;
+.headerText {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
     font-family: 'Pacifico';
     font-style: normal;
     font-weight: 350;
     font-size: 2.5vw;
+
     letter-spacing: 0.04em;
-    color:black;
-    margin-bottom: 0;
     line-height: 1.3em;
-    width: 90%;
+
+    color:black;
+    
+    width: 100%;
+    height: 100%;
+}
+.headerLogoDiv {
+    width: 5%; 
+}
+.headerLogo {
+    max-width:90%;
+    height:auto;
+}
+.headerLogOutDiv {
+    width: 5%; 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75em;
+
+    letter-spacing: 0.05em;
+
+    color: rgba(0, 0, 0, 0.5);
+}
+.headerLogOutDiv:hover {
+    cursor: pointer;
+}
+.headerLogOut {
+    max-width:50%;
+    height:auto;
 }
 </style>
