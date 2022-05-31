@@ -14,7 +14,7 @@
                 <span class="answer" id="answer9"></span>
                 <span class="answer" id="answer10"></span>
             </div>
-            <FancyText style="margin-top: 2%" width=50vw height=10vh text='Japanese car manufacturers' fontSize=36px></FancyText>
+            <FancyText style="margin-top: 2%" width=50vw height=10vh :text="this.questionText" fontSize=36px></FancyText>
             <KZZCanvasComponent></KZZCanvasComponent>
         </div>
         <div id="kzzTimer">
@@ -29,6 +29,11 @@ import FooterComponent from '../../BasicComponents/FooterComponent.vue'
 import HeaderComponent from '../../BasicComponents/HeaderComponent.vue'
 import FancyText from '../../BasicComponents/FancyText.vue'
 import KZZCanvasComponent from '../KZZComponents/KZZCanvasComponent.vue'
+
+import axios from "axios";
+
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 
 export default {
     components: {FooterComponent, HeaderComponent, KZZCanvasComponent, FancyText},
