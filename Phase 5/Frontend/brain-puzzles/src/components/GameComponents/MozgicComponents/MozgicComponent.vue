@@ -117,7 +117,7 @@ var a = 0, b = 0; //do koje vrste i kolone smo stigli
 const combination = []; //kombinacija koja treba da se pogodi
 const guess = []; //nas pokusaj
 var end = 0; //kraj igre (pogodjeno/nemamo vise pokusaja/isteklo vreme)
-//var points = 0; //otkomentarisati za poene
+var points = 0; 
 
 for (let i = 0; i < 4; i++) //generisanje random niza/kombinacije koja treba da se pogodi
 {
@@ -234,14 +234,17 @@ export default {
                 {
                     idField = v*28 + 7*i + 169;                    
                     item = document.getElementById(idField);
-                    item.style.backgroundColor="pink"; 
+                    item.style.backgroundColor="fuchsia"; 
                 }
                 
 
                 if (goodPlace == 4 || a == 6) //Kraj igre; izracunaj poene, ne dozvoljavaj vise da se ukucava i prikazi tacno resenje
                 {
-                    //poeni ako je pogodjeno, treba otkomentarisati
-                    //if (goodPlace == 4) { if(a <= 4) points = 20; if (a == 5) points = 15; if (a == 6) points = 10;}
+                    //poeni ako je pogodjeno
+                    if (goodPlace == 4) { 
+                        if(a <= 4) points = 20; if (a == 5) points = 15; if (a == 6) points = 10;
+                        alert(points); //ZAKOMENTARISATI NAKON POVEZIVANJA S BACKOM
+                        }
                     this.submitResults();
                 }
 
