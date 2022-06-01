@@ -289,6 +289,25 @@ class AddAdminView(View):
 
         return redirect('mainscreen_page')
 
+class RankingView(View):
+
+    def get(self, request):
+        rankings = list(Statistika.objects.all())
+        rankings.sort(key=lambda x: x.totalscore, reverse=True)
+        rankings = rankings[:10]
+        korisniks =  [r.idk for r in rankings]
+        usernames = [k.username for k in korisniks]
+        print(usernames)
+        highScores = [r.highscore for r in rankings]
+        print(highScores)
+        pairs = []
+
+        # info = {
+        # 'rankings' :  rankings
+        # }
+
+        return render(request, 'base.html', {})
+
 class MozgicView(View):
 
     def get(self, request):

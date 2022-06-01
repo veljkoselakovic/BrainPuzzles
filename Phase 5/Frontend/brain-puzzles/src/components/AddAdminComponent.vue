@@ -27,7 +27,7 @@ import FancyButton from './BasicComponents/FancyButton.vue'
 
 export default {
     components: {FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, InputField, FancyButton},
-    name: 'MainScreenComponent',
+    name: 'AddAdminComponent',
     
     mounted() {
         this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)

@@ -16,10 +16,19 @@ import FooterComponent from './BasicComponents/FooterComponent.vue'
 import HeaderComponent from './BasicComponents/HeaderComponent.vue'
 import FancyText from './BasicComponents/FancyText.vue'
 import RankingCanvasComponent from './CanvasComponents/RankingCanvasComponent.vue'
+import axios from "axios";
 
 export default {
     components:{FooterComponent, HeaderComponent, FancyText, RankingCanvasComponent},
-    name: 'RankingComponent'
+    name: 'RankingComponent',
+    mounted() {
+        axios.get('/ranking').then();
+    },
+    data()  {
+        return {
+            // tableData: {},
+        }
+    }
 }
 </script>
 
