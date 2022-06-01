@@ -413,6 +413,7 @@ class FighListSubmitView(View):
     @method_decorator(login_required)
     def post(self, request):
         match = Rezultat.objects.get(pk=request.session['mId'])
+        
         if match.fightlistrezultat is not None:
             match.fightlistrezultat += request.session['totalPoints']
         else:
@@ -500,10 +501,10 @@ class KZZEnd(View):
     def post(self, request):
         match = Rezultat.objects.get(pk=request.session['mId'])
 
-        if match.fightlistrezultat is not None:
-            match.fightlistrezultat += request.session['totalPoints']
+        if match.kzzrezultat is not None:
+            match.kzzrezultat += request.session['totalPoints']
         else:
-            match.fightlistrezultat = request.session['totalPoints']
+            match.kzzrezultat = request.session['totalPoints']
 
         request.session['totalPoints'] = 0
         match.save()
