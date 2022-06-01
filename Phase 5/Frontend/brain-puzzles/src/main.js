@@ -12,6 +12,8 @@ import AddQuestionComponent               from './components/AddQuestionComponen
 import FightListComponent                 from './components/GameComponents/FightListComponents/FightListComponent.vue'
 import MozgicComponent                    from './components/GameComponents/MozgicComponents/MozgicComponent.vue'
 import KZZComponent                       from './components/GameComponents/KZZComponents/KZZComponent.vue'
+import RankingComponent                   from './components/RankingComponent.vue'
+
 
 const routes =  [
   { path: '/',            component: LogInComponent                             },
@@ -24,7 +26,8 @@ const routes =  [
   { path: '/addquestion', component: AddQuestionComponent,  name:'addquestion'  },
   { path: '/fightlist',   component: FightListComponent,    name:'fightlist'    },
   { path: '/mozgic',      component: MozgicComponent,       name:'mozgic'       },
-  { path: '/kzz',         component: KZZComponent,          name:'kzz'          }
+  { path: '/kzz',         component: KZZComponent,          name:'kzz'          },
+  { path: '/ranking',     component: RankingComponent,      name:'ranking'      }
 ];
 
 const router = createRouter({

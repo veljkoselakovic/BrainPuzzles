@@ -3,6 +3,8 @@
             <p class="h" >
                 Username  <span class="hs">Highscore</span>
             </p>
+            <!-- <p v-for="elem in niz"  v-bind:key="elem.id"></p> -->
+
             <p class="left" > 1. {{niz[0]}}  <span class="right">{{niz[10]}}</span></p>
             <p class="left" > 2. {{niz[1]}}  <span class="right">{{niz[11]}}</span></p>
             <p class="left" > 3. {{niz[2]}}  <span class="right">{{niz[12]}}</span></p>
