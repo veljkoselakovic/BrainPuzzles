@@ -250,10 +250,11 @@ export default {
                     if (goodPlace == 4) { 
                         if(a <= 4) points = 20; if (a == 5) points = 15; if (a == 6) points = 10;
                         // alert(points); //ZAKOMENTARISATI NAKON POVEZIVANJA S BACKOM
-                        axios.post('/mozgicSubmit', {mozgicPts : points}).then(() => {
+                        
+                        }
+                    axios.post('/mozgicSubmit', {mozgicPts : points}).then(() => {
                             location.href = "/dashboard"
                         })
-                        }
                     this.submitResults();
                 }
 
@@ -265,7 +266,8 @@ export default {
                     item.style.backgroundColor="yellow";
                 }
                
-                while (guess.length > 0) {  guess.pop(); } //izbrisi nas pokusaj skroz, spremni smo za novi
+                while (guess.length > 0) {  guess.pop(); } 
+                //izbrisi nas pokusaj skroz, spremni smo za novi
                 
         },
 
