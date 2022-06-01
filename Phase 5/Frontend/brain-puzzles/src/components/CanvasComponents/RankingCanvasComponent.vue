@@ -3,18 +3,10 @@
             <p class="h" >
                 Username  <span class="hs">Highscore</span>
             </p>
-            <!-- <p v-for="elem in niz"  v-bind:key="elem.id"></p> -->
-
-            <p class="left" > 1. {{niz[0]}}  <span class="right">{{niz[10]}}</span></p>
-            <p class="left" > 2. {{niz[1]}}  <span class="right">{{niz[11]}}</span></p>
-            <p class="left" > 3. {{niz[2]}}  <span class="right">{{niz[12]}}</span></p>
-            <p class="left" > 4. {{niz[3]}}  <span class="right">{{niz[13]}}</span></p>
-            <p class="left" > 5. {{niz[4]}}  <span class="right">{{niz[14]}}</span></p>
-            <p class="left" > 6. {{niz[5]}}  <span class="right">{{niz[15]}}</span></p>
-            <p class="left" > 7. {{niz[6]}}  <span class="right">{{niz[16]}}</span></p>
-            <p class="left" > 8. {{niz[7]}}  <span class="right">{{niz[17]}}</span></p>
-            <p class="left" > 9. {{niz[8]}}  <span class="right">{{niz[18]}}</span></p>
-            <p class="left" > 10. {{niz[9]}}  <span class="right">{{niz[19]}}</span></p>
+            <p class="left" v-for="(elem, index) in niz"  v-bind:key="elem">
+                {{index+1}}. {{elem.split(',')[0]}} 
+                <span class="right">{{elem.split(',')[1]}}</span>
+            </p>
         </div>
 </template>
 
