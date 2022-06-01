@@ -423,7 +423,7 @@ class FightListView(View):
         random_theme = random.choice(random_themes)
         request.session['themeId'] = int(random_theme.idt)
         request.session['triedGuesses'] = []
-        request.session['totalPoints'] = 0
+        request.session['fightListPoints'] = 0
 
         info = {
             'themeName' : random_theme.tema,
@@ -459,7 +459,7 @@ class FightListView(View):
                 'points' : item.poeni
             }
             request.session['triedGuesses'] += [item.tekst]
-            request.session['totalPoints'] += item.poeni
+            request.session['fightListPoints'] += item.poeni
 
             return JsonResponse(returnJSON)
         except FightListPojam.DoesNotExist:
@@ -478,11 +478,11 @@ class FighListSubmitView(View):
         match = Rezultat.objects.get(pk=request.session['mId'])
 
         if match.fightlistrezultat is not None:
-            match.fightlistrezultat += request.session['totalPoints']
+            match.fightlistrezultat += request.session['fightListPoints']
         else:
-            match.fightlistrezultat = request.session['totalPoints']
+            match.fightlistrezultat = request.session['fightListPoints']
 
-        request.session['totalPoints'] = 0
+        request.session['fightListPoints'] = 0
         match.save()
 
         return JsonResponse({'ok' : True})
@@ -500,7 +500,7 @@ class KZZView(View):
         if match.kzzrezultat != None:
             return redirect("/dashboard")
         
-        request.session['totalPoints'] = 0
+        request.session['kzzPoints'] = 0
         request.session['pastQuestions'] = []
 
         return render(request, 'base.html', {})
@@ -545,7 +545,7 @@ class KZZQuestionView(View):
                 'correctAnswer' : item.tekst,
                 'points' : 6
             }
-            request.session['totalPoints'] += 6
+            request.session['kzzPoints'] += 6
 
             return JsonResponse(returnJSON)
         except KzzOdgovor.DoesNotExist:
@@ -555,7 +555,7 @@ class KZZQuestionView(View):
                 'correctAnswer' : KzzOdgovor.objects.get(idp=request.session['questionId']).tekst,
                 'points' : -3
             }
-            request.session['totalPoints'] -= 3
+            request.session['kzzPoints'] -= 3
 
             return JsonResponse(returnJSON)
 
@@ -566,11 +566,11 @@ class KZZEnd(View):
         match = Rezultat.objects.get(pk=request.session['mId'])
 
         if match.kzzrezultat is not None:
-            match.kzzrezultat += request.session['totalPoints']
+            match.kzzrezultat += request.session['kzzPoints']
         else:
-            match.kzzrezultat = request.session['totalPoints']
+            match.kzzrezultat = request.session['kzzPoints']
 
-        request.session['totalPoints'] = 0
+        request.session['kzzPoints'] = 0
         match.save()
 
         return JsonResponse({'ok' : True})
