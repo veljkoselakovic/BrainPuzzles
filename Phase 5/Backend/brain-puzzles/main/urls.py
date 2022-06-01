@@ -39,12 +39,10 @@ urlpatterns = [
     path('rankingInfo', RankingInfoView.as_view(), name="rankinginfo_page"),
     path('mozgicSubmit', MozgicSubmitView.as_view(), name="mozgic_submit"),
     path('dashboardInfo', DashboardInfoView.as_view(), name="dashboard_info"),
-
+    path('mainscreenInfo', MainScreenInfoView.as_view(), name="mainscreeninfo_page"),
 
     # path('fightlist/id=?&guess=?')
     # brain-puzzles.com/register
     # location.href = "/register"
-
-
     # path('alternate', AlternateView.as_view(), name="alternate_page"),
 ]

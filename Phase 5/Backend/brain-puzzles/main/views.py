@@ -179,6 +179,20 @@ class MainScreenView(View):
 
         return render(request, 'base.html', {'jsonInfo': info})
 
+class MainScreenInfoView(View):
+
+    @method_decorator(login_required)
+    def get(self, request):
+        returnJSON = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        'isAdmin' : request.user.is_superuser
+        }
+
+        return JsonResponse(returnJSON)
+
 class AddThemeView(View):
     
     @method_decorator(login_required)

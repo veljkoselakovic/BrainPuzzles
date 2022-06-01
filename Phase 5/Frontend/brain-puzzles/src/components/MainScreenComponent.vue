@@ -33,6 +33,7 @@ import HeaderComponent from './BasicComponents/HeaderComponent.vue'
 import ProfileCanvasComponent from './CanvasComponents/ProfileCanvasComponent.vue'
 import FancyText from './BasicComponents/FancyText.vue'
 import FancyButton from './BasicComponents/FancyButton.vue'
+import axios from "axios";
 
 export default {
     components: {FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, FancyButton},
@@ -46,11 +47,13 @@ export default {
     },
 
     mounted() {
-        this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
-        this.usernameGreeting += this.tableData.user + "!"
-        this.isAdmin = this.tableData.isAdmin
-        console.log(this.tableData.user)
-        console.log("da li je admin: " + this.isAdmin)
+        axios.get('/mainscreenInfo').then((response) => {
+            this.tableData = response.data
+            this.usernameGreeting += this.tableData.user + "!"
+            this.isAdmin = this.tableData.isAdmin
+            console.log(this.tableData.user)
+            console.log("da li je admin: " + this.isAdmin)
+        })
     },
 }
 </script>
