@@ -19,19 +19,16 @@
             </div>
         </div>
         <hr>
-        <div class="bottomFightList">
-            <!-- <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf"> -->
-            <InputField id="fightListGuess" type="text" text="Guess" style="margin-top: 2%"></InputField>
-            <FancyButton text="Enter"  @click="enterItem($event)"></FancyButton>
-            <FancyButton text="Submit" @click="submitAll($event)"></FancyButton>
-        </div>
+        <InputField id="fightListGuess" type="text" text="Guess" style="margin-top: 2%"></InputField>
+        <FancyButton text="Enter"  @click="enterItem($event)"></FancyButton>
+        <FancyButton text="Submit" @click="submitAll($event)"></FancyButton>
     </div>
 </template>
 
 <script>
-import FightListItem from '../FightListComponents/FightListItem.vue'
-import FancyButton from '../../BasicComponents/FancyButton.vue'
-import InputField from '../../BasicComponents/InputField.vue'
+import FightListItem    from '../FightListComponents/FightListItem.vue'
+import FancyButton      from '../../BasicComponents/FancyButton.vue'
+import InputField       from '../../BasicComponents/InputField.vue'
 
 import axios from "axios";
 
@@ -54,7 +51,8 @@ export default {
             event.preventDefault();
 
             var guess = document.getElementById("fightListGuess").firstChild.value;
-            console.log(guess);
+
+            if (guess.replace(/\s/g, "") == "") return;
 
             axios.post('/fightlist', {
                 guessValue : guess,
@@ -69,6 +67,7 @@ export default {
                         points : response.data['points']
                     }
                 });
+                this.$parent.points += response.data['points'];
                 document.getElementById("fightListGuess").firstChild.value = "";
             });
         },
@@ -94,7 +93,7 @@ export default {
     padding: 2vw;
 
     width: 46vw;
-    height: 52vh; 
+    height: 45vh; 
     
     z-index: 1;
 
@@ -109,7 +108,7 @@ export default {
     justify-content: space-between;
 
     width: 100%;
-    height: 60%;
+    height: 50%;
 
     overflow-x: hidden;
     overflow-y: auto;

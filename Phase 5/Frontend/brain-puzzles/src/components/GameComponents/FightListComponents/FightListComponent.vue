@@ -3,10 +3,15 @@
     <div class="fightListDiv">
         <div>
             <FancyText style="margin-top: 2%" width=50vw height=10vh :text="this.themeName" fontSize=36px></FancyText>
+            <div class="fightListTop">
+                <div class="numbers">
+                    {{this.timerCount}}s
+                </div>
+                <div class="numbers">
+                    {{this.points}}p
+                </div>
+            </div>
             <FightListCanvas :themeId="this.themeId"></FightListCanvas>
-        </div>
-        <div class="timer">
-            {{this.timerCount}}s
         </div>
     </div>
     <FooterComponent/>
@@ -32,34 +37,26 @@ export default {
             themeId: -1,
             tableData: {},
             timerCount: 30,
+            points: 0,
+            timerHandler: null
         }
     },
     mounted() {
         this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent);
         this.themeName += this.tableData.themeName;
         this.themeId = this.tableData.themeId;
+        this.timerHandler = setInterval(this.timer, 1000);
     },
     methods: {
         submitResults() {
-            console.log('submitting...')
             axios.post('/fightlist_end', {}).then(() => {
-                console.log('logged')
                 location.href = "/dashboard"
             })
-        }
-    },
-    watch: {
-        timerCount: {
-            handler(value) {
-                if(value > 0){
-                    setTimeout(() => {
-                        this.timerCount--;
-                    }, 1000);
-                }
-                else{
-                    this.submitResults();
-                }
-            }, immediate:true
+        },
+        timer() {
+            if(--this.timerCount == 0) {
+                this.submitResults();
+            }
         }
     }
 }
@@ -70,17 +67,34 @@ export default {
     display: flex;
     justify-content: space-evenly;
 }
-.timer {
+.fightListTop {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+
+    position:relative;
+
+    width: 50vw;
+    height: 8vh;
     
+    margin: 0 auto;
+    margin-bottom: 2%;
+    margin-top: 2%; 
+
+    background-color: white;
+    border-radius: 4em;
+    overflow: hidden;
+
+    font-weight: 600;
+    box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
+}
+.numbers {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 48px;
-    line-height: 56px;
-    letter-spacing: 0.05em;
-    color: #FFFFFF;
+    font-size: 5vh;
+    color: #000000;
+
+    width: 50%;
 }
 </style>

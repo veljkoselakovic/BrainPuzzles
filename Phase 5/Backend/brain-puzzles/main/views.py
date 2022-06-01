@@ -380,9 +380,9 @@ class FightListView(View):
         if guess in request.session['triedGuesses']:
 
             returnJSON = {
-            'ok' : True,
-            'guess' : guess,
-            'points' : 0
+                'ok' : True,
+                'guess' : guess,
+                'points' : 0
             }
             return JsonResponse(returnJSON)
 
@@ -391,9 +391,9 @@ class FightListView(View):
             # print(self.themeId)
             item = FightListPojam.objects.filter(idt=request.session['themeId']).get(tekst=guess)
             returnJSON = {
-            'ok' : True,
-            'guess' : item.tekst,
-            'points' : item.poeni
+                'ok' : True,
+                'guess' : item.tekst,
+                'points' : item.poeni
             }
             request.session['triedGuesses'] += [item.tekst]
             request.session['totalPoints'] += item.poeni
@@ -402,9 +402,9 @@ class FightListView(View):
         except FightListPojam.DoesNotExist:
 
             returnJSON = {
-            'ok' : True,
-            'guess' : guess,
-            'points' : 0
+                'ok' : True,
+                'guess' : guess,
+                'points' : 0
             }
             return JsonResponse(returnJSON)
 
@@ -413,7 +413,7 @@ class FighListSubmitView(View):
     @method_decorator(login_required)
     def post(self, request):
         match = Rezultat.objects.get(pk=request.session['mId'])
-        
+
         if match.fightlistrezultat is not None:
             match.fightlistrezultat += request.session['totalPoints']
         else:
@@ -471,7 +471,6 @@ class KZZQuestionView(View):
     def post(self, request):
 
         data = json.loads(request.body)
-        print(data)
 
         answer = data['answerValue']
         answer = answer.lower().capitalize()
@@ -480,7 +479,8 @@ class KZZQuestionView(View):
             item = KzzOdgovor.objects.filter(idp=request.session['questionId']).get(tekst=answer)
             returnJSON = {
                 'isCorrect' : 1,
-                'correctAnswer' : item.tekst
+                'correctAnswer' : item.tekst,
+                'points' : 6
             }
             request.session['totalPoints'] += 6
 
@@ -489,7 +489,8 @@ class KZZQuestionView(View):
 
             returnJSON = {
                 'isCorrect' : 0,
-                'correctAnswer' : KzzPitanje.objects.get(idp=request.session['questionId']).tekst
+                'correctAnswer' : KzzOdgovor.objects.get(idp=request.session['questionId']).tekst,
+                'points' : -3
             }
             request.session['totalPoints'] -= 3
 
