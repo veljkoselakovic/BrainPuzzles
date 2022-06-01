@@ -81,7 +81,7 @@ export default {
 
             this.toggle(true);
 
-            setTimeout(this.next, 2500);
+            setTimeout(this.next, 1000);
         },
         next() {
             if (this.questionNumber <= 10) {
