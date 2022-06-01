@@ -54,6 +54,38 @@ class SuccessRegView(View):
     def get(self, request):
         return render(request, 'succesRegistration.html', {})
 
+
+class DashboardInfoView(View):
+
+    @method_decorator(login_required)
+    def get(self, request):
+        matchId = request.session.get('mId', -1)
+        print("matchId = " + str(matchId))
+        if matchId == -1:
+            newMatch = Rezultat()
+            newMatch.idk = request.user
+            newMatch.rezultat = 0
+            newMatch.vremeigranja = datetime.datetime.now()
+
+            newMatch.save()
+            request.session['mId'] = newMatch.idm
+
+        match = Rezultat.objects.get(idm=request.session['mId'])
+
+        info = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        'flRez' : match.fightlistrezultat,
+        'kzzRez' : match.kzzrezultat,
+        'mRez' : match.mozgicrezultat
+        }
+
+        return JsonResponse(info)
+
+
+
 class DashboardView(View):
 
     @method_decorator(login_required)
