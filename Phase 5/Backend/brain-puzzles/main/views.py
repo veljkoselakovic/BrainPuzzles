@@ -523,3 +523,23 @@ class AboutMeView(View):
         request.user.save()
         print("posle " + request.user.opis)
         return JsonResponse({'ok' : True})
+
+class MozgicSubmitView(View):
+
+    def post(self, request):
+
+        data = json.loads(request.body)
+        pts = data['mozgicPts']
+
+        match = Rezultat.objects.get(pk=request.session['mId'])
+        
+        if match.mozgicrezultat is not None:
+            match.mozgicrezultat += pts
+        else:
+            match.mozgicrezultat = pts
+
+        print(pts)
+
+        match.save()
+
+        return JsonResponse({'ok' : True})

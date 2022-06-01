@@ -36,6 +36,7 @@ urlpatterns = [
     path('kzzquestion', KZZQuestionView.as_view(), name="kzz_question"),
     path('kzz_end', KZZEnd.as_view(), name="kzz_end"),
     path('ranking', RankingView.as_view(), name="ranking_page"),
+    path('mozgicSubmit', MozgicSubmitView.as_view(), name="mozgic_submit"),
 
 
     # path('fightlist/id=?&guess=?')

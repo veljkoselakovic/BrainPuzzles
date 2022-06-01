@@ -113,6 +113,12 @@ import FooterComponent from '../../BasicComponents/FooterComponent.vue'
 import HeaderComponent from '../../BasicComponents/HeaderComponent.vue'
 import FancyButton from '../../BasicComponents/FancyButton.vue'
 
+import axios from "axios";
+
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+
+
 var a = 0, b = 0; //do koje vrste i kolone smo stigli
 const combination = []; //kombinacija koja treba da se pogodi
 const guess = []; //nas pokusaj
@@ -243,7 +249,10 @@ export default {
                     //poeni ako je pogodjeno
                     if (goodPlace == 4) { 
                         if(a <= 4) points = 20; if (a == 5) points = 15; if (a == 6) points = 10;
-                        alert(points); //ZAKOMENTARISATI NAKON POVEZIVANJA S BACKOM
+                        // alert(points); //ZAKOMENTARISATI NAKON POVEZIVANJA S BACKOM
+                        axios.post('/mozgicSubmit', {mozgicPts : points}).then(() => {
+                            location.href = "/dashboard"
+                        })
                         }
                     this.submitResults();
                 }
