@@ -19,16 +19,13 @@ import axios from "axios";
 export default {
     components:{FooterComponent, HeaderComponent, FancyText, RankingCanvasComponent},
     name: 'RankingComponent',
-    mounted() {
-        axios.get('/ranking').then(()=>{
-            this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
-            this.pairs = this.tableData.pairs
-            console.log("uhavtio")
-        });
+    beforeCreate() {
+        axios.get('/rankingInfo').then((response)=>{
+            this.pairs = response.data['pairs']
+        })
     },
     data()  {
         return {
-            tableData: {},
             pairs:[]
         }
     }

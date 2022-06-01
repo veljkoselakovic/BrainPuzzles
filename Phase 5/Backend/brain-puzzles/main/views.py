@@ -292,8 +292,6 @@ class AddAdminView(View):
 class RankingView(View):
 
     def get(self, request):
-        print("ranking get")
-
         rankings = list(Statistika.objects.all())
         rankings.sort(key=lambda x: x.totalscore, reverse=True)
         rankings = rankings[:10]
@@ -303,12 +301,29 @@ class RankingView(View):
         pairs = [];
         for (username, highScore) in zip(usernames, highScores):
             pairs.append(username + "," + str(highScore))
-        
+
         info = {
-            'pairs' :  pairs,
+            'pairs' : pairs
         }
-        print(info['pairs'])
         return render(request, 'base.html', {'jsonInfo': info})
+
+class RankingInfoView(View):
+
+    def get(self, request):
+        rankings = list(Statistika.objects.all())
+        rankings.sort(key=lambda x: x.totalscore, reverse=True)
+        rankings = rankings[:10]
+        korisniks =  [r.idk for r in rankings]
+        usernames = [k.username for k in korisniks]
+        highScores = [r.highscore for r in rankings]
+        pairs = [];
+        for (username, highScore) in zip(usernames, highScores):
+            pairs.append(username + "," + str(highScore))
+
+        returnJSON = {
+            'pairs' : pairs
+        }
+        return JsonResponse(returnJSON)
 
 class MozgicView(View):
 
