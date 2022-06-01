@@ -588,6 +588,7 @@ class AboutMeView(View):
 
 class MozgicSubmitView(View):
 
+    @method_decorator(login_required)
     def post(self, request):
 
         data = json.loads(request.body)
@@ -605,3 +606,18 @@ class MozgicSubmitView(View):
         match.save()
 
         return JsonResponse({'ok' : True})
+
+class ScoreInfoView(View):
+
+
+    @method_decorator(login_required)
+    def get(self, request):
+
+        stat = Statistika.objects.get(pk=request.user.id)
+        jsonRes = {
+            'ok' : True,
+            'highScore' : stat.highscore,
+            'totalScore' : stat.totalscore
+        }
+
+        return JsonResponse(jsonRes)

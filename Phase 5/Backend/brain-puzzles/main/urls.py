@@ -40,6 +40,8 @@ urlpatterns = [
     path('mozgicSubmit', MozgicSubmitView.as_view(), name="mozgic_submit"),
     path('dashboardInfo', DashboardInfoView.as_view(), name="dashboard_info"),
     path('mainscreenInfo', MainScreenInfoView.as_view(), name="mainscreeninfo_page"),
+    path('scoreInfo', ScoreInfoView.as_view(), name="scoreInfo_info"),
+
 
     # path('fightlist/id=?&guess=?')
     # brain-puzzles.com/register

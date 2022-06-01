@@ -6,6 +6,7 @@
 
 <head>
 <form><div id="app"></div>
+{% csrf_token %}
 {% load static %}
 {{ jsonInfo|json_script:"jsonInfo" }}
 
