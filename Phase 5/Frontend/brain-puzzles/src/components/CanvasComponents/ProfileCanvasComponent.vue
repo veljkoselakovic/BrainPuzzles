@@ -19,10 +19,10 @@
         </div>
         <div id="points">
             <p class="pointsName" style="text-align:left; border-bottom: 1.2px solid rgba(0, 0, 0, 0.751);">
-                Total score:  <span style="float:right;">{{totalScore}}</span>
+                Total score:  <span style="float:right;">{{this.totalScore}}</span>
             </p>
             <p class="pointsName" style="text-align:left; border-bottom: 1.2px solid rgba(0, 0, 0, 0.751);">
-                High score:  <span style="float:right;">{{highScore}}</span>
+                High score:  <span style="float:right;">{{this.highScore}}</span>
             </p>
         </div>
     </div>
@@ -31,13 +31,19 @@
 <script>
 import axios from "axios";
 
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+
 export default {
     name : 'ProfileCanvasComponent',
     props:[
-        'username', 'email', 'status', 'aboutMe', 'totalScore', 'highScore', 'profilePicture'
+        'username', 'email', 'status', 'aboutMe', 'profilePicture'
     ],
+    
     data(){
         return{
+            highScore: 0,
+            totalScore: 0,
             prikazi : false,
         }
     },
@@ -58,7 +64,15 @@ export default {
             document.getElementById('area').value = this.aboutMe;
             this.prikazi = !this.prikazi;
         }
-    }
+    },
+    created() {
+        axios.get('/scoreInfo', {}).then((response) => {
+            this.highScore = response.data['highScore']
+            this.totalScore = response.data['totalScore']
+
+
+        })
+    },
     
 }
 

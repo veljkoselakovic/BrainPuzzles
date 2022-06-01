@@ -413,42 +413,16 @@ class RankingInfoView(View):
         }
         return JsonResponse(returnJSON)
 
-class MozgicView(View):
-
-    def get(self, request):
-
-        try:
-            match = Rezultat.objects.get(idm=request.session['mId'])
-        except KeyError:
-            return redirect('mainscreen_page')
-
-        if match.mozgicrezultat != None:
-            return redirect("/dashboard")
-
-        return render(request, 'base.html', {})
-
-    @method_decorator(login_required)
-    def post(self, request):
-        data = json.loads(request.body)
-
-        points = data['points']
-
-        match = Rezultat.objects.get(pk=request.session['mId'])
-
-        if match.mozgicrezultat is not None:
-            match.mozgicrezultat += points
-        else:
-            match.mozgicrezultat = points
-
-        match.save()
-
-        return JsonResponse({'ok' : True})
-
-
 class FightListView(View):
 
     @method_decorator(login_required)
     def get(self, request):
+
+        try:
+            if request.session['fightListPoints'] != 0:
+                return redirect('mainscreen_page')
+        except:
+            pass
 
         try:
             match = Rezultat.objects.get(idm=request.session['mId'])
@@ -491,9 +465,7 @@ class FightListView(View):
             }
             return JsonResponse(returnJSON)
 
-        # themeId = data['themeId']
         try:
-            # print(self.themeId)
             item = FightListPojam.objects.filter(idt=request.session['themeId']).get(tekst=guess)
             returnJSON = {
                 'ok' : True,
@@ -524,7 +496,6 @@ class FighListSubmitView(View):
         else:
             match.fightlistrezultat = request.session['fightListPoints']
 
-        request.session['fightListPoints'] = 0
         match.save()
 
         return JsonResponse({'ok' : True})
@@ -533,6 +504,12 @@ class KZZView(View):
 
     @method_decorator(login_required)
     def get(self, request):
+
+        try:
+            if request.session['kzzPoints'] != 0:
+                return redirect('mainscreen_page')
+        except:
+            pass
 
         try:
             match = Rezultat.objects.get(idm=request.session['mId'])
@@ -612,8 +589,44 @@ class KZZEnd(View):
         else:
             match.kzzrezultat = request.session['kzzPoints']
 
-        request.session['kzzPoints'] = 0
         match.save()
+
+        return JsonResponse({'ok' : True})
+
+class MozgicView(View):
+
+    def get(self, request):
+
+        try:
+            if request.session['mozgicPoints'] != 0:
+                return redirect('mainscreen_page')
+        except:
+            pass
+
+        try:
+            match = Rezultat.objects.get(idm=request.session['mId'])
+        except KeyError:
+            return redirect('mainscreen_page')
+
+        if match.mozgicrezultat != None:
+            return redirect("/dashboard")
+        
+        request.session['mozgicrezultat'] = 0
+
+        return render(request, 'base.html', {})
+
+class MozgicSubmitView(View):
+
+    def post(self, request):
+
+        data = json.loads(request.body)
+        pts = data['mozgicPts']
+
+        match = Rezultat.objects.get(pk=request.session['mId'])
+        match.mozgicrezultat = pts
+        match.save()
+
+        request.session['mozgicPoints'] = pts
 
         return JsonResponse({'ok' : True})
 
@@ -630,6 +643,7 @@ class AboutMeView(View):
 
 class MozgicSubmitView(View):
 
+    @method_decorator(login_required)
     def post(self, request):
 
         data = json.loads(request.body)
@@ -647,3 +661,18 @@ class MozgicSubmitView(View):
         match.save()
 
         return JsonResponse({'ok' : True})
+
+class ScoreInfoView(View):
+
+
+    @method_decorator(login_required)
+    def get(self, request):
+
+        stat = Statistika.objects.get(pk=request.user.id)
+        jsonRes = {
+            'ok' : True,
+            'highScore' : stat.highscore,
+            'totalScore' : stat.totalscore
+        }
+
+        return JsonResponse(jsonRes)
