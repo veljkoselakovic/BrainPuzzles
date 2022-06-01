@@ -100,7 +100,7 @@
 
 
     <div class="div1"><FancyButton style="width:25vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Submit" @click="submitGuess($event)"></FancyButton></div>
-    <div class="div1"><FancyButton style="width:9.375vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Back" @click="eraseSymbol"></FancyButton></div>
+    <div class="div1"><FancyButton style="width:9.375vw; height:5.95vh; transform: scale(1.7); margin-top:2.64vh;" text="Back" @click="eraseSymbol($event)"></FancyButton></div>
     
     </div>
 
@@ -271,7 +271,9 @@ export default {
 
 
         //back 
-        eraseSymbol(){
+        eraseSymbol(event){
+
+            event.preventDefault();
             if (b == 0) return; //ne moze da se brise ako nista nismo uneli
             if (b > 4) b = 4; 
 
