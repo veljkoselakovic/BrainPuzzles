@@ -47,7 +47,6 @@ export default {
             document.getElementById('area').disabled = true;
             document.getElementById('area').disabled = false;
             let txt = document.getElementById('area').value;
-            console.log(txt);
             axios.post('/aboutme', {
                 aboutMe : txt
             }).then(() => {

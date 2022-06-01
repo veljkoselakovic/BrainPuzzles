@@ -3,10 +3,8 @@
     <div class="div">
         <FancyText width=45vw height=3vw text='Rankings' fontSize=25px></FancyText>
         <br>
-        
     </div>
-    <RankingCanvasComponent :niz="['jedan', 'dva', 'tri', 'cetiri', 'pet', 'sest', 'sedam', 'osam',
-     'devet', 'deset', '1000','900','800','700','600','500','400','300','200','100']"/>
+    <RankingCanvasComponent :niz="pairs"/>
     <footer><FooterComponent/></footer>
 </template>
 
@@ -21,12 +19,14 @@ import axios from "axios";
 export default {
     components:{FooterComponent, HeaderComponent, FancyText, RankingCanvasComponent},
     name: 'RankingComponent',
-    mounted() {
-        axios.get('/ranking').then();
+    beforeCreate() {
+        axios.get('/rankingInfo').then((response)=>{
+            this.pairs = response.data['pairs']
+        })
     },
     data()  {
         return {
-            // tableData: {},
+            pairs:[]
         }
     }
 }

@@ -54,6 +54,38 @@ class SuccessRegView(View):
     def get(self, request):
         return render(request, 'succesRegistration.html', {})
 
+
+class DashboardInfoView(View):
+
+    @method_decorator(login_required)
+    def get(self, request):
+        matchId = request.session.get('mId', -1)
+        print("matchId = " + str(matchId))
+        if matchId == -1:
+            newMatch = Rezultat()
+            newMatch.idk = request.user
+            newMatch.rezultat = 0
+            newMatch.vremeigranja = datetime.datetime.now()
+
+            newMatch.save()
+            request.session['mId'] = newMatch.idm
+
+        match = Rezultat.objects.get(idm=request.session['mId'])
+
+        info = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        'flRez' : match.fightlistrezultat,
+        'kzzRez' : match.kzzrezultat,
+        'mRez' : match.mozgicrezultat
+        }
+
+        return JsonResponse(info)
+
+
+
 class DashboardView(View):
 
     @method_decorator(login_required)
@@ -146,6 +178,20 @@ class MainScreenView(View):
         }
 
         return render(request, 'base.html', {'jsonInfo': info})
+
+class MainScreenInfoView(View):
+
+    @method_decorator(login_required)
+    def get(self, request):
+        returnJSON = {
+        'user' :  request.user.username,
+        'email' : request.user.email,
+        'status' : request.user.titula,
+        'opis' : request.user.opis,
+        'isAdmin' : request.user.is_superuser
+        }
+
+        return JsonResponse(returnJSON)
 
 class AddThemeView(View):
     
@@ -297,16 +343,33 @@ class RankingView(View):
         rankings = rankings[:10]
         korisniks =  [r.idk for r in rankings]
         usernames = [k.username for k in korisniks]
-        print(usernames)
         highScores = [r.highscore for r in rankings]
-        print(highScores)
-        pairs = []
+        pairs = [];
+        for (username, highScore) in zip(usernames, highScores):
+            pairs.append(username + "," + str(highScore))
 
-        # info = {
-        # 'rankings' :  rankings
-        # }
+        info = {
+            'pairs' : pairs
+        }
+        return render(request, 'base.html', {'jsonInfo': info})
 
-        return render(request, 'base.html', {})
+class RankingInfoView(View):
+
+    def get(self, request):
+        rankings = list(Statistika.objects.all())
+        rankings.sort(key=lambda x: x.totalscore, reverse=True)
+        rankings = rankings[:10]
+        korisniks =  [r.idk for r in rankings]
+        usernames = [k.username for k in korisniks]
+        highScores = [r.highscore for r in rankings]
+        pairs = [];
+        for (username, highScore) in zip(usernames, highScores):
+            pairs.append(username + "," + str(highScore))
+
+        returnJSON = {
+            'pairs' : pairs
+        }
+        return JsonResponse(returnJSON)
 
 class MozgicView(View):
 
@@ -521,4 +584,24 @@ class AboutMeView(View):
         request.user.opis = aboutMe
         request.user.save()
         print("posle " + request.user.opis)
+        return JsonResponse({'ok' : True})
+
+class MozgicSubmitView(View):
+
+    def post(self, request):
+
+        data = json.loads(request.body)
+        pts = data['mozgicPts']
+
+        match = Rezultat.objects.get(pk=request.session['mId'])
+        
+        if match.mozgicrezultat is not None:
+            match.mozgicrezultat += pts
+        else:
+            match.mozgicrezultat = pts
+
+        print(pts)
+
+        match.save()
+
         return JsonResponse({'ok' : True})
