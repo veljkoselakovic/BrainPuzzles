@@ -14,7 +14,7 @@ import MozgicComponent                    from './components/GameComponents/Mozg
 import KZZComponent                       from './components/GameComponents/KZZComponents/KZZComponent.vue'
 
 const routes =  [
-  { path: '/',            component: LogInComponent                             },
+  { path: '/',            component: MozgicComponent                             },
   { path: '/register',    component: RegistrationComponent, name:'registration' },
   { path: '/login',       component: LogInComponent,        name:'login'        },
   { path: '/dashboard',   component: DashboardComponent,    name:'dashboard'    },
