@@ -292,7 +292,33 @@ class AddAdminView(View):
 class MozgicView(View):
 
     def get(self, request):
+
+        try:
+            match = Rezultat.objects.get(idm=request.session['mId'])
+        except KeyError:
+            return redirect('mainscreen_page')
+
+        if match.mozgicrezultat != None:
+            return redirect("/dashboard")
+
         return render(request, 'base.html', {})
+
+    @method_decorator(login_required)
+    def post(self, request):
+        data = json.loads(request.body)
+
+        points = data['points']
+
+        match = Rezultat.objects.get(pk=request.session['mId'])
+
+        if match.mozgicrezultat is not None:
+            match.mozgicrezultat += points
+        else:
+            match.mozgicrezultat = points
+
+        match.save()
+
+        return JsonResponse({'ok' : True})
 
 
 class FightListView(View):
@@ -305,10 +331,8 @@ class FightListView(View):
         except KeyError:
             return redirect('mainscreen_page')
 
-
         if match.fightlistrezultat != None:
             return redirect("/dashboard")
-
 
         import random
 
@@ -385,19 +409,13 @@ class KZZView(View):
     @method_decorator(login_required)
     def get(self, request):
 
-        matchId = request.session.get('mId', -1)
-        print("matchId = " + str(matchId))
-        if matchId == -1:
-            newMatch = Rezultat()
-            newMatch.idk = request.user
-            newMatch.fightlistrezultat = 0
-            newMatch.mozgicrezultat = 0
-            newMatch.kzzrezultat = 0
-            newMatch.rezultat = 0
-            newMatch.vremeigranja = datetime.datetime.now()
+        try:
+            match = Rezultat.objects.get(idm=request.session['mId'])
+        except KeyError:
+            return redirect('mainscreen_page')
 
-            newMatch.save()
-            request.session['mId'] = newMatch.idm
+        if match.kzzrezultat != None:
+            return redirect("/dashboard")
         
         request.session['totalPoints'] = 0
         request.session['pastQuestions'] = []
@@ -462,7 +480,12 @@ class KZZEnd(View):
     @method_decorator(login_required)
     def post(self, request):
         match = Rezultat.objects.get(pk=request.session['mId'])
-        match.kzzrezultat += request.session['totalPoints']
+
+        if match.fightlistrezultat is not None:
+            match.fightlistrezultat += request.session['totalPoints']
+        else:
+            match.fightlistrezultat = request.session['totalPoints']
+
         request.session['totalPoints'] = 0
         match.save()
 
