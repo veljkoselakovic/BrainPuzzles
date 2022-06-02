@@ -602,11 +602,12 @@ class RankingView(View):
         highScores = [r.highscore for r in rankings]
         pairs = []
         for (username, highScore) in zip(usernames, highScores):
-            if username is "Guest":
-                continue
-            pairs.append(username + "," + str(highScore))
+            if username != "Guest":
+                print("USER" + username)
+                pairs.append(username + "," + str(highScore))
 
         pairs = pairs[:10]
+        print(pairs)
         info = {
             'pairs' : pairs
         }
@@ -635,7 +636,8 @@ class RankingInfoView(View):
         highScores = [r.highscore for r in rankings]
         pairs = [];
         for (username, highScore) in zip(usernames, highScores):
-            pairs.append(username + "," + str(highScore))
+            if username != "Guest":
+                pairs.append(username + "," + str(highScore))
 
         returnJSON = {
             'pairs' : pairs
