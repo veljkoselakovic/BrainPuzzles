@@ -117,9 +117,11 @@ class DashboardView(View):
                     statistika.prosek = (statistika.prosek*(statistika.brodigranih-1) + noviPoeni) / statistika.brodigranih
 
                     if(status == 'b' and statistika.totalscore > 15): 
-                        status = 's'
+                        request.user.titula = 's'
+                        request.user.save()
                     if(status == 's' and statistika.totalscore > 36):
-                        status = 'z'
+                        request.user.titula = 'z'
+                        request.user.save()
                     statistika.save()
                 except  Statistika.DoesNotExist: #prvi put zavrsena partija, samo fl imamo
                     print("except DoesNotExist stat")
@@ -131,6 +133,13 @@ class DashboardView(View):
                     statistika.prosek = fl
                     statistika.save()
                 request.session['mId'] = -1
+                if "fightListPoints" in self.request.session.keys():
+                    del self.request.session["fightListPoints"]
+                if "mozgicPoints" in self.request.session.keys():
+                    del self.request.session["mozgicPoints"]
+                if "kzzPoints" in self.request.session.keys():
+                    del self.request.session["kzzPoints"]
+                return redirect('mainscreen_page')
 
 
         matchId = request.session.get('mId', -1)
@@ -611,7 +620,7 @@ class MozgicView(View):
         if match.mozgicrezultat != None:
             return redirect("/dashboard")
         
-        request.session['mozgicrezultat'] = 0
+        request.session['mozgicPoints'] = 0
 
         return render(request, 'base.html', {})
 
