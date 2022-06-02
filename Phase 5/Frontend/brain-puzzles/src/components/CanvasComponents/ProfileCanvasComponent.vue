@@ -1,9 +1,6 @@
 <template>
     <div class="canvas">
         <div id="top">
-            <div id="divProfilePicture">
-                <img id="profilePicture" src="static/res/profilna2.jpg" alt="profilna">
-            </div>
             <div id="info">
                 username : {{username}} <br>
                 email : {{email}} <br>
@@ -107,15 +104,6 @@ export default {
     margin-top: 6%;
     margin-left: 8%;
     margin-bottom: 3%;
-}
-#divProfilePicture{
-    width: 25%;
-    margin-right: 10%;
-}
-#profilePicture{
-    max-width:100%;
-    height:auto;
-    border: 2.5px solid #F178B6;
 }
 #info{
     color: rgba(0, 0, 0, 0.317);
