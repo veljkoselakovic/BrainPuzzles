@@ -178,7 +178,8 @@ class RegisterView(View) :
         info = {
             'username' : request.POST.get('user'),
             'email' : request.POST.get('email'),
-            'password' : request.POST.get('pass')
+            'password' : request.POST.get('pass'),
+            'passwordAgain' : request.POST.get('pass_again')
         }
 
         try:
@@ -195,6 +196,10 @@ class RegisterView(View) :
             newKorisnik.opis = ""
             newKorisnik.titula = "bronza"
             newKorisnik.slika = ""
+
+            if(info['password'] != info['passwordAgain']):
+                messages.error(request, 'Passwords do not match')
+                return redirect("registration_page")
         
             newKorisnik.save()
             messages.success(request, 'Successfully registered.')
@@ -209,10 +214,6 @@ class RegisterView(View) :
                 messages.error(request, 'Unknown error')
 
             return redirect("registration_page")
-
-
-        # HttpResponse
-        # JSONResponse
 
         return render(request, 'successRegistration.html', {})
 
