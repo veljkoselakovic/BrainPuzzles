@@ -596,14 +596,17 @@ class RankingView(View):
 
         rankings = list(Statistika.objects.all())
         rankings.sort(key=lambda x: x.totalscore, reverse=True)
-        rankings = rankings[:10]
+        rankings = rankings[:11]
         korisniks =  [r.idk for r in rankings]
         usernames = [k.username for k in korisniks]
         highScores = [r.highscore for r in rankings]
         pairs = []
         for (username, highScore) in zip(usernames, highScores):
+            if username is "Guest":
+                continue
             pairs.append(username + "," + str(highScore))
 
+        pairs = pairs[:10]
         info = {
             'pairs' : pairs
         }
