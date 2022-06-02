@@ -984,35 +984,6 @@ class AboutMeView(View):
         print("posle " + request.user.opis)
         return JsonResponse({'ok' : True})
 
-class MozgicSubmitView(View):
-# Klasa za zavrsetak mozgic igrice preko axiosa
-
-    @method_decorator(login_required)
-    def post(self, request):
-        # Dohvatanje post zahteva
-
-        # Parametri
-        # ---------
-        # self - MozgicSubmitView
-        # request - HttpRequest
-
-        # Returns
-        # ---------
-        # JsonResponse
-
-        data = json.loads(request.body)
-        pts = data['mozgicPts']
-
-        match = Rezultat.objects.get(pk=request.session['mId'])
-        
-        if match.mozgicrezultat is not None:
-            match.mozgicrezultat += pts
-        else:
-            match.mozgicrezultat = pts
-
-        match.save()
-        return JsonResponse({'ok' : True})
-
 class ScoreInfoView(View):
 # Klasa za prikaz poena korisnika
 
