@@ -21,7 +21,6 @@ class Korisnik(AbstractUser):
     # datumuclanjenja = models.DateTimeField(db_column='datumUclanjenja', blank=True, null=True)  # Field name made lowercase.
     # admin = models.IntegerField(blank=True, null=True)
     titula = models.CharField(max_length=45, blank=True, null=True)
-    slika = models.TextField(blank=True, null=True)
 
     class Meta:
         db_table = 'korisnik'

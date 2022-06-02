@@ -41,6 +41,8 @@ urlpatterns = [
     path('dashboardInfo', DashboardInfoView.as_view(), name="dashboard_info"),
     path('mainscreenInfo', MainScreenInfoView.as_view(), name="mainscreeninfo_page"),
     path('scoreInfo', ScoreInfoView.as_view(), name="scoreInfo_info"),
+    path('loginGuest', LogInGuest.as_view(), name="logInGuest_page"),
+
 
 
     # path('fightlist/id=?&guess=?')
