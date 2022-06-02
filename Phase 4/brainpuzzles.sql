@@ -316,7 +316,9 @@ CREATE TABLE `korisnik` (
 --
 
 INSERT INTO `korisnik` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`, `opis`, `titula`) VALUES
-(1, 'pbkdf2_sha256$320000$BmVKgJcPdmR9pBjQgUQlEm$VcQe6hQHuwo4O3agS8/FIXAjcAESIIVqH7W9EGmSK+E=', '2022-05-16 22:22:36.627720', 1, 'veljko', 'Veljko', 'Selakovic', 'veljko@gmail.com', 1, 1, '2022-05-10 15:16:06.941447', 'opis', 'Bronzani');
+(1, 'pbkdf2_sha256$320000$BmVKgJcPdmR9pBjQgUQlEm$VcQe6hQHuwo4O3agS8/FIXAjcAESIIVqH7W9EGmSK+E=', '2022-05-16 22:22:36.627720', 1, 'veljko', 'Veljko', 'Selakovic', 'veljko@gmail.com', 1, 1, '2022-05-10 15:16:06.941447', 'goDaddy', 'Bronzani'),
+(2, 'pbkdf2_sha256$320000$BmVKgJcPdmR9pBjQgUQlEm$VcQe6hQHuwo4O3agS8/FIXAjcAESIIVqH7W9EGmSK+E=', '2022-05-16 22:22:36.627720', 1, 'teodor', 'Teodor', 'Delibasic', 'teodor@gmail.com', 0, 0, '2022-05-10 15:16:06.941447', 'Microsoft', 'Srebrni'),
+(3, 'pbkdf2_sha256$320000$BmVKgJcPdmR9pBjQgUQlEm$VcQe6hQHuwo4O3agS8/FIXAjcAESIIVqH7W9EGmSK+E=', '2022-05-16 22:22:36.627720', 1, 'iva', 'Iva', 'Rakic', 'iva@yahoo.com', 0, 0, '2022-05-10 15:16:06.941447', '', 'Zlatni');
 
 --
 -- Table structure for table `korisnik_groups`
@@ -687,45 +689,110 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 INSERT INTO `fight_list_tema` (`idT`, `tema`, `idK`) VALUES
-(1, 'Japanese car manufacturers', 1),
-(2, 'Phone manufacturers', 1);
+(1, 'Marke automobila Japanskog porekla', 1),
+(2, 'Marke telefona', 1),
+(3, 'Zenska imena na slovo I', 1),
+(4, 'Lanci supermarketa u Srbiji', 1),
+(5, 'Drzave na slovo M', 1);
 
-INSERT INTO `fight_list_pojam` (`idP`, `idT`, `tekst`, `poeni`) VALUES
-(1, 1, 'Toyota', 1),
-(2, 1, 'Honda', 1),
-(3, 1, 'Nissan', 1),
-(4, 1, 'Suzuki', 1),
-(5, 1, 'Lexus', 2),
-(6, 1, 'Daihatsu', 3),
-(7, 1, 'Mazda', 2),
-(8, 2, 'Samsung', 1),
-(9, 2, 'Apple', 1),
-(10, 2, 'Xiaomi', 1),
-(11, 2, 'Huawei', 1),
-(12, 2, 'Zte', 3),
-(13, 2, 'Htc', 2),
-(14, 2, 'Lg', 2);
+INSERT INTO `fight_list_pojam` (`idT`, `tekst`, `poeni`) VALUES
+(1, 'Toyota', 1),
+(1, 'Honda', 1),
+(1, 'Nissan', 1),
+(1, 'Suzuki', 1),
+(1, 'Lexus', 2),
+(1, 'Subaru', 2),
+(1, 'Mitsubishi', 3),
+(1, 'Daihatsu', 3),
+(1, 'Mazda', 2),
+
+(2, 'Samsung', 1),
+(2, 'Apple', 1),
+(2, 'Xiaomi', 1),
+(2, 'Huawei', 1),
+(2, 'Zte', 3),
+(2, 'Htc', 2),
+(2, 'Acer', 2),
+(2, 'Lenovo', 2),
+(2, 'Hp', 3),
+(2, 'Nokia', 1),
+(2, 'Sony', 1),
+(2, 'Lg', 2),
+
+(3, 'Iva', 3),
+(3, 'Ivana', 1),
+(3, 'Ivona', 1),
+(3, 'Ivka', 3),
+(3, 'Isidora', 1),
+(3, 'Ivanka', 2),
+(3, 'Irina', 2),
+(3, 'Ilinka', 3),
+(3, 'Ikonija', 3),
+(3, 'Iris', 2),
+(3, 'Iskra', 2),
+
+(4, 'Maxi', 1),
+(4, 'Dis', 2),
+(4, 'Idea', 1),
+(4, 'Roda', 1),
+(4, 'Super Vero', 3),
+(4, 'Metro', 2),
+(4, 'Tempo', 2),
+(4, 'Univerexport', 2),
+(4, 'Lidl', 2),
+
+(5, 'Madagaskar', 1),
+(5, 'Malezija', 2),
+(5, 'Maldivi', 2),
+(5, 'Makedonija', 1),
+(5, 'Malta', 1),
+(5, 'Monako', 1),
+(5, 'Mauricijus', 2),
+(5, 'Mongolija', 2),
+(5, 'Mozambik', 3),
+(5, 'Meksiko', 1),
+(5, 'Maroko', 2);
 
 INSERT INTO `kzz_pitanje` (`idP`, `tekst`, `idK`) VALUES
-(1, 'Ko je najjaci', 1),
-(2, 'ko je najjaci 2', 1),
-(3, 'ko je najjaci 3', 1),
-(4, 'ko je najjaci 4', 1),
-(5, 'ko je najjaci 5', 1),
-(6, 'ko je najjaci 6', 1),
-(7, 'ko je najjaci 7', 1),
-(8, 'ko je najjaci 8', 1),
-(9, 'ko je najjaci 9', 1),
-(10, 'ko je najjaci 10', 1);
+(1, 'Koji od srpskih gradova je u prošlosti nazivan srpskom Atinom?', 1),
+(2, 'Ljubica Marić je poznata srpska?', 1),
+(3, 'Koliko nogu ima pauk? (slovima napisati)', 1),
+(4, 'Koji je glavni grad Australije?', 1),
+(5, 'Koja je nacionalna zivotinja Indije?', 1),
+(6, 'Koji je najveci kontinent na svetu?', 1),
+(7, 'Koja boja je simbol za mir?', 1),
+(8, 'Koja je najveca planeta Suncevog sistema?', 1),
+(9, 'Glavnu ulogu u filmu Umri Muški glumi?', 1),
+(10, 'Grad Majami se nalazi u kojoj američkoj državi?', 1),
+(11, 'Hemijska oznaka za olovo je?', 1),
+(12, 'Pobednik pesme Evrovizije za 2009 je?', 1),
+(13, 'Ko je napisao „Trijumfalnu kapiju“?', 1),
+(14, 'Uz koji sport se vezuje ime Mihael Šumaher?', 1),
+(15, 'Javorov list je simbol koje drzave?', 1),
+(16, 'Šta je oboa?', 1),
+(17, 'Film “Kum” režirao je', 1),
+(18, 'Na kom poluostrvu se nalazi Italija?', 1),
+(19, 'Koja životinja je zaštitni znak linux operativnog sistema?', 1),
+(20, 'Koji programski jezik je prvi nastao?', 1);
 
 INSERT INTO `kzz_odgovor` (`idO`, `idP`, `tekst`) VALUES
-(1, 1, 'teodor'),
-(2, 2, 'teodor2'),
-(3, 3, 'teodor3'),
-(4, 4, 'teodor4'),
-(5, 5, 'teodor5'),
-(6, 6, 'teodor6'),
-(7, 7, 'teodor7'),
-(8, 8, 'teodor8'),
-(9, 9, 'teodor9'),
-(10, 10, 'teodor10');
+(1, 1, 'Novi Sad'),
+(2, 2, 'Kompozitorka'),
+(3, 3, 'Osam'),
+(4, 4, 'Kanbera'),
+(5, 5, 'Tigar'),
+(6, 6, 'Azija'),
+(7, 7, 'Bela'),
+(8, 8, 'Jupiter'),
+(9, 9, 'Brus Vilis'),
+(10, 10, 'Florida'),
+(11, 11, 'Pb'),
+(12, 12, 'Norveska'),
+(13, 13, 'Erih Marija Remark'),
+(14, 14, 'Formula 1'),
+(15, 15, 'Kanade'),
+(16, 16, 'Instrument'),
+(17, 17, 'Frensis Ford Kopola'),
+(18, 18, 'Apeninskom'),
+(19, 19, 'Pingvin'),
+(20, 20, 'Ada');
