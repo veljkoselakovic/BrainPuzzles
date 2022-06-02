@@ -97,18 +97,16 @@ class DashboardView(View):
             m = match.mozgicrezultat
             kzz = match.kzzrezultat
             status = request.user.titula
-            if(status == 'b' and fl != None or status == 's' and fl != None and m != None or status == 'z' and fl != None and m != None and kzz != None):
-                print("usao u get")
+            if(status == 'Bronzani' and fl != None or status == 'Srebrni' and fl != None and m != None or status == 'Zlatni' and fl != None and m != None and kzz != None):
                 try:
                     statistika = Statistika.objects.get(idk=request.user)
-                    print("prosao dodelu statistike")
                     noviPoeni = 0
                     statistika.brodigranih += 1
-                    if(status == 'b'):
+                    if(status == 'Bronzani'):
                         noviPoeni += fl
-                    if(status == 's'):
+                    if(status == 'Srebrni'):
                         noviPoeni += fl + m
-                    if(status == 'z' ):
+                    if(status == 'Zlatni' ):
                         noviPoeni += fl + m + kzz
                     
                     statistika.totalscore += noviPoeni
@@ -116,21 +114,24 @@ class DashboardView(View):
                         statistika.highscore = noviPoeni
                     statistika.prosek = (statistika.prosek*(statistika.brodigranih-1) + noviPoeni) / statistika.brodigranih
 
-                    if(status == 'b' and statistika.totalscore > 15): 
-                        request.user.titula = 's'
+                    if(status == 'Bronzani' and statistika.totalscore > 15): 
+                        request.user.titula = 'Srebrni'
                         request.user.save()
-                    if(status == 's' and statistika.totalscore > 36):
-                        request.user.titula = 'z'
+                    if(status == 'Srebrni' and statistika.totalscore > 36):
+                        request.user.titula = 'Zlatni'
                         request.user.save()
+                    match.rezultat = noviPoeni
+                    match.save()
                     statistika.save()
                 except  Statistika.DoesNotExist: #prvi put zavrsena partija, samo fl imamo
-                    print("except DoesNotExist stat")
                     statistika = Statistika()
                     statistika.idk = request.user
                     statistika.highscore = fl
                     statistika.totalscore = fl
                     statistika.brodigranih = 1
                     statistika.prosek = fl
+                    match.rezultat = fl
+                    match.save()
                     statistika.save()
                 request.session['mId'] = -1
                 if "fightListPoints" in self.request.session.keys():
@@ -194,7 +195,7 @@ class RegisterView(View) :
             newKorisnik.is_staff = True
             newKorisnik.date_joined = datetime.datetime.now()
             newKorisnik.opis = ""
-            newKorisnik.titula = "bronza"
+            newKorisnik.titula = "Bronzani"
             newKorisnik.slika = ""
 
             if(info['password'] != info['passwordAgain']):
