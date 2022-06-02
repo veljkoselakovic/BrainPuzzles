@@ -23,7 +23,7 @@ class MainView(View) :
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - MainView
         # request - HttpRequest
 
         # Returns
@@ -43,7 +43,7 @@ class MainView(View) :
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - MainView
         # request - HttpRequest
 
         # Returns
@@ -70,7 +70,7 @@ class LogoutView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - LogoutView
         # request - HttpRequest
 
         # Returns
@@ -90,7 +90,7 @@ class SuccessRegView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - SuccessRegView
         # request - HttpRequest
 
         # Returns
@@ -110,7 +110,7 @@ class DashboardInfoView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - DashboardInfoView
         # request - HttpRequest
 
         # Returns
@@ -159,7 +159,7 @@ class DashboardView(View):
         # Returns
         # ---------
         # HttpResponse
-        HttpResponseRedirect
+        # HttpResponseRedirect
 
         mId = request.session.get('mId', -1)
         if mId != -1:
@@ -248,7 +248,7 @@ class RegisterView(View) :
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - RegisterView
         # request - HttpRequest
 
         # Returns
@@ -266,7 +266,7 @@ class RegisterView(View) :
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - RegisterView
         # request - HttpRequest
 
         # Returns
@@ -326,7 +326,7 @@ class MainScreenView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - MainScreenView
         # request - HttpRequest
 
         # Returns
@@ -353,7 +353,7 @@ class MainScreenInfoView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - MainScreenInfoView
         # request - HttpRequest
 
         # Returns
@@ -378,7 +378,7 @@ class AddThemeView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - AddThemeView
         # request - HttpRequest
 
         # Returns
@@ -400,7 +400,7 @@ class AddThemeView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - AddThemeView
         # request - HttpRequest
 
         # Returns
@@ -472,7 +472,7 @@ class AddQuestionView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - AddQuestionView
         # request - HttpRequest
 
         # Returns
@@ -492,7 +492,7 @@ class AddQuestionView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - AddQuestionView
         # request - HttpRequest
 
         # Returns
@@ -533,7 +533,7 @@ class AddAdminView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - AddAdminView
         # request - HttpRequest
 
         # Returns
@@ -555,7 +555,7 @@ class AddAdminView(View):
 
     #     Parametri
     #     ---------
-    #     self - DashboardView
+    #     self - AddAdminView
     #     request - HttpRequest
 
     #     Returns
@@ -587,7 +587,7 @@ class RankingView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - RankingView
         # request - HttpRequest
 
         # Returns
@@ -617,7 +617,7 @@ class RankingInfoView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - RankingInfoView
         # request - HttpRequest
 
         # Returns
@@ -649,7 +649,7 @@ class FightListView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - FightListView
         # request - HttpRequest
 
         # Returns
@@ -693,7 +693,7 @@ class FightListView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - FightListView
         # request - HttpRequest
 
         # Returns
@@ -742,7 +742,7 @@ class FighListSubmitView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - FighListSubmitView
         # request - HttpRequest
 
         # Returns
@@ -769,7 +769,7 @@ class KZZView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - KZZView
         # request - HttpRequest
 
         # Returns
@@ -805,7 +805,7 @@ class KZZQuestionView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - KZZQuestionView
         # request - HttpRequest
 
         # Returns
@@ -836,7 +836,7 @@ class KZZQuestionView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - KZZQuestionView
         # request - HttpRequest
 
         # Returns
@@ -878,7 +878,7 @@ class KZZEnd(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - KZZEnd
         # request - HttpRequest
 
         # Returns
@@ -904,7 +904,7 @@ class MozgicView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - MozgicView
         # request - HttpRequest
 
         # Returns
@@ -937,7 +937,7 @@ class MozgicSubmitView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - MozgicSubmitView
         # request - HttpRequest
 
         # Returns
@@ -965,7 +965,7 @@ class AboutMeView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - AboutMeView
         # request - HttpRequest
 
         # Returns
@@ -988,7 +988,7 @@ class MozgicSubmitView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - MozgicSubmitView
         # request - HttpRequest
 
         # Returns
@@ -1017,7 +1017,7 @@ class ScoreInfoView(View):
 
         # Parametri
         # ---------
-        # self - DashboardView
+        # self - ScoreInfoView
         # request - HttpRequest
 
         # Returns

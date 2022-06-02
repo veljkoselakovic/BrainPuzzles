@@ -389,6 +389,7 @@ CREATE TABLE `rezultat` (
 CREATE TABLE `statistika` (
   `idK` int(11) NOT NULL,
   `highScore` int(11) DEFAULT 0,
+  `totalScore` int(11) DEFAULT 0,
   `brOdigranih` int(11) DEFAULT 0,
   `prosek` double DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

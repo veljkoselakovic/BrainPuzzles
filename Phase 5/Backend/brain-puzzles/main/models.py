@@ -21,7 +21,6 @@ class Korisnik(AbstractUser):
     # datumuclanjenja = models.DateTimeField(db_column='datumUclanjenja', blank=True, null=True)  # Field name made lowercase.
     # admin = models.IntegerField(blank=True, null=True)
     titula = models.CharField(max_length=45, blank=True, null=True)
-    slika = models.TextField(blank=True, null=True)
 
     class Meta:
         db_table = 'korisnik'
@@ -161,10 +160,7 @@ class Rezultat(models.Model):
 class Statistika(models.Model):
     idk = models.OneToOneField(Korisnik, models.DO_NOTHING, db_column='idK', primary_key=True)  # Field name made lowercase.
     highscore = models.IntegerField(db_column='highScore', blank=True, null=True)  # Field name made lowercase.
-    totalscore = models.IntegerField(db_column='totalScore', blank=True, null=True)  # Field name made lowercase.
-    prosekfightlist = models.FloatField(db_column='prosekFightList', blank=True, null=True)  # Field name made lowercase.
-    prosekmozgic = models.FloatField(db_column='prosekMozgic', blank=True, null=True)  # Field name made lowercase.
-    prosekkzz = models.FloatField(db_column='prosekKZZ', blank=True, null=True)  # Field name made lowercase.
+    totalscore = models.IntegerField(db_column='totalScore', blank=True, null=True)  # Field name made lowercase..
     brodigranih = models.IntegerField(db_column='brOdigranih', blank=True, null=True)  # Field name made lowercase.
     prosek = models.FloatField(blank=True, null=True)
 
