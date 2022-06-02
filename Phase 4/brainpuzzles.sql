@@ -308,21 +308,15 @@ CREATE TABLE `korisnik` (
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime(6) NOT NULL,
   `opis` varchar(200) DEFAULT NULL,
-  `titula` varchar(45) DEFAULT NULL,
-  `slika` longtext DEFAULT NULL
+  `titula` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `korisnik`
 --
 
-INSERT INTO `korisnik` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`, `opis`, `titula`, `slika`) VALUES
-(1, 'pbkdf2_sha256$320000$BmVKgJcPdmR9pBjQgUQlEm$VcQe6hQHuwo4O3agS8/FIXAjcAESIIVqH7W9EGmSK+E=', '2022-05-16 22:22:36.627720', 1, 'veljko', '', '', '', 1, 1, '2022-05-10 15:16:06.941447', NULL, NULL, NULL),
-(3, 'pbkdf2_sha256$320000$3TvvOodeaZnTcSTdEx1vnx$Q3zGtmp2iPk9QPSp84NqvTHlOhhVJVVRMtAcQ8WtG60=', NULL, 0, 'veljko2', '', '', 'b@gmail.com', 1, 1, '2022-05-10 17:46:04.240974', '', 'b', ''),
-(12, 'pbkdf2_sha256$320000$g1Y9oEeUdeKH6bWhqDkJfs$ljlJmlZBnn/zkh+1OAUKj6ERpihAzh8dilOFcVnlXvw=', NULL, 0, 'veljko3', '', '', 'bg.selakovicveljko@gmail.com', 1, 1, '2022-05-10 18:08:22.102991', '', 'b', ''),
-(19, 'pbkdf2_sha256$320000$Uh5KBoCLKH8wbvzgSQ15u4$bdpr2nP6W20jBoc3+YwwdrRJLdfLRlkugGtDrk25fEs=', NULL, 0, 'testUser', '', '', 't@gmail.com', 1, 1, '2022-05-17 00:21:36.771281', '', 'b', '');
-
--- --------------------------------------------------------
+INSERT INTO `korisnik` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`, `opis`, `titula`) VALUES
+(1, 'pbkdf2_sha256$320000$BmVKgJcPdmR9pBjQgUQlEm$VcQe6hQHuwo4O3agS8/FIXAjcAESIIVqH7W9EGmSK+E=', '2022-05-16 22:22:36.627720', 1, 'veljko', 'Veljko', 'Selakovic', 'veljko@gmail.com', 1, 1, '2022-05-10 15:16:06.941447', 'opis', 'Bronzani');
 
 --
 -- Table structure for table `korisnik_groups`
@@ -395,10 +389,6 @@ CREATE TABLE `rezultat` (
 CREATE TABLE `statistika` (
   `idK` int(11) NOT NULL,
   `highScore` int(11) DEFAULT 0,
-  `totalScore` int(11) DEFAULT 0,
-  `prosekFightList` double DEFAULT 0,
-  `prosekMozgic` double DEFAULT 0,
-  `prosekKZZ` double DEFAULT 0,
   `brOdigranih` int(11) DEFAULT 0,
   `prosek` double DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -694,3 +684,47 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO `fight_list_tema` (`idT`, `tema`, `idK`) VALUES
+(1, 'Japanese car manufacturers', 1),
+(2, 'Phone manufacturers', 1);
+
+INSERT INTO `fight_list_pojam` (`idP`, `idT`, `tekst`, `poeni`) VALUES
+(1, 1, 'Toyota', 1),
+(2, 1, 'Honda', 1),
+(3, 1, 'Nissan', 1),
+(4, 1, 'Suzuki', 1),
+(5, 1, 'Lexus', 2),
+(6, 1, 'Daihatsu', 3),
+(7, 1, 'Mazda', 2),
+(8, 2, 'Samsung', 1),
+(9, 2, 'Apple', 1),
+(10, 2, 'Xiaomi', 1),
+(11, 2, 'Huawei', 1),
+(12, 2, 'Zte', 3),
+(13, 2, 'Htc', 2),
+(14, 2, 'Lg', 2);
+
+INSERT INTO `kzz_pitanje` (`idP`, `tekst`, `idK`) VALUES
+(1, 'Ko je najjaci', 1),
+(2, 'ko je najjaci 2', 1),
+(3, 'ko je najjaci 3', 1),
+(4, 'ko je najjaci 4', 1),
+(5, 'ko je najjaci 5', 1),
+(6, 'ko je najjaci 6', 1),
+(7, 'ko je najjaci 7', 1),
+(8, 'ko je najjaci 8', 1),
+(9, 'ko je najjaci 9', 1),
+(10, 'ko je najjaci 10', 1);
+
+INSERT INTO `kzz_odgovor` (`idO`, `idP`, `tekst`) VALUES
+(1, 1, 'teodor'),
+(2, 2, 'teodor2'),
+(3, 3, 'teodor3'),
+(4, 4, 'teodor4'),
+(5, 5, 'teodor5'),
+(6, 6, 'teodor6'),
+(7, 7, 'teodor7'),
+(8, 8, 'teodor8'),
+(9, 9, 'teodor9'),
+(10, 10, 'teodor10');
