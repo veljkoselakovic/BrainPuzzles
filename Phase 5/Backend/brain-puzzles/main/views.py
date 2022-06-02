@@ -95,29 +95,16 @@ class DashboardView(View):
             m = match.mozgicrezultat
             kzz = match.kzzrezultat
             status = request.user.titula
-<<<<<<< HEAD
-            if status == 'b' and fl != None or status == 's' and fl != None and m != None or status == 'z' and fl != None and m != None and kzz != None:
-                print("usao u get")
-=======
             if(status == 'Bronzani' and fl != None or status == 'Srebrni' and fl != None and m != None or status == 'Zlatni' and fl != None and m != None and kzz != None):
->>>>>>> b4f5015f17c9d6f9bad57dbb0d482c56be9a0f09
                 try:
                     statistika = Statistika.objects.get(idk=request.user)
                     noviPoeni = 0
                     statistika.brodigranih += 1
-<<<<<<< HEAD
-                    if status == 'b':
-                        noviPoeni += fl
-                    if status == 's':
-                        noviPoeni += fl + m
-                    if status == 'z':
-=======
                     if(status == 'Bronzani'):
                         noviPoeni += fl
                     if(status == 'Srebrni'):
                         noviPoeni += fl + m
                     if(status == 'Zlatni' ):
->>>>>>> b4f5015f17c9d6f9bad57dbb0d482c56be9a0f09
                         noviPoeni += fl + m + kzz
                     
                     statistika.totalscore += noviPoeni
@@ -125,12 +112,6 @@ class DashboardView(View):
                         statistika.highscore = noviPoeni
                     statistika.prosek = (statistika.prosek*(statistika.brodigranih-1) + noviPoeni) / statistika.brodigranih
 
-<<<<<<< HEAD
-                    if status == 'b' and statistika.totalscore > 15: 
-                        status = 's'
-                    if status == 's' and statistika.totalscore > 36:
-                        status = 'z'
-=======
                     if(status == 'Bronzani' and statistika.totalscore > 15): 
                         request.user.titula = 'Srebrni'
                         request.user.save()
@@ -139,7 +120,6 @@ class DashboardView(View):
                         request.user.save()
                     match.rezultat = noviPoeni
                     match.save()
->>>>>>> b4f5015f17c9d6f9bad57dbb0d482c56be9a0f09
                     statistika.save()
                 except  Statistika.DoesNotExist: #prvi put zavrsena partija, samo fl imamo
                     statistika = Statistika()
