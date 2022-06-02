@@ -15,9 +15,25 @@ import json
 from .models import *
 
 class MainView(View) :
-    
+"""
+Klasa za prikaz dashboarda
+"""
+
     # brain-puzzles.com/
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        HttpResponseRedirect
+        """
 
         if request.user.is_authenticated:
             return redirect('mainscreen_page')
@@ -27,8 +43,18 @@ class MainView(View) :
 
 
     def post(self, request):
-        
-        # print(request.POST.get("user"))
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponseRedirect
+        """
 
         user = request.POST.get("user")
         password = request.POST.get("pass")
@@ -36,29 +62,76 @@ class MainView(View) :
         user = authenticate(username=user, password=password)
         if user:
             login(request, user)
-            return redirect('mainscreen_page') # return redirect('/dashboard')
-            # return render(request, 'successRegistration.html', {'user' : request.POST.get("pass")})
+            return redirect('mainscreen_page')
         else:
             messages.error(request, 'Invalid log in information')
             return redirect('main_page')
 
 class LogoutView(View):
-
+"""
+Klasa za prikaz dashboarda
+"""
+    
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponseRedirect
+        """
+
         logout(request)
         return redirect('main_page')
 
 
 class SuccessRegView(View):
-
+    """
+    Klasa za prikaz stranice za uspesnu registraciju novog korisnika
+    """
+    
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponseRedirect
+        """
+
         return render(request, 'succesRegistration.html', {})
 
 
 class DashboardInfoView(View):
-
+"""
+Klasa za prikaz dashboarda preko axiosa
+"""
+    
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
+
         matchId = request.session.get('mId', -1)
         print("matchId = " + str(matchId))
         if matchId == -1:
@@ -84,10 +157,28 @@ class DashboardInfoView(View):
 
         return JsonResponse(info)
 
-class DashboardView(View):
 
+class DashboardView(View):
+"""
+    Klasa za prikaz dashboarda
+"""
+    
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        HttpResponseRedirect
+        """
+
         mId = request.session.get('mId', -1)
         if mId != -1:
             match = Rezultat.objects.get(idm=request.session['mId'])
@@ -165,15 +256,47 @@ class DashboardView(View):
 
         return render(request, 'base.html', {'jsonInfo': info})
 
+
 class RegisterView(View) :
+"""
+Klasa za prikaz stranice za registraciju
+"""
     
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        HttpResponseRedirect
+        """
+
         if request.user.is_authenticated:
             return redirect('dashboard_page')
 
         return render(request, 'base.html', {})
 
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        HttpResponseRedirect
+        """
+
         info = {
             'username' : request.POST.get('user'),
             'email' : request.POST.get('email'),
@@ -217,9 +340,25 @@ class RegisterView(View) :
         return render(request, 'successRegistration.html', {})
 
 class MainScreenView(View):
+"""
+Klasa za prikaz mainscreena
+"""
 
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        """
+
         info = {
         'user' :  request.user.username,
         'email' : request.user.email,
@@ -231,9 +370,25 @@ class MainScreenView(View):
         return render(request, 'base.html', {'jsonInfo': info})
 
 class MainScreenInfoView(View):
+"""
+Klasa za prikaz mainscreena preko axiosa
+"""
 
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
+
         returnJSON = {
         'user' :  request.user.username,
         'email' : request.user.email,
@@ -241,13 +396,28 @@ class MainScreenInfoView(View):
         'opis' : request.user.opis,
         'isAdmin' : request.user.is_superuser
         }
-
         return JsonResponse(returnJSON)
 
 class AddThemeView(View):
+"""
+Klasa za prikaz stranice za dodavanje teme
+"""
     
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        """
+
         print("get addtheme")
         info = {
         'user' :  request.user.username,
@@ -259,6 +429,19 @@ class AddThemeView(View):
 
     @method_decorator(login_required)
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponseRedirect
+        """
+
         info = {
         'user' :  request.user.username,
         'email' : request.user.email,
@@ -316,9 +499,24 @@ class AddThemeView(View):
         return redirect('mainscreen_page')
 
 class AddQuestionView(View):
+"""
+Klasa za prikaz stranice za dodavanje pitanja
+"""
     
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        """
+
         info = {
         'user' :  request.user.username,
         'email' : request.user.email,
@@ -329,6 +527,19 @@ class AddQuestionView(View):
         
     @method_decorator(login_required)
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponseRedirect
+        """
+
         info = {
         'user' :  request.user.username,
         'email' : request.user.email,
@@ -355,9 +566,25 @@ class AddQuestionView(View):
         return redirect('mainscreen_page')
 
 class AddAdminView(View):
+"""
+Klasa za prikaz stranice za dodavanje admina
+"""
     
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        """
+
         info = {
         'user' :  request.user.username,
         'email' : request.user.email,
@@ -369,6 +596,19 @@ class AddAdminView(View):
 
     @method_decorator(login_required)
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponseRedirect
+        """
+
         info = {
         'user' :  request.user.username,
         'email' : request.user.email,
@@ -387,8 +627,24 @@ class AddAdminView(View):
         return redirect('mainscreen_page')
 
 class RankingView(View):
+"""
+Klasa za prikaz rang liste
+"""
 
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        """
+
         rankings = list(Statistika.objects.all())
         rankings.sort(key=lambda x: x.totalscore, reverse=True)
         rankings = rankings[:10]
@@ -405,8 +661,24 @@ class RankingView(View):
         return render(request, 'base.html', {'jsonInfo': info})
 
 class RankingInfoView(View):
+"""
+Klasa za prikaz rang liste preko axiosa
+"""
 
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
+
         rankings = list(Statistika.objects.all())
         rankings.sort(key=lambda x: x.totalscore, reverse=True)
         rankings = rankings[:10]
@@ -423,9 +695,25 @@ class RankingInfoView(View):
         return JsonResponse(returnJSON)
 
 class FightListView(View):
+"""
+Klasa za prikaz FIght List igrice
+"""
 
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        HttpResponseRedirect
+        """
 
         try:
             if request.session['fightListPoints'] != 0:
@@ -459,6 +747,18 @@ class FightListView(View):
 
     @method_decorator(login_required)
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
 
         data = json.loads(request.body)
         print(data)
@@ -495,9 +795,25 @@ class FightListView(View):
             return JsonResponse(returnJSON)
 
 class FighListSubmitView(View):
+"""
+Klasa za zavrsetak Fight List igrice
+"""
 
     @method_decorator(login_required)
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
+
         match = Rezultat.objects.get(pk=request.session['mId'])
 
         if match.fightlistrezultat is not None:
@@ -510,9 +826,25 @@ class FighListSubmitView(View):
         return JsonResponse({'ok' : True})
 
 class KZZView(View):
+"""
+Klasa za prikaz Ko Zna Zna igrice
+"""
 
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        HttpResponseRedirect
+        """
 
         try:
             if request.session['kzzPoints'] != 0:
@@ -534,12 +866,26 @@ class KZZView(View):
         return render(request, 'base.html', {})
 
 class KZZQuestionView(View):
-
+"""
+Klasa za provera i dohvatanje novog pitanja za Ko Zna Zna 
+"""
+     
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
 
         import random
-
         questions = list(KzzPitanje.objects.all())
         random_questions = random.sample(questions, 1)
         random_question = random.choice(random_questions)
@@ -555,11 +901,22 @@ class KZZQuestionView(View):
             'questionText' : random_question.tekst,
             'questionId' : random_question.idp
         }
-
         return JsonResponse(info)
 
     @method_decorator(login_required)
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
 
         data = json.loads(request.body)
 
@@ -588,9 +945,25 @@ class KZZQuestionView(View):
             return JsonResponse(returnJSON)
 
 class KZZEnd(View):
+"""
+Klasa za kraj Ko Zna Zna igrice
+"""
 
     @method_decorator(login_required)
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
+
         match = Rezultat.objects.get(pk=request.session['mId'])
 
         if match.kzzrezultat is not None:
@@ -603,8 +976,24 @@ class KZZEnd(View):
         return JsonResponse({'ok' : True})
 
 class MozgicView(View):
+"""
+Klasa za prikaz mozgic igrice
+"""
 
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        HttpResponseRedirect
+        """
 
         try:
             if request.session['mozgicPoints'] != 0:
@@ -621,12 +1010,27 @@ class MozgicView(View):
             return redirect("/dashboard")
         
         request.session['mozgicPoints'] = 0
-
         return render(request, 'base.html', {})
 
 class MozgicSubmitView(View):
+"""
+Klasa za zavrsetak Mozgic igrice
+"""
 
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        HttpResponse
+        HttpResponseRedirect
+        """
 
         data = json.loads(request.body)
         pts = data['mozgicPts']
@@ -640,9 +1044,25 @@ class MozgicSubmitView(View):
         return JsonResponse({'ok' : True})
 
 class AboutMeView(View):
+"""
+Klasa za izmenu opisa korisnika
+"""
 
     @method_decorator(login_required)
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
+
         data = json.loads(request.body)
         aboutMe = data['aboutMe']
         request.user.opis = aboutMe
@@ -651,9 +1071,24 @@ class AboutMeView(View):
         return JsonResponse({'ok' : True})
 
 class MozgicSubmitView(View):
+"""
+Klasa za zavrsetak mozgic igrice preko axiosa
+"""
 
     @method_decorator(login_required)
     def post(self, request):
+        """
+        Dohvatanje post zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
 
         data = json.loads(request.body)
         pts = data['mozgicPts']
@@ -665,17 +1100,28 @@ class MozgicSubmitView(View):
         else:
             match.mozgicrezultat = pts
 
-        print(pts)
-
         match.save()
-
         return JsonResponse({'ok' : True})
 
 class ScoreInfoView(View):
-
+"""
+Klasa za prikaz poena korisnika
+"""
 
     @method_decorator(login_required)
     def get(self, request):
+        """
+        Dohvatanje get zahteva
+
+        Parametri
+        ---------
+        self - DashboardView
+        request - HttpRequest
+
+        Returns
+        ---------
+        JsonResponse
+        """
 
         stat = Statistika.objects.get(pk=request.user.id)
         jsonRes = {
