@@ -254,7 +254,7 @@ class RegisterView(View) :
         # Returns
         # ---------
         # HttpResponse
-        HttpResponseRedirect
+        # HttpResponseRedirect
 
         if request.user.is_authenticated:
             return redirect('dashboard_page')
@@ -1032,3 +1032,18 @@ class ScoreInfoView(View):
         }
 
         return JsonResponse(jsonRes)
+
+class LogInGuest(View):
+    def post(self, request):
+        print(request.user)
+
+        if not request.user.is_anonymous:
+            redirect('mainscreen_page')
+
+        user = authenticate(username="Guest", password="123")
+        if user:
+            login(request, user)
+            return redirect('mainscreen_page')
+        else:
+            messages.error(request, 'Invalid log in information')
+            return redirect('main_page')
