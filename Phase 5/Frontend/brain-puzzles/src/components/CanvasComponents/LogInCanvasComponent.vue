@@ -13,7 +13,10 @@
 
       <p class="registerMessage" >Niste član? 
       <router-link class="registerLink" @click="clickedRegister" to="/register">Registrujte se</router-link>!</p>
-      <FancyButton class="guestButton" text="Sign in as Guest" />
+      <form action="/loginGuest" id = "formLogIn" method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrf">
+        <FancyButton class="guestButton" text="Sign in as Guest" />
+      </form>
     </div>
     <div class="blur cell"></div>
   </div>
@@ -26,9 +29,13 @@
  import FancyButton from '../BasicComponents/FancyButton.vue'
  import FooterComponent from '../BasicComponents/FooterComponent.vue'
  import InputField from '../BasicComponents/InputField.vue'
+import axios from "axios";
+
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 
 export default {
-   components: { InputField, FancyButton, FooterComponent },
+  components: { InputField, FancyButton, FooterComponent },
   name: 'LogInCanvasComponent',
   props: [
     'width'
@@ -59,7 +66,8 @@ export default {
   methods: {
     clickedRegister() {
       this.$data.errors = undefined;
-    }
+    },
+    
   }
 }
 </script>
