@@ -185,16 +185,16 @@ class DashboardView(View):
                         statistika.highscore = noviPoeni
                     statistika.prosek = (statistika.prosek*(statistika.brodigranih-1) + noviPoeni) / statistika.brodigranih
 
-                    if(status == 'Bronzani' and statistika.totalscore > 15): 
+                    if(status == 'Bronzani' and statistika.totalscore > 29): 
                         request.user.titula = 'Srebrni'
                         request.user.save()
-                    if(status == 'Srebrni' and statistika.totalscore > 36):
+                    if(status == 'Srebrni' and statistika.totalscore > 59):
                         request.user.titula = 'Zlatni'
                         request.user.save()
                     match.rezultat = noviPoeni
                     match.save()
                     statistika.save()
-                except  Statistika.DoesNotExist: #prvi put zavrsena partija, samo fl imamo
+                except Statistika.DoesNotExist: #prvi put zavrsena partija, samo fl imamo
                     statistika = Statistika()
                     statistika.idk = request.user
                     statistika.highscore = fl
