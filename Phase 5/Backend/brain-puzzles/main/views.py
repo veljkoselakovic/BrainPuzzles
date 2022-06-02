@@ -73,52 +73,50 @@ class DashboardInfoView(View):
         match = Rezultat.objects.get(idm=request.session['mId'])
 
         info = {
-        'user' :  request.user.username,
-        'email' : request.user.email,
-        'status' : request.user.titula,
-        'opis' : request.user.opis,
-        'flRez' : match.fightlistrezultat,
-        'kzzRez' : match.kzzrezultat,
-        'mRez' : match.mozgicrezultat
+            'user' :  request.user.username,
+            'email' : request.user.email,
+            'status' : request.user.titula,
+            'opis' : request.user.opis,
+            'flRez' : match.fightlistrezultat,
+            'kzzRez' : match.kzzrezultat,
+            'mRez' : match.mozgicrezultat
         }
 
         return JsonResponse(info)
-
-
 
 class DashboardView(View):
 
     @method_decorator(login_required)
     def get(self, request):
         mId = request.session.get('mId', -1)
-        if(mId != -1):
+        if mId != -1:
             match = Rezultat.objects.get(idm=request.session['mId'])
             fl = match.fightlistrezultat
             m = match.mozgicrezultat
             kzz = match.kzzrezultat
             status = request.user.titula
-            if(status == 'b' and fl != None or status == 's' and fl != None and m != None or status == 'z' and fl != None and m != None and kzz != None):
+            if status == 'b' and fl != None or status == 's' and fl != None and m != None or status == 'z' and fl != None and m != None and kzz != None:
                 print("usao u get")
                 try:
                     statistika = Statistika.objects.get(idk=request.user)
                     print("prosao dodelu statistike")
                     noviPoeni = 0
                     statistika.brodigranih += 1
-                    if(status == 'b'):
+                    if status == 'b':
                         noviPoeni += fl
-                    if(status == 's'):
+                    if status == 's':
                         noviPoeni += fl + m
-                    if(status == 'z' ):
+                    if status == 'z':
                         noviPoeni += fl + m + kzz
                     
                     statistika.totalscore += noviPoeni
-                    if(statistika.highscore < noviPoeni):
+                    if statistika.highscore < noviPoeni:
                         statistika.highscore = noviPoeni
                     statistika.prosek = (statistika.prosek*(statistika.brodigranih-1) + noviPoeni) / statistika.brodigranih
 
-                    if(status == 'b' and statistika.totalscore > 15): 
+                    if status == 'b' and statistika.totalscore > 15: 
                         status = 's'
-                    if(status == 's' and statistika.totalscore > 36):
+                    if status == 's' and statistika.totalscore > 36:
                         status = 'z'
                     statistika.save()
                 except  Statistika.DoesNotExist: #prvi put zavrsena partija, samo fl imamo
@@ -146,13 +144,13 @@ class DashboardView(View):
         match = Rezultat.objects.get(idm=request.session['mId'])
 
         info = {
-        'user' :  request.user.username,
-        'email' : request.user.email,
-        'status' : request.user.titula,
-        'opis' : request.user.opis,
-        'flRez' : match.fightlistrezultat,
-        'kzzRez' : match.kzzrezultat,
-        'mRez' : match.mozgicrezultat
+            'user' :  request.user.username,
+            'email' : request.user.email,
+            'status' : request.user.titula,
+            'opis' : request.user.opis,
+            'flRez' : match.fightlistrezultat,
+            'kzzRez' : match.kzzrezultat,
+            'mRez' : match.mozgicrezultat
         }
 
         return render(request, 'base.html', {'jsonInfo': info})
@@ -386,7 +384,7 @@ class RankingView(View):
         korisniks =  [r.idk for r in rankings]
         usernames = [k.username for k in korisniks]
         highScores = [r.highscore for r in rankings]
-        pairs = [];
+        pairs = []
         for (username, highScore) in zip(usernames, highScores):
             pairs.append(username + "," + str(highScore))
 

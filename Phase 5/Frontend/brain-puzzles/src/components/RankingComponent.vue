@@ -10,10 +10,11 @@
 
 
 <script>
-import FooterComponent from './BasicComponents/FooterComponent.vue'
-import HeaderComponent from './BasicComponents/HeaderComponent.vue'
-import FancyText from './BasicComponents/FancyText.vue'
-import RankingCanvasComponent from './CanvasComponents/RankingCanvasComponent.vue'
+import FooterComponent          from './BasicComponents/FooterComponent.vue'
+import HeaderComponent          from './BasicComponents/HeaderComponent.vue'
+import FancyText                from './BasicComponents/FancyText.vue'
+import RankingCanvasComponent   from './CanvasComponents/RankingCanvasComponent.vue'
+
 import axios from "axios";
 
 export default {
@@ -26,14 +27,14 @@ export default {
     },
     data()  {
         return {
-            pairs:[]
+            pairs: []
         }
     }
 }
 </script>
 
 <style scoped>
-.div{
+.div {
     margin-top: 1%;
     text-align: center;
 }

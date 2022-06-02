@@ -46,9 +46,9 @@ export default {
     
     beforeMount() {
         axios.get('/dashboardInfo').then((response) => {
-            this.tableData = response.data
-            this.usernameGreeting += this.tableData.user + "!"
-            console.log(this.tableData.user)
+            this.tableData = response.data;
+            this.usernameGreeting += this.tableData.user + "!";
+            console.log(this.tableData.user);
             let status = this.tableData.status;
             console.log(status);
             if(status == 'b'){
