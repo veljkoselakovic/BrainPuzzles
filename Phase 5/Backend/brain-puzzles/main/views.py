@@ -1023,13 +1023,20 @@ class ScoreInfoView(View):
         # Returns
         # ---------
         # JsonResponse
+        try:
 
-        stat = Statistika.objects.get(pk=request.user.id)
-        jsonRes = {
-            'ok' : True,
-            'highScore' : stat.highscore,
-            'totalScore' : stat.totalscore
-        }
+            stat = Statistika.objects.get(pk=request.user.id)
+            jsonRes = {
+                'ok' : True,
+                'highScore' : stat.highscore,
+                'totalScore' : stat.totalscore
+            }
+        except Statistika.DoesNotExist:
+            jsonRes = {
+                'ok' : False,
+                'highScore' : 0,
+                'totalScore' : 0
+            }
 
         return JsonResponse(jsonRes)
 
