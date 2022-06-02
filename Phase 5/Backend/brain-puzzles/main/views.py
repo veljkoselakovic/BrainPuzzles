@@ -90,8 +90,50 @@ class DashboardView(View):
 
     @method_decorator(login_required)
     def get(self, request):
+        mId = request.session.get('mId', -1)
+        if(mId != -1):
+            match = Rezultat.objects.get(idm=request.session['mId'])
+            fl = match.fightlistrezultat
+            m = match.mozgicrezultat
+            kzz = match.kzzrezultat
+            status = request.user.titula
+            if(status == 'b' and fl != None or status == 's' and fl != None and m != None or status == 'z' and fl != None and m != None and kzz != None):
+                print("usao u get")
+                try:
+                    statistika = Statistika.objects.get(idk=request.user)
+                    print("prosao dodelu statistike")
+                    noviPoeni = 0
+                    statistika.brodigranih += 1
+                    if(status == 'b'):
+                        noviPoeni += fl
+                    if(status == 's'):
+                        noviPoeni += fl + m
+                    if(status == 'z' ):
+                        noviPoeni += fl + m + kzz
+                    
+                    statistika.totalscore += noviPoeni
+                    if(statistika.highscore < noviPoeni):
+                        statistika.highscore = noviPoeni
+                    statistika.prosek = (statistika.prosek*(statistika.brodigranih-1) + noviPoeni) / statistika.brodigranih
+
+                    if(status == 'b' and statistika.totalscore > 15): 
+                        status = 's'
+                    if(status == 's' and statistika.totalscore > 36):
+                        status = 'z'
+                    statistika.save()
+                except  Statistika.DoesNotExist: #prvi put zavrsena partija, samo fl imamo
+                    print("except DoesNotExist stat")
+                    statistika = Statistika()
+                    statistika.idk = request.user
+                    statistika.highscore = fl
+                    statistika.totalscore = fl
+                    statistika.brodigranih = 1
+                    statistika.prosek = fl
+                    statistika.save()
+                request.session['mId'] = -1
+
+
         matchId = request.session.get('mId', -1)
-        print("matchId = " + str(matchId))
         if matchId == -1:
             newMatch = Rezultat()
             newMatch.idk = request.user
