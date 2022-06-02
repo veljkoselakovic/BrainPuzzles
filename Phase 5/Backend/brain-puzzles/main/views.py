@@ -95,18 +95,29 @@ class DashboardView(View):
             m = match.mozgicrezultat
             kzz = match.kzzrezultat
             status = request.user.titula
+<<<<<<< HEAD
             if status == 'b' and fl != None or status == 's' and fl != None and m != None or status == 'z' and fl != None and m != None and kzz != None:
                 print("usao u get")
+=======
+            if(status == 'Bronzani' and fl != None or status == 'Srebrni' and fl != None and m != None or status == 'Zlatni' and fl != None and m != None and kzz != None):
+>>>>>>> b4f5015f17c9d6f9bad57dbb0d482c56be9a0f09
                 try:
                     statistika = Statistika.objects.get(idk=request.user)
-                    print("prosao dodelu statistike")
                     noviPoeni = 0
                     statistika.brodigranih += 1
+<<<<<<< HEAD
                     if status == 'b':
                         noviPoeni += fl
                     if status == 's':
                         noviPoeni += fl + m
                     if status == 'z':
+=======
+                    if(status == 'Bronzani'):
+                        noviPoeni += fl
+                    if(status == 'Srebrni'):
+                        noviPoeni += fl + m
+                    if(status == 'Zlatni' ):
+>>>>>>> b4f5015f17c9d6f9bad57dbb0d482c56be9a0f09
                         noviPoeni += fl + m + kzz
                     
                     statistika.totalscore += noviPoeni
@@ -114,21 +125,40 @@ class DashboardView(View):
                         statistika.highscore = noviPoeni
                     statistika.prosek = (statistika.prosek*(statistika.brodigranih-1) + noviPoeni) / statistika.brodigranih
 
+<<<<<<< HEAD
                     if status == 'b' and statistika.totalscore > 15: 
                         status = 's'
                     if status == 's' and statistika.totalscore > 36:
                         status = 'z'
+=======
+                    if(status == 'Bronzani' and statistika.totalscore > 15): 
+                        request.user.titula = 'Srebrni'
+                        request.user.save()
+                    if(status == 'Srebrni' and statistika.totalscore > 36):
+                        request.user.titula = 'Zlatni'
+                        request.user.save()
+                    match.rezultat = noviPoeni
+                    match.save()
+>>>>>>> b4f5015f17c9d6f9bad57dbb0d482c56be9a0f09
                     statistika.save()
                 except  Statistika.DoesNotExist: #prvi put zavrsena partija, samo fl imamo
-                    print("except DoesNotExist stat")
                     statistika = Statistika()
                     statistika.idk = request.user
                     statistika.highscore = fl
                     statistika.totalscore = fl
                     statistika.brodigranih = 1
                     statistika.prosek = fl
+                    match.rezultat = fl
+                    match.save()
                     statistika.save()
                 request.session['mId'] = -1
+                if "fightListPoints" in self.request.session.keys():
+                    del self.request.session["fightListPoints"]
+                if "mozgicPoints" in self.request.session.keys():
+                    del self.request.session["mozgicPoints"]
+                if "kzzPoints" in self.request.session.keys():
+                    del self.request.session["kzzPoints"]
+                return redirect('mainscreen_page')
 
 
         matchId = request.session.get('mId', -1)
@@ -167,7 +197,8 @@ class RegisterView(View) :
         info = {
             'username' : request.POST.get('user'),
             'email' : request.POST.get('email'),
-            'password' : request.POST.get('pass')
+            'password' : request.POST.get('pass'),
+            'passwordAgain' : request.POST.get('pass_again')
         }
 
         try:
@@ -182,8 +213,12 @@ class RegisterView(View) :
             newKorisnik.is_staff = True
             newKorisnik.date_joined = datetime.datetime.now()
             newKorisnik.opis = ""
-            newKorisnik.titula = "bronza"
+            newKorisnik.titula = "Bronzani"
             newKorisnik.slika = ""
+
+            if(info['password'] != info['passwordAgain']):
+                messages.error(request, 'Passwords do not match')
+                return redirect("registration_page")
         
             newKorisnik.save()
             messages.success(request, 'Successfully registered.')
@@ -198,10 +233,6 @@ class RegisterView(View) :
                 messages.error(request, 'Unknown error')
 
             return redirect("registration_page")
-
-
-        # HttpResponse
-        # JSONResponse
 
         return render(request, 'successRegistration.html', {})
 
@@ -609,7 +640,7 @@ class MozgicView(View):
         if match.mozgicrezultat != None:
             return redirect("/dashboard")
         
-        request.session['mozgicrezultat'] = 0
+        request.session['mozgicPoints'] = 0
 
         return render(request, 'base.html', {})
 

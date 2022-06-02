@@ -51,11 +51,11 @@ export default {
             console.log(this.tableData.user);
             let status = this.tableData.status;
             console.log(status);
-            if(status == 'b'){
+            if(status == 'Bronzani'){
                 this.flAble = true;
-            }else if(status == 's'){
+            }else if(status == 'Srebrni'){
                 this.flAble = true; this.mozgicAble = true;
-            }else if(status == 'z'){
+            }else if(status == 'Zlatni'){
                 this.flAble = true; this.mozgicAble = true; this.kzzAble = true;
             }
             this.points[0] = parseInt(this.tableData['flRez'])

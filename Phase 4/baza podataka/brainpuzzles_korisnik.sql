@@ -31,7 +31,6 @@ CREATE TABLE `korisnik` (
   `datumUclanjenja` datetime DEFAULT NULL,
   `admin` tinyint DEFAULT NULL,
   `titula` varchar(45) DEFAULT NULL,
-  `slika` blob,
   PRIMARY KEY (`idK`),
   UNIQUE KEY `UNQ_Korisnik_KorisnickoIme` (`korisnickoIme`),
   UNIQUE KEY `email_UNIQUE` (`email`)
