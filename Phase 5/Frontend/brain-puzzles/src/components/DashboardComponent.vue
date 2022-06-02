@@ -19,18 +19,19 @@
 </template>
 
 <script>
-import FooterComponent from './BasicComponents/FooterComponent.vue'
-import HeaderComponent from './BasicComponents/HeaderComponent.vue'
-import ProfileCanvasComponent from './CanvasComponents/ProfileCanvasComponent.vue'
-import GameCanvasComponent from './CanvasComponents/GameCanvasComponent.vue'
-import FancyText from './BasicComponents/FancyText.vue'
+import FooterComponent          from './BasicComponents/FooterComponent.vue'
+import HeaderComponent          from './BasicComponents/HeaderComponent.vue'
+import ProfileCanvasComponent   from './CanvasComponents/ProfileCanvasComponent.vue'
+import GameCanvasComponent      from './CanvasComponents/GameCanvasComponent.vue'
+import FancyText                from './BasicComponents/FancyText.vue'
+
 import axios from "axios";
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
 export default {
-    components :{FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, GameCanvasComponent},
+    components : {FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, GameCanvasComponent},
     name: 'DashboardComponent',
     data(){
         return {
@@ -80,18 +81,14 @@ export default {
 
             //@TODO if everythin -> submit
         });
-        
-
-    },
+    }
 }
 </script>
 
 <style scoped>
-
-.div{
-     
-     display: inline-block;
-     margin: 0.8%;
+.div{  
+    display: inline-block;
+    margin: 0.8%;
 }
 .leftPanel{
     height:45vh;
