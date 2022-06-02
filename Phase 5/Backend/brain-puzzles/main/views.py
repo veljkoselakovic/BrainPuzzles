@@ -118,7 +118,7 @@ class DashboardInfoView(View):
         # JsonResponse
 
         matchId = request.session.get('mId', -1)
-        print("matchId = " + str(matchId))
+        
         if matchId == -1:
             newMatch = Rezultat()
             newMatch.idk = request.user
@@ -334,11 +334,11 @@ class MainScreenView(View):
         # HttpResponse
 
         info = {
-        'user' :  request.user.username,
-        'email' : request.user.email,
-        'status' : request.user.titula,
-        'opis' : request.user.opis,
-        'isAdmin' : request.user.is_superuser
+            'user' :  request.user.username,
+            'email' : request.user.email,
+            'status' : request.user.titula,
+            'opis' : request.user.opis,
+            'isAdmin' : request.user.is_superuser
         }
 
         return render(request, 'base.html', {'jsonInfo': info})
@@ -361,12 +361,13 @@ class MainScreenInfoView(View):
         # JsonResponse
 
         returnJSON = {
-        'user' :  request.user.username,
-        'email' : request.user.email,
-        'status' : request.user.titula,
-        'opis' : request.user.opis,
-        'isAdmin' : request.user.is_superuser
+            'user' :  request.user.username,
+            'email' : request.user.email,
+            'status' : request.user.titula,
+            'opis' : request.user.opis,
+            'isAdmin' : request.user.is_superuser
         }
+
         return JsonResponse(returnJSON)
 
 class AddThemeView(View):
@@ -385,13 +386,14 @@ class AddThemeView(View):
         # ---------
         # HttpResponse
 
-        print("get addtheme")
+        
         info = {
-        'user' :  request.user.username,
-        'email' : request.user.email,
-        'status' : request.user.titula,
-        'opis' : request.user.opis,
+            'user' :  request.user.username,
+            'email' : request.user.email,
+            'status' : request.user.titula,
+            'opis' : request.user.opis,
         }
+
         return render(request, 'base.html', {'jsonInfo': info})
 
     @method_decorator(login_required)
@@ -407,12 +409,6 @@ class AddThemeView(View):
         # ---------
         # HttpResponseRedirect
 
-        info = {
-        'user' :  request.user.username,
-        'email' : request.user.email,
-        'status' : request.user.titula,
-        'opis' : request.user.opis,
-        }
         trenutni_user = request.user
         tema_tekst = request.POST.get('themeName')
         jedanPoen = request.POST.get('onePoint')
@@ -479,11 +475,12 @@ class AddQuestionView(View):
         # ---------
 
         info = {
-        'user' :  request.user.username,
-        'email' : request.user.email,
-        'status' : request.user.titula,
-        'opis' : request.user.opis,
+            'user' :  request.user.username,
+            'email' : request.user.email,
+            'status' : request.user.titula,
+            'opis' : request.user.opis,
         }
+
         return render(request, 'base.html', {'jsonInfo': info})
         
     @method_decorator(login_required)
@@ -499,12 +496,6 @@ class AddQuestionView(View):
         # ---------
         # HttpResponseRedirect
 
-        info = {
-        'user' :  request.user.username,
-        'email' : request.user.email,
-        'status' : request.user.titula,
-        'opis' : request.user.opis,
-        }
         trenutni_user = request.user
         pitanje_tekst = request.POST.get('question')
         odgovor_tekst = request.POST.get('answer')
@@ -515,7 +506,6 @@ class AddQuestionView(View):
         pitanje.idk = trenutni_user
         pitanje.tekst = pitanje_tekst
         pitanje.save()
-        print("pitanje glasi " + pitanje_tekst)
 
         odgovor = KzzOdgovor()
         odgovor.idp = pitanje
@@ -541,11 +531,12 @@ class AddAdminView(View):
         # HttpResponse
 
         info = {
-        'user' :  request.user.username,
-        'email' : request.user.email,
-        'status' : request.user.titula,
-        'opis' : request.user.opis,
+            'user' :  request.user.username,
+            'email' : request.user.email,
+            'status' : request.user.titula,
+            'opis' : request.user.opis,
         }
+
         return render(request, 'base.html', {'jsonInfo': info})
 
 
@@ -562,12 +553,6 @@ class AddAdminView(View):
     #     ---------
     #     HttpResponseRedirect
 
-        info = {
-        'user' :  request.user.username,
-        'email' : request.user.email,
-        'status' : request.user.titula,
-        'opis' : request.user.opis,
-        }
         user = request.POST.get('user')
         try:
             newAdmin = Korisnik.objects.filter(username=user)[0]
@@ -607,7 +592,7 @@ class RankingView(View):
                 pairs.append(username + "," + str(highScore))
 
         pairs = pairs[:10]
-        print(pairs)
+
         info = {
             'pairs' : pairs
         }
@@ -630,14 +615,16 @@ class RankingInfoView(View):
 
         rankings = list(Statistika.objects.all())
         rankings.sort(key=lambda x: x.totalscore, reverse=True)
-        rankings = rankings[:10]
+        rankings = rankings[:11]
         korisniks =  [r.idk for r in rankings]
         usernames = [k.username for k in korisniks]
         highScores = [r.highscore for r in rankings]
-        pairs = [];
+        pairs = []
         for (username, highScore) in zip(usernames, highScores):
             if username != "Guest":
                 pairs.append(username + "," + str(highScore))
+
+        pairs = pairs[:10]
 
         returnJSON = {
             'pairs' : pairs
@@ -981,7 +968,6 @@ class AboutMeView(View):
         aboutMe = data['aboutMe']
         request.user.opis = aboutMe
         request.user.save()
-        print("posle " + request.user.opis)
         return JsonResponse({'ok' : True})
 
 class ScoreInfoView(View):

@@ -32,19 +32,18 @@ axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
 export default {
-    name : 'ProfileCanvasComponent',
-    props:[
+    name: 'ProfileCanvasComponent',
+    props: [
         'username', 'email', 'status', 'aboutMe', 'profilePicture'
     ],
-    
-    data(){
-        return{
+    data() {
+        return {
             highScore: 0,
             totalScore: 0,
             prikazi : false,
         }
     },
-    methods:{
+    methods: {
         save(event) {
             event.preventDefault();
             document.getElementById('area').disabled = true;
@@ -57,20 +56,17 @@ export default {
                 this.prikazi = !this.prikazi;
             })
         },
-        dbl(){
+        dbl() {
             document.getElementById('area').value = this.aboutMe;
             this.prikazi = !this.prikazi;
         }
     },
     created() {
         axios.get('/scoreInfo', {}).then((response) => {
-            this.highScore = response.data['highScore']
-            this.totalScore = response.data['totalScore']
-
-
-        })
-    },
-    
+            this.highScore = response.data['highScore'];
+            this.totalScore = response.data['totalScore'];
+        });
+    }
 }
 
 </script>
@@ -85,7 +81,6 @@ export default {
 .slozi{
     position: absolute;
 }
-
 .canvas {
     position:relative;
     z-index: 1;
@@ -96,7 +91,6 @@ export default {
     border-radius: 2em;
     overflow: hidden;
     box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
-
 }
 #top{
     display: flex;
@@ -128,7 +122,6 @@ export default {
 #txt:hover{
     cursor: pointer;
 }
-
 #points{
     color: rgba(0, 0, 0, 0.751);
     font-size: 18px;

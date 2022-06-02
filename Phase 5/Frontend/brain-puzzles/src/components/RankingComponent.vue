@@ -8,14 +8,13 @@
     <footer><FooterComponent/></footer>
 </template>
 
-
 <script>
 import FooterComponent          from './BasicComponents/FooterComponent.vue'
 import HeaderComponent          from './BasicComponents/HeaderComponent.vue'
 import FancyText                from './BasicComponents/FancyText.vue'
 import RankingCanvasComponent   from './CanvasComponents/RankingCanvasComponent.vue'
 
-import axios from "axios";
+import axios from "axios"
 
 export default {
     components:{FooterComponent, HeaderComponent, FancyText, RankingCanvasComponent},
@@ -23,7 +22,7 @@ export default {
     beforeCreate() {
         axios.get('/rankingInfo').then((response)=>{
             this.pairs = response.data['pairs']
-        })
+        });
     },
     data()  {
         return {

@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import FooterComponent from './BasicComponents/FooterComponent.vue'
-import HeaderComponent from './BasicComponents/HeaderComponent.vue'
-import ProfileCanvasComponent from './CanvasComponents/ProfileCanvasComponent.vue'
-import FancyText from './BasicComponents/FancyText.vue'
-import InputField from './BasicComponents/InputField.vue'
-import FancyButton from './BasicComponents/FancyButton.vue'
+import FooterComponent          from './BasicComponents/FooterComponent.vue'
+import HeaderComponent          from './BasicComponents/HeaderComponent.vue'
+import FancyText                from './BasicComponents/FancyText.vue'
+import InputField               from './BasicComponents/InputField.vue'
+import FancyButton              from './BasicComponents/FancyButton.vue'
+import ProfileCanvasComponent   from './CanvasComponents/ProfileCanvasComponent.vue'
 
 export default {
     components: {FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, InputField, FancyButton},
@@ -33,19 +33,19 @@ export default {
     mounted() {
         this.tableData = JSON.parse(document.getElementById('jsonInfo').textContent)
         this.usernameGreeting += this.tableData.user + "!"
-        console.log(this.tableData.user)
     },
 
     data()  {
         var cookies = document.cookie
         var csrf_token
-        if(cookies == null || cookies == ""){
-        csrf_token = ""
+
+        if (cookies == null || cookies == "") {
+            csrf_token = ""
         }
-        else{
-        csrf_token =document.cookie.split('; ')
-                    .find(row => row.startsWith('csrftoken'))
-                    .split('=')[1]
+        else {
+            csrf_token =document.cookie.split('; ')
+                .find(row => row.startsWith('csrftoken'))
+                .split('=')[1]
         }
 
         return {
@@ -57,11 +57,10 @@ export default {
 }
 </script>
 
-
 <style scoped>
 .div{
-     display: inline-block;
-     margin: 0.8%;
+    display: inline-block;
+    margin: 0.8%;
 }
 .canv {
     position:relative;

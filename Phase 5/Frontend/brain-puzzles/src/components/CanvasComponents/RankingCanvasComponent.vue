@@ -33,7 +33,7 @@ export default {
 
     margin-bottom: 2%;
 }
-.h{
+.h {
     margin-left: 23%;
     margin-right: 23%;
     margin-top: 5%;
@@ -42,10 +42,10 @@ export default {
     font-weight: bold;
     text-align:left; border-bottom: 1.2px solid rgba(0, 0, 0, 0.751);
 }
-.hs{
+.hs {
     float:right;
 }
-.left{
+.lef t{
     text-align:left;
     margin-left: 23%;
     margin-right: 23%;
@@ -54,7 +54,7 @@ export default {
     font-size: 0.85em;
     font-weight: bold;
 }
-.right{
+.right {
     float:right;
 }
 </style>

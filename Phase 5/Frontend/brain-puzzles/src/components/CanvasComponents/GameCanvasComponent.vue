@@ -12,21 +12,20 @@
     </div>
 </template>
 
-
 <script>
 import FancyButton from '../BasicComponents/FancyButton.vue'
 
 export default {
-    components :{FancyButton},
-    name: 'GameCanvasComponent', 
-    props:[
+    components : {FancyButton},
+    name : 'GameCanvasComponent', 
+    props : [
         'game', 'score', 'disabled', 'gameLocation'
     ],
     methods: {
         play(event) {
             event.preventDefault();
             window.location.href = this.gameLocation;
-        },
+        }
     }
 }
 </script>
@@ -47,8 +46,7 @@ export default {
     border-radius: 2em;
     overflow: hidden;
 
-  box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
-
+    box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
 }
 #game{
     text-align: center;

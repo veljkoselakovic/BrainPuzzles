@@ -1,30 +1,19 @@
 <template>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <div class="title"> BrainPuzzles</div>
-     <RegistrationCanvasComponent width=30vw height=60vh>
-
-
-
-  </RegistrationCanvasComponent>
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <div class="title"> BrainPuzzles</div>
+  <RegistrationCanvasComponent width=30vw height=60vh></RegistrationCanvasComponent>
    
-  </template>
+</template>
 
 <script>
 import RegistrationCanvasComponent from './CanvasComponents/RegistrationCanvasComponent.vue'
 
 export default {
   name: 'RegistrationComponent',
-  components: {
-        RegistrationCanvasComponent
-  },
-  methods: {
-    
-  },
-  
+  components: {RegistrationCanvasComponent}
 }
 </script>
 
@@ -48,7 +37,6 @@ body, html {
 body {
   background-color: #7879F1;
 }
-
 .title {
   position: relative;
   z-index: 4;
@@ -62,5 +50,4 @@ body {
   margin-bottom: 0;
   line-height: 1.3em;
 }
-
 </style>

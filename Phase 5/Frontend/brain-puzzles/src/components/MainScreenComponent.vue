@@ -38,35 +38,30 @@ import axios from "axios";
 export default {
     components: {FooterComponent, HeaderComponent, ProfileCanvasComponent, FancyText, FancyButton},
     name: 'MainScreenComponent',
-    data(){
+    data() {
         return {
             tableData: {},
             usernameGreeting: "Hello, ",
             isAdmin:false
         }
     },
-
     mounted() {
         axios.get('/mainscreenInfo').then((response) => {
             this.tableData = response.data
             this.usernameGreeting += this.tableData.user + "!"
             this.isAdmin = this.tableData.isAdmin
-            console.log(this.tableData.user)
-            console.log("da li je admin: " + this.isAdmin)
-        })
-    },
+        });
+    }
 }
 </script>
 
-
 <style scoped>
-
-.sakrij{
+.sakrij {
     visibility: hidden;
 }
-.div{
-     display: inline-block;
-     margin: 0.8%;
+.div {
+    display: inline-block;
+    margin: 0.8%;
 }
 .canv {
     position:relative;
@@ -82,5 +77,4 @@ export default {
     font: 1.6vw;
     box-shadow: 0px 15px 10px 0px rgba(0, 0, 0, 0.25);
 }
-
 </style>

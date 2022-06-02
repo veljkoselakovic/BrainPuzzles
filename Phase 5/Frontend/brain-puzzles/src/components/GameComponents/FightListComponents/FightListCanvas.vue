@@ -74,7 +74,6 @@ export default {
         submitAll(event) {
             event.preventDefault();
             axios.post('/fightlist_end', {}).then(() => {
-                console.log('logged');
                 location.href = "/dashboard";
             });
         }

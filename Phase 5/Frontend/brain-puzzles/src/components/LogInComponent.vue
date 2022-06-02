@@ -13,13 +13,7 @@ import LogInCanvasComponent from './CanvasComponents/LogInCanvasComponent.vue'
 
 export default {
   name: 'LogInComponent',
-  components: {
-        LogInCanvasComponent
-  },
-  methods: {
-    
-  },
-  
+  components: {LogInCanvasComponent}
 }
 </script>
 
@@ -43,7 +37,6 @@ body, html {
 body {
   background-color: #7879F1;
 }
-
 .title {
   position: relative;
   z-index: 4;
@@ -57,5 +50,4 @@ body {
   margin-bottom: 0;
   line-height: 1.3em;
 }
-
 </style>

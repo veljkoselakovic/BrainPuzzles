@@ -20,15 +20,14 @@
     </div>
     <div class="blur cell"></div>
   </div>
-    <footer><FooterComponent/></footer>
-
+  <footer><FooterComponent/></footer>
 </template>
 
-
 <script>
- import FancyButton from '../BasicComponents/FancyButton.vue'
- import FooterComponent from '../BasicComponents/FooterComponent.vue'
- import InputField from '../BasicComponents/InputField.vue'
+import FancyButton      from '../BasicComponents/FancyButton.vue'
+import FooterComponent  from '../BasicComponents/FooterComponent.vue'
+import InputField       from '../BasicComponents/InputField.vue'
+
 import axios from "axios";
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
@@ -66,8 +65,7 @@ export default {
   methods: {
     clickedRegister() {
       this.$data.errors = undefined;
-    },
-    
+    }   
   }
 }
 </script>
@@ -78,7 +76,6 @@ export default {
   z-index: 1;
   margin: 0 auto;
   width: v-bind(width);
-  /* height: v-bind(height); */
   background-color: white;
   border-radius: 2em;
   overflow: hidden;
@@ -88,19 +85,14 @@ export default {
 .blur {
   position:relative;
   z-index: 0;
-  /* top:7%; */
   margin: 0 auto;
-  /* width: v-bind(width);
-  height: v-bind(height); */
   width: calc(v-bind(width) * 1.05);
-  /* height: calc(v-bind(height) * 1.05); */
   background-color: #F178B6;
   -webkit-filter: blur(4em);
   -moz-filter: blur(4em);
   -o-filter: blur(4em);
   -ms-filter: blur(4em);
   filter: blur(4em);
-  
 }
 .container {
   display:grid;
@@ -117,9 +109,7 @@ export default {
 .registerMessage, .errorClass{ 
   font-weight: bold;
   font-size: 0.5vw;
-
 }
-
 .registerLink {
   text-decoration: none;
   color:#5D5FEF;
@@ -131,20 +121,13 @@ export default {
 .guestButton {
   margin-top:10%;
   margin-bottom: 4%;
-  /* font-size:0.8vw; */
   font-weight:400;
   transform: scale(0.5);
-
-
 }
-
 footer {
-
-position: absolute;
-bottom: 10vh;
-left:0;
-right:0;
-
-
+  position: absolute;
+  bottom: 10vh;
+  left:0;
+  right:0;
 }
 </style>
