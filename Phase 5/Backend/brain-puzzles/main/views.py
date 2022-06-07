@@ -53,6 +53,10 @@ class MainView(View) :
         user = request.POST.get("user")
         password = request.POST.get("pass")
 
+        if user==(""):
+             messages.error(request, 'Invalid log in information')
+             return redirect('main_page')
+
         user = authenticate(username=user, password=password)
         if user:
             login(request, user)
@@ -280,6 +284,11 @@ class RegisterView(View) :
             'password' : request.POST.get('pass'),
             'passwordAgain' : request.POST.get('pass_again')
         }
+
+        if(info['username']=="" or info['password']=="" or info['email']==""):
+            messages.error(request, 'Please fill in all fields')
+            return redirect("registration_page")
+     
 
         try:
             newKorisnik = Korisnik()
