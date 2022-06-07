@@ -1,0 +1,694 @@
+{
+  "id": "1d4ef019-1588-489f-91c9-6d9fd4e753ab",
+  "version": "2.0",
+  "name": "TestiranjeProjekta",
+  "url": "http://127.0.0.1:8000",
+  "tests": [{
+    "id": "ce671fd1-79b0-41bc-82fb-3511a5f08825",
+    "name": "TP1 Uspesno prijavljivanje korisnika",
+    "commands": [{
+      "id": "4d5f8d7a-fefe-4068-8ac4-6699d5b2f3de",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "993a00fc-1579-487f-9c10-357519235d13",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x876",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "874ded61-9c75-4de1-a6c4-4ec2d394f4a3",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "350820b0-12a6-413b-a0f0-aa47b770b482",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "lana"
+    }, {
+      "id": "24cd506f-e3b9-4e2e-8b28-68cbd61a5c4c",
+      "comment": "",
+      "command": "click",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "18143422-ece8-4cdf-83f7-c4e2016d56ea",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "brain"
+    }, {
+      "id": "06e100e5-9ed1-4297-b153-b4124d7ebb59",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonContainer:nth-child(4) > .buttonClass",
+      "targets": [
+        ["css=.buttonContainer:nth-child(4) > .buttonClass", "css:finder"],
+        ["xpath=//form[@id='formLogIn']/div[3]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "47df0b6b-1b9d-4c72-804c-d56cd0340a47",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=a:nth-child(1) .buttonClass",
+      "targets": [
+        ["css=a:nth-child(1) .buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/a/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'START')]", "xpath:innerText"]
+      ],
+      "value": "START"
+    }, {
+      "id": "c4bd261f-e9b2-4680-81ba-35c2aca659a4",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=a:nth-child(2) .buttonClass",
+      "targets": [
+        ["css=a:nth-child(2) .buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/a[2]/div/button", "xpath:idRelative"],
+        ["xpath=//a[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Rankings')]", "xpath:innerText"]
+      ],
+      "value": "Rankings"
+    }, {
+      "id": "6780aa35-c546-4df4-a334-cb5bb8dbe15f",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.canv",
+      "targets": [
+        ["css=.canv", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]", "xpath:idRelative"],
+        ["xpath=//form/div/div[2]", "xpath:position"]
+      ],
+      "value": "START\\nRankings"
+    }, {
+      "id": "1d776646-85cf-4c17-92b3-c76a33224d32",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.canv",
+      "targets": [
+        ["css=.canv", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]", "xpath:idRelative"],
+        ["xpath=//form/div/div[2]", "xpath:position"]
+      ],
+      "value": "START\\nRankings"
+    }, {
+      "id": "2c895529-8ba9-4be4-a0a3-bb9fa0b43f16",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.canv",
+      "targets": [
+        ["css=.canv", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]", "xpath:idRelative"],
+        ["xpath=//form/div/div[2]", "xpath:position"]
+      ],
+      "value": "START\\nRankings"
+    }, {
+      "id": "94c5af6d-af18-404f-a346-8691681a95ca",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.canv",
+      "targets": [
+        ["css=.canv", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]", "xpath:idRelative"],
+        ["xpath=//form/div/div[2]", "xpath:position"]
+      ],
+      "value": "START\\nRankings"
+    }]
+  }, {
+    "id": "34c0d162-b326-4888-905f-4909fcc9d2e6",
+    "name": "TP2 Uspesno prijavljivanje administratora",
+    "commands": [{
+      "id": "f992b6bd-d121-4e8f-b7bb-162576551f93",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "df70935f-d7c5-4ea7-a84f-581442cf2bca",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x876",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5c69cd1-29e9-4568-882e-c87113501900",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ed127f7c-698c-47c7-a955-0da5f22e31ec",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "veljko"
+    }, {
+      "id": "88f7a765-bbaa-48d2-a2ea-7281ecacd18f",
+      "comment": "",
+      "command": "click",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "594cc9ad-3f06-44a7-b2d0-2059e91baded",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "4a58e898-774d-40ef-98ff-5c8c8741bf1b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonContainer:nth-child(4) > .buttonClass",
+      "targets": [
+        ["css=.buttonContainer:nth-child(4) > .buttonClass", "css:finder"],
+        ["xpath=//form[@id='formLogIn']/div[3]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2faa74d-1d08-450c-bddb-ed2b87c71f68",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=a:nth-child(3) .buttonClass",
+      "targets": [
+        ["css=a:nth-child(3) .buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/a[3]/div/button", "xpath:idRelative"],
+        ["xpath=//a[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'New question')]", "xpath:innerText"]
+      ],
+      "value": "New question"
+    }]
+  }, {
+    "id": "02bab854-2e1f-41b4-92ba-bfff1e9bd8ec",
+    "name": "TP3 Neuspesno prijavljivanje, ne postoji username",
+    "commands": [{
+      "id": "00ea60ec-d415-4a1a-8908-b182ca135964",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9bacd56d-dc8e-48f3-9889-9632929f00e9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x876",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4f3bda8d-c53a-4709-85d9-93624d0e79d3",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8588b69d-a9d5-42f6-a00e-f1d3c9b5cba8",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "ena"
+    }, {
+      "id": "febb2b22-1e9c-4865-94f9-d8f79b68502f",
+      "comment": "",
+      "command": "click",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f07b99fe-59c7-4129-a900-49e3c867730d",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "pariz"
+    }, {
+      "id": "96fef194-88dd-402c-8c1f-7c591f4445e1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonContainer:nth-child(4) > .buttonClass",
+      "targets": [
+        ["css=.buttonContainer:nth-child(4) > .buttonClass", "css:finder"],
+        ["xpath=//form[@id='formLogIn']/div[3]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7f7fc6c8-140a-4402-b47f-cd66dd98934e",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.errorClass",
+      "targets": [
+        ["css=.errorClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Invalid log in information')]", "xpath:innerText"]
+      ],
+      "value": "Invalid log in information"
+    }]
+  }, {
+    "id": "620c8876-b3f6-49d8-a109-edd4bc22ac47",
+    "name": "TP4 Neuspesno prijavljivanje, los password",
+    "commands": [{
+      "id": "50696246-8a3b-408c-9ab9-406e79d36a52",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "62d60111-85ed-4cf8-8578-ebf51e9374a2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x876",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6fe14b1f-59f6-4db0-a7cf-1b99b2323ae2",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7f9de20-da36-48eb-8426-a3c599bb56e1",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "iva"
+    }, {
+      "id": "154b4791-eec4-4ba5-945e-e020bc9f9596",
+      "comment": "",
+      "command": "click",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "04d387a1-7223-44ce-8a90-892484add8cf",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "kiki"
+    }, {
+      "id": "e2046701-7242-4079-8a7a-b7c83b736347",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonContainer:nth-child(4) > .buttonClass",
+      "targets": [
+        ["css=.buttonContainer:nth-child(4) > .buttonClass", "css:finder"],
+        ["xpath=//form[@id='formLogIn']/div[3]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe235f40-dbe6-4585-9d25-730cb1b68c96",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.errorClass",
+      "targets": [
+        ["css=.errorClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Invalid log in information')]", "xpath:innerText"]
+      ],
+      "value": "Invalid log in information"
+    }]
+  }, {
+    "id": "97b62749-0ed9-4ff0-a21e-bb3b9f7c4285",
+    "name": "TP5 Neuspesno prijavljivanje, prazan username",
+    "commands": [{
+      "id": "e6015998-8749-4668-ba9d-20d54b2e3bea",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "34703ea6-a9e7-4f50-a2cb-32876c9e4fc5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x876",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a33d211a-dfe2-4a27-9afb-849820a0376e",
+      "comment": "",
+      "command": "click",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0523497b-aeab-4b96-b2a0-8f94d1d9cdab",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "   hej"
+    }, {
+      "id": "915b4b04-fe27-415d-81de-a93d5fda6b9e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonContainer:nth-child(4) > .buttonClass",
+      "targets": [
+        ["css=.buttonContainer:nth-child(4) > .buttonClass", "css:finder"],
+        ["xpath=//form[@id='formLogIn']/div[3]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5fa7d63-852d-4e0c-9e41-40e0cc102947",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.errorClass",
+      "targets": [
+        ["css=.errorClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Invalid log in information')]", "xpath:innerText"]
+      ],
+      "value": "Invalid log in information"
+    }]
+  }, {
+    "id": "61de1066-d448-4d2e-818f-0bc335ef4ef3",
+    "name": "TP6 Neuspesno prijavjivanje prazan password",
+    "commands": [{
+      "id": "27456d46-086d-4d18-b4ec-f585718f268d",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ca336cde-e536-4f88-8c37-faa9ce2892ad",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x876",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ef762026-d3c5-4c7b-96b9-1c0048792db1",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "87e6b4ff-87ea-4b10-b63c-e0591065823c",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "teodor"
+    }, {
+      "id": "feb30a4e-722c-49f4-980f-e39d81fb3253",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonContainer:nth-child(4) > .buttonClass",
+      "targets": [
+        ["css=.buttonContainer:nth-child(4) > .buttonClass", "css:finder"],
+        ["xpath=//form[@id='formLogIn']/div[3]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca84dea3-f7ca-4283-98a1-d39bec9b6fe3",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.errorClass",
+      "targets": [
+        ["css=.errorClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Invalid log in information')]", "xpath:innerText"]
+      ],
+      "value": "Invalid log in information"
+    }]
+  }, {
+    "id": "3ccfa39e-08d7-4731-9d5e-ae1bbe665633",
+    "name": "TP7 Uspesno prijavljivanje kao gost",
+    "commands": [{
+      "id": "9583b70c-a3ce-47d3-9a08-d706e753dfd5",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "43ae4609-04b1-4a9c-9ef9-81cc5611f4f1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x876",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f0b55099-49d9-48b8-b944-1e50fea735af",
+      "comment": "",
+      "command": "click",
+      "target": "css=.guestButton > .buttonClass",
+      "targets": [
+        ["css=.guestButton > .buttonClass", "css:finder"],
+        ["xpath=(//form[@id='formLogIn']/div/button)[2]", "xpath:idRelative"],
+        ["xpath=//form[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sign in as Guest')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c45dbd77-487d-4a9d-838a-b4ba82ffecc7",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.helloUserClass",
+      "targets": [
+        ["css=.helloUserClass", "css:finder"],
+        ["xpath=//div[@id='app']/div/div", "xpath:idRelative"],
+        ["xpath=//form/div/div/div", "xpath:position"]
+      ],
+      "value": "Hello, Guest!"
+    }, {
+      "id": "e7d296de-7342-41f6-8ad6-9fa08297d48b",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.canv",
+      "targets": [
+        ["css=.canv", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]", "xpath:idRelative"],
+        ["xpath=//form/div/div[2]", "xpath:position"]
+      ],
+      "value": "START\\nRankings"
+    }]
+  }, {
+    "id": "c4681d68-9a7d-4180-a387-324aa72ba60e",
+    "name": "TP8 Prelazak na registraciju",
+    "commands": [{
+      "id": "d81ff763-d428-4af1-87f5-429bbe03c4f9",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "84da6be3-6f83-45d3-8842-bf4aa11825e9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x876",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7b2ae0e8-d4a5-4985-8a05-646428c9445f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrujte se",
+      "targets": [
+        ["linkText=Registrujte se", "linkText"],
+        ["css=.registerLink", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrujte se')]", "xpath:link"],
+        ["xpath=//div[@id='app']/div[2]/div/p[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/register')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrujte se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d5b5dfda-f2d7-42de-b1a4-3d1640f180fd",
+      "comment": "",
+      "command": "verifyValue",
+      "target": "css=.buttonClass",
+      "targets": [
+        ["css=.buttonClass", "css:finder"],
+        ["xpath=//form[@id='formRegister']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "85ab6356-b03f-49cf-88d1-e524720e7896",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.buttonClass",
+      "targets": [
+        ["css=.buttonClass", "css:finder"],
+        ["xpath=//form[@id='formRegister']/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": "Register"
+    }]
+  }],
+  "suites": [{
+    "id": "b3250420-9195-40e9-89b9-e0dcd3e8d0d2",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["ce671fd1-79b0-41bc-82fb-3511a5f08825"]
+  }],
+  "urls": ["http://127.0.0.1:8000/"],
+  "plugins": []
+}
