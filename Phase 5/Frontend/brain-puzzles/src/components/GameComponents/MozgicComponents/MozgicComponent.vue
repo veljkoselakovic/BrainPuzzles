@@ -119,13 +119,13 @@ axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
 
-var a = 0, b = 0; //do koje vrste i kolone smo stigli
-const combination = []; //kombinacija koja treba da se pogodi
-const guess = []; //nas pokusaj
-var end = 0; //kraj igre (pogodjeno/nemamo vise pokusaja/isteklo vreme)
+var a = 0, b = 0; 
+const combination = []; 
+const guess = [];
+var end = 0; 
 var points = 0; 
 
-for (let i = 0; i < 4; i++) //generisanje random niza/kombinacije koja treba da se pogodi
+for (let i = 0; i < 4; i++) 
 {
     combination.push(Math.floor(Math.random()*6)+1);
 }
@@ -151,19 +151,19 @@ export default {
 
     methods:
     {
-        //kad se klikne na slicicu koju zelimo da stavimo u nas niz za pogadjanje 
+ 
 
         symbolClicked: function(event){
 
-            let p = event.target.id; //pamtimo id kliknute slike
+            let p = event.target.id; 
 
-            if (end == 1) return; //ukoliko smo dosli do kraja igre, ne zelimo da se slicica prikazuje
-            if (b > 3) return; //ako smo kliknuli vise slicica od 4, a nismo kliknuli submit, ne registruje se to kliktanje
+            if (end == 1) return; 
+            if (b > 3) return; 
 
-            guess.push(p); //u nas niz za pogadjanje ubacujemo slicicu s kliknutim idjem
+            guess.push(p); 
             
             
-            if (p == 1) //ako je id kliknute slicice ==1, prikazi tu slicicu u okviru pokusaja na odgovarajucem mestu
+            if (p == 1) 
             {
                 document.getElementById(a*28+b*7+1).style.visibility = "visible";
             }
@@ -189,24 +189,24 @@ export default {
             }
             
             
-            b++; //sledeca kolona
+            b++; 
             
             
             
         },
 
-        //kliknut submit
+        
         submitGuess(event){
 
                 event.preventDefault();
-                const answer = combination.slice(); //niz za trazenu kombinaciju, pamtimo ga 
-                let goodPlace = 0; //broj pogodjenih na dobrom mestu
-                let wrongPlace = 0; //broj pogodjenih na losem mestu
-                if (guess.length < 4) return; //izignorisi submit ako je kliknut pre nego sto su se sva 4 simbola unela
+                const answer = combination.slice(); 
+                let goodPlace = 0; 
+                let wrongPlace = 0; 
+                if (guess.length < 4) return; 
                 
                 a++; b = 0; //
     
-                while (guess.length > 4) guess.pop(); //ukoliko je uneto vise, izbaci
+                while (guess.length > 4) guess.pop(); 
 
                 //logika za goodPlace i wrongPlace
                 for (let i = 0; i < 4; i++)
@@ -230,7 +230,7 @@ export default {
                     }
                 } 
 
-                //logika za koja polja u koju boju treba obojiti
+                
                 let v = a - 1;
                 let idField = v*28 + 169;
                 
@@ -244,21 +244,20 @@ export default {
                 }
                 
 
-                if (goodPlace == 4 || a == 6) //Kraj igre; izracunaj poene, ne dozvoljavaj vise da se ukucava i prikazi tacno resenje
+                if (goodPlace == 4 || a == 6) 
                 {
-                    //poeni ako je pogodjeno
+                    
                     if (goodPlace == 4) { 
                         if(a <= 4) points = 20; if (a == 5) points = 15; if (a == 6) points = 10;
-                        // alert(points); //ZAKOMENTARISATI NAKON POVEZIVANJA S BACKOM
-                        
                         }
+
                     axios.post('/mozgicSubmit', {mozgicPts : points}).then(() => {
                             location.href = "/dashboard"
                         })
                     this.submitResults();
                 }
 
-                //nastavak logike za prikazivanje zutih polja                    
+                  
                 for (let j = 0; j < wrongPlace; j++)
                 {
                     idField = v*28 + goodPlace*7 + 7*j + 169;
@@ -267,7 +266,7 @@ export default {
                 }
                
                 while (guess.length > 0) {  guess.pop(); } 
-                //izbrisi nas pokusaj skroz, spremni smo za novi
+
                 
         },
 
@@ -276,10 +275,10 @@ export default {
         eraseSymbol(event){
 
             event.preventDefault();
-            if (b == 0) return; //ne moze da se brise ako nista nismo uneli
+            if (b == 0) return; 
             if (b > 4) b = 4; 
 
-            //poslednji dodati stavi na hidden i prikazi kruzic
+            
             document.getElementById(a*28+(b-1)*7+1).style.visibility = "hidden";
             document.getElementById(a*28+(b-1)*7+2).style.visibility = "hidden";
             document.getElementById(a*28+(b-1)*7+3).style.visibility = "hidden";
@@ -293,11 +292,11 @@ export default {
             guess.pop();
         },
 
-        //kraj igre
+        
         submitResults(){ 
 
                     end = 1; 
-                    document.getElementById("sec").style.visibility="hidden"; //ne prikazuj tajmer vise
+                    document.getElementById("sec").style.visibility="hidden"; 
 
                     for (let i = 0; i < 4; i++) //prikazi trazenu kombinaciju
                     {
