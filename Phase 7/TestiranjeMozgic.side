@@ -1,0 +1,131 @@
+{
+  "id": "704fbf06-15ba-41eb-bcea-ad728fdc7ac3",
+  "version": "2.0",
+  "name": "TestiranjeMozgic",
+  "url": "http://127.0.0.1:8000/mozgic",
+  "tests": [{
+    "id": "35694222-8b35-43c6-ba37-9bb1521c1bd9",
+    "name": "TP3-Korisnik se izloguje tokom partije",
+    "commands": [{
+      "id": "6ed14f27-d14a-4b82-b6be-9aec48a61d90",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/mozgic",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6251a7b8-4ebb-4876-9568-0e167802f19a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1066x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "355e7988-c794-4f2a-8e50-7f5e6cf6b48b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.headerLogOut",
+      "targets": [
+        ["css=.headerLogOut", "css:finder"],
+        ["xpath=//img[@alt='logOut']", "xpath:img"],
+        ["xpath=//div[@id='app']/header/div/div[3]/div/img", "xpath:idRelative"],
+        ["xpath=//div[3]/div/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "95916c6c-5b97-47f7-a8e6-81e19696e7a7",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.canvas",
+      "targets": [
+        ["css=.canvas", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "3a2ed9f4-4a89-4647-b837-18aa9007bf91",
+    "name": "TP4-korisniku isteklo vreme",
+    "commands": [{
+      "id": "7b68c1cd-382b-437c-a769-36fdaf801abd",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/mainscreen",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b32ae45d-8eb8-4c55-99fa-72f5c1fa73a7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1069x825",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "900bd7a6-7cc6-40a1-86c9-4d9731b0dd19",
+      "comment": "",
+      "command": "waitForText",
+      "target": "id=sec",
+      "targets": [
+        ["id=sec", "id"],
+        ["css=#sec", "css:finder"],
+        ["xpath=//div[@id='sec']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div[4]", "xpath:idRelative"],
+        ["xpath=//div[4]", "xpath:position"]
+      ],
+      "value": "78s"
+    }]
+  }, {
+    "id": "05f5a5fc-c23e-4301-80cf-bd63a09c5154",
+    "name": "TP1-pogodjena kombinacija",
+    "commands": [{
+      "id": "26cc0bb9-85b6-4062-9557-698fcd8628f7",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/mozgic",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d27b1d16-80dc-454b-b599-ba24b4c3dbe7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1070x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2b71b4ed-7045-416b-b4e5-d54d6e6cf250",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.disabled > #game",
+      "targets": [
+        ["css=.disabled > #game", "css:finder"],
+        ["xpath=(//div[@id='game'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[3]/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div", "xpath:position"]
+      ],
+      "value": "Mozgic"
+    }, {
+      "id": "c8754220-ca0e-4436-87a9-a7cdf93b27d7",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.disabled > #game",
+      "targets": [
+        ["css=.disabled > #game", "css:finder"],
+        ["xpath=(//div[@id='game'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[3]/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div", "xpath:position"]
+      ],
+      "value": "Mozgic"
+    }]
+  }],
+  "suites": [{
+    "id": "f30cf28a-5d0e-4ac9-bf4c-009d312cd17d",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["35694222-8b35-43c6-ba37-9bb1521c1bd9"]
+  }],
+  "urls": ["http://127.0.0.1:8000/mozgic"],
+  "plugins": []
+}

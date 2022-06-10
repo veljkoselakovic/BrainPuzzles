@@ -1,0 +1,353 @@
+{
+  "id": "c4619792-8f89-4a80-a2d2-a9d0f82891bb",
+  "version": "2.0",
+  "name": "TestiranjeFightLista",
+  "url": "http://127.0.0.1:8000/fightlist",
+  "tests": [{
+    "id": "310a54a6-a367-4f3d-b4eb-e5a34ef0887c",
+    "name": "TP6 korisniku je to jedina igra i vraca se na mainscreen",
+    "commands": [{
+      "id": "8bb7f270-dbab-40ed-9b6d-96404ef23e03",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/fightlist",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e8d9c192-2099-4676-9289-527df8f466c9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1066x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4bac87ca-5561-4cb9-aac6-0e890acbd74b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonContainer:nth-child(5) > .buttonClass",
+      "targets": [
+        ["css=.buttonContainer:nth-child(5) > .buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div[3]/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6b5d29b5-d11e-4296-b495-79af20a1c31e",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=a:nth-child(1) .buttonClass",
+      "targets": [
+        ["css=a:nth-child(1) .buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/a/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'START')]", "xpath:innerText"]
+      ],
+      "value": "START"
+    }]
+  }, {
+    "id": "4d2a12e0-c2dd-4432-a5ca-1784dcfac1de",
+    "name": "TP2-unet pogresan odgovor",
+    "commands": [{
+      "id": "e8567e0d-2411-4985-a187-8dae4ca8c181",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/fightlist",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "db89ba25-92a3-4c18-b6b5-fc3dca161732",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1066x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fce9e8af-4b24-4032-abed-70eed0f3d7c4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.inputField",
+      "targets": [
+        ["css=.inputField", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='fightListGuess']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "83e89e8b-6020-44b3-be22-a692e5bd32ea",
+      "comment": "",
+      "command": "type",
+      "target": "css=.inputField",
+      "targets": [
+        ["css=.inputField", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='fightListGuess']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "0cc5a943-1c9d-4380-a78b-c90026d13cd2",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.inputField",
+      "targets": [
+        ["css=.inputField", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='fightListGuess']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "d6ee1eaf-ef18-4d0c-b122-ee86be805a80",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.points",
+      "targets": [
+        ["css=.points", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div[3]/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": "+0"
+    }]
+  }, {
+    "id": "67fcb30d-8c5c-425d-947b-0672e55a7f66",
+    "name": "TP1-unet nov i tacan odgovor",
+    "commands": [{
+      "id": "4b0e0d80-4106-4137-8158-638b2c66953d",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/fightlist",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0cd97ebf-6967-4686-954b-c4298df0c400",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1066x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7f427c82-e76f-4e40-91f8-229b38ce4fef",
+      "comment": "",
+      "command": "click",
+      "target": "css=.inputField",
+      "targets": [
+        ["css=.inputField", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='fightListGuess']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dcdf3119-d073-4fc6-911b-30c0cf3337ab",
+      "comment": "",
+      "command": "type",
+      "target": "css=.inputField",
+      "targets": [
+        ["css=.inputField", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='fightListGuess']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "iva"
+    }, {
+      "id": "a3bdbea0-49c7-4e85-b14d-49cfa78df3b0",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.inputField",
+      "targets": [
+        ["css=.inputField", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='fightListGuess']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "94112dc9-cde0-4f1e-b66b-79ccd5fece92",
+      "comment": "",
+      "command": "assertNotText",
+      "target": "css=.points",
+      "targets": [],
+      "value": "+0"
+    }]
+  }, {
+    "id": "d6c70443-adb5-40d4-838f-5fe680d5059c",
+    "name": "TP3-Korisnik se izloguje tokom partije",
+    "commands": [{
+      "id": "92e1df03-322f-4cc9-bc43-79f40b4b31fd",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/fightlist",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5c9ec75-d91e-4ebb-9666-ea9085fc7520",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1066x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2ddf8577-969f-451e-ab68-6930ae841e37",
+      "comment": "",
+      "command": "click",
+      "target": "css=.headerLogOut",
+      "targets": [
+        ["css=.headerLogOut", "css:finder"],
+        ["xpath=//img[@alt='logOut']", "xpath:img"],
+        ["xpath=//div[@id='app']/div/div[3]/div/img", "xpath:idRelative"],
+        ["xpath=//div[3]/div/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a0b6750-adda-44ce-94dc-02afe8c88bc2",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "iva"
+    }, {
+      "id": "453d0e03-6953-4ab6-8f65-b95389c435a2",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='formLogIn']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "b593c569-3ec9-4bfe-a78e-b4c58ce514fc",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.canvas",
+      "targets": [
+        ["css=.canvas", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b5d67a5b-ab12-4f38-ace7-746c716a1e17",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.logoPicture",
+      "targets": [
+        ["css=.logoPicture", "css:finder"],
+        ["xpath=//img[@alt='BrainPuzzles logo']", "xpath:img"],
+        ["xpath=//div[@id='app']/div[2]/div/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "14ba7bcd-44b0-450d-93ff-d6fef208fe9c",
+    "name": "TP4-korisniku isteklo vreme",
+    "commands": [{
+      "id": "478c4b2b-f092-4add-9e0a-ea0713c2e3af",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/fightlist",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e390977b-0730-49bd-951a-bf370328752d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1066x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6ea8f46-55cc-48cf-8252-fb6691e9a510",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.numbers:nth-child(1)",
+      "targets": [
+        ["css=.numbers:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div", "xpath:position"]
+      ],
+      "value": "30s"
+    }, {
+      "id": "2d0a5287-3fb3-491f-8efd-4cdf443044d0",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.numbers:nth-child(1)",
+      "targets": [
+        ["css=.numbers:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div", "xpath:position"]
+      ],
+      "value": "0s"
+    }, {
+      "id": "1696e0cf-0e27-4b39-82a5-03540e33c4dc",
+      "comment": "",
+      "command": "assertValue",
+      "target": "css=.disabled > .buttonClass",
+      "targets": [
+        ["css=.disabled > .buttonClass", "css:finder"],
+        ["xpath=//div[@id='but']/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'PLAY')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "40454bc8-4f41-4e18-868b-43642c908a97",
+    "name": "TP5-kliknut Submit",
+    "commands": [{
+      "id": "21109e82-8dcc-41f2-97d3-a7fa7f1181b0",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/fightlist",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b471d67c-62fc-4da9-bcd8-915aefa94a97",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1066x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "61ffd2eb-6b0c-4554-b87a-9703a8977b7e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonContainer:nth-child(5) > .buttonClass",
+      "targets": [
+        ["css=.buttonContainer:nth-child(5) > .buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div[3]/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "37f8e65d-155e-4425-a29a-abc8d380ba61",
+      "comment": "",
+      "command": "assertValue",
+      "target": "css=.disabled > .buttonClass",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2528d71b-1294-40a8-b3f4-7dd13931dc23",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["310a54a6-a367-4f3d-b4eb-e5a34ef0887c"]
+  }],
+  "urls": ["http://127.0.0.1:8000/", "http://127.0.0.1:8000/fightlist"],
+  "plugins": []
+}
