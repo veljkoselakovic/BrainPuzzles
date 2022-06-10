@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+
+from main.models import Korisnik
 User = get_user_model()
 
 # Create your tests here.
@@ -10,6 +12,7 @@ class BaseTest(TestCase):
         self.login_url = reverse('main_page')
         self.loginGuest_url = reverse('logInGuest_page')
         self.logout_url = reverse('logout_page')
+        self.addAdmin_url = reverse('addadmin_page')
 
         self.user = {
             'user' : 'testname',
@@ -72,6 +75,25 @@ class BaseTest(TestCase):
             'user' : '',
             'pass' : ''
         }
+
+        self.correctAdmin = {
+            'user' : 'notAdmin'
+        }
+
+        self.userDoesntExist = {
+            'user' : 'IDontExist'
+        }
+        admin = User.objects.create(username='testuser')
+        admin.set_password('123')
+        admin.is_superuser=1
+        admin.save()
+
+        nonAdmin = User.objects.create(username='notAdmin')
+        nonAdmin.set_password('123')
+        nonAdmin.is_superuser=0
+        nonAdmin.save()
+
+
 
 
         return super().setUp
@@ -143,4 +165,32 @@ class LogOutTest(BaseTest):
         response = self.client.get(self.logout_url)
         self.assertRedirects(response, '/')
 
+# Dodavanje admina
+# Dodavanje pitanja
+# Dodavanje tema
+class AddAdminTest(BaseTest):
+
+    def test_addAdmin_GetPage(self):
+        print(self.client.login(username='testuser', password='123'))
+        
+
+        response = self.client.get(self.addAdmin_url)
+        print(response)
+        self.assertTemplateUsed(response, 'base.html')
+
+    def test_addAdmin_Success(self):
+        print(self.client.login(username='testuser', password='123'))
+
+        response = self.client.post(self.addAdmin_url, self.correctAdmin, format="text/html")
+        print(self.correctAdmin['user'])
+        newAdmin = User.objects.get(username=self.correctAdmin['user'])
+        self.assertEqual(newAdmin.is_superuser, 1)
+        self.assertRedirects(response, '/mainscreen')
+        
+    def test_addAdmin_UserDoesntExist(self):
+        print(self.client.login(username='testuser', password='123'))
+
+        response = self.client.post(self.addAdmin_url, self.userDoesntExist, format="text/html")
+        print(response)
+        self.assertRedirects(response, '/addadmin')
 
