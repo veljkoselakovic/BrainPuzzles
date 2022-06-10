@@ -10,6 +10,7 @@ class BaseTest(TestCase):
         self.login_url = reverse('main_page')
         self.loginGuest_url = reverse('logInGuest_page')
         self.logout_url = reverse('logout_page')
+        self.addAdmin_url = reverse('addadmin_page')
 
         self.user = {
             'user' : 'testname',
@@ -72,6 +73,20 @@ class BaseTest(TestCase):
             'user' : '',
             'pass' : ''
         }
+
+        self.correctAdmin = {
+            'user' : 'teodor'
+        }
+
+        self.userDoesntExist = {
+            'user' : 'IDontExist'
+        }
+        admin = User.objects.create(username='testuser')
+        admin.set_password('123')
+        admin.is_superuser=1
+        admin.save()
+
+
 
 
         return super().setUp
@@ -143,4 +158,32 @@ class LogOutTest(BaseTest):
         response = self.client.get(self.logout_url)
         self.assertRedirects(response, '/')
 
+# Dodavanje admina
+# Dodavanje pitanja
+# Dodavanje tema
+class AddAdminTest(BaseTest):
+
+    def test_addAdmin_GetPage(self):
+        print(self.client.login(username='testuser', password='123'))
+        
+
+        response = self.client.get(self.addAdmin_url)
+        print(response)
+        self.assertTemplateUsed(response, 'base.html')
+
+    def test_addAdmin_Succes(self):
+        print(self.client.login(username='testuser', password='123'))
+
+        response = self.client.post(self.addAdmin_url, self.correctAdmin, format="text/html")
+        
+        newAdmin = User.objects.get(username=self.correctAdmin['user'])
+        self.assertEqual(newAdmin.is_superuser, 1)
+        self.assertRedirects(response, '/mainscreen')
+        
+    def test_addAdmin_UserDoesntExist(self):
+        print(self.client.login(username='testuser', password='123'))
+
+        response = self.client.post(self.addAdmin_url, self.userDoesntExist, format="text/html")
+        print(response)
+        self.assertRedirects(response, '/addadmin')
 
