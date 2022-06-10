@@ -107,6 +107,7 @@ class RegisterTest(BaseTest):
         response = self.client.post(self.register_url, self.userAlreadyExists, format="text/html")
         self.assertRedirects(response, '/register')
 
+
 class LogInTest(BaseTest):
     def test_GetPage(self):
         response = self.client.get(self.login_url)
@@ -119,7 +120,6 @@ class LogInTest(BaseTest):
         user.save()
         response = self.client.post(self.login_url, self.user, format="text/html")
         self.assertRedirects(response, '/mainscreen')
-
 
     def test_UnsuccessLogIn(self):
         response = self.client.post(self.login_url, self.userUnsuccessRegUsername, format="text/html")
