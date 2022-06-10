@@ -166,8 +166,6 @@ class LogOutTest(BaseTest):
         self.assertRedirects(response, '/')
 
 # Dodavanje admina
-# Dodavanje pitanja
-# Dodavanje tema
 class AddAdminTest(BaseTest):
 
     def test_addAdmin_GetPage(self):
@@ -194,3 +192,17 @@ class AddAdminTest(BaseTest):
         print(response)
         self.assertRedirects(response, '/addadmin')
 
+    def test_addAdmin_Empty(self):
+        print(self.client.login(username='testuser', password='123'))
+
+        response = self.client.post(self.addAdmin_url, self.p, format="text/html")
+        print(response)
+        self.assertRedirects(response, '/addadmin')
+    def test_addAdmin_AlreadyAdmin(self):
+        print(self.client.login(username='testuser', password='123'))
+
+        response = self.client.post(self.addAdmin_url, {'user' : 'testuser'}, format="text/html")
+        print(response)
+        self.assertRedirects(response, '/mainscreen')
+# Dodavanje pitanja
+# Dodavanje tema
