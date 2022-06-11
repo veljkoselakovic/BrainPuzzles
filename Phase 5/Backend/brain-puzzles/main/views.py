@@ -491,7 +491,9 @@ class AddQuestionView(View):
         # ---------
 
         if not request.user.is_superuser:
-            return redirect("mainscreen_page")
+            # return render(request, 'base.html', {'jsonInfo': info})
+
+            return redirect("addadmin_page")
             
 
         info = {
@@ -522,7 +524,10 @@ class AddQuestionView(View):
         trenutni_user = request.user
         pitanje_tekst = request.POST.get('question')
         odgovor_tekst = request.POST.get('answer')
-        if(not pitanje_tekst or not odgovor_tekst):
+        if pitanje_tekst is None or odgovor_tekst is None:
+            return redirect('addquestion_page')
+
+        if(not pitanje_tekst or not odgovor_tekst or len(pitanje_tekst) == 0 or len(odgovor_tekst) == 0):
             return redirect('addquestion_page')
 
         pitanje = KzzPitanje()

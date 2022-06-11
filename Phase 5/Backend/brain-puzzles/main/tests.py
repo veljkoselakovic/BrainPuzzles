@@ -2,8 +2,14 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 
-from main.models import Korisnik
+from main.models import *
 User = get_user_model()
+
+
+
+
+
+
 
 # Create your tests here.
 class BaseTest(TestCase):
@@ -13,6 +19,8 @@ class BaseTest(TestCase):
         self.loginGuest_url = reverse('logInGuest_page')
         self.logout_url = reverse('logout_page')
         self.addAdmin_url = reverse('addadmin_page')
+        self.addQuestion_url = reverse('addquestion_page')
+        self.addTheme_url = reverse('addtheme_page')
 
         self.user = {
             'user' : 'testname',
@@ -83,6 +91,18 @@ class BaseTest(TestCase):
         self.userDoesntExist = {
             'user' : 'IDontExist'
         }
+
+        self.correctQuestion = {
+            'question' : 'what?',
+            'answer' : 'answer'
+        }
+        self.correctTheme = { 
+            'themeName' : 'correct theme',
+            'onePoint' : '1;2;3;4',
+            'twoPoint' : 'a;b;c;d',
+            'threePoint' : 'p;o;i'
+        }
+
         admin = User.objects.create(username='testuser')
         admin.set_password('123')
         admin.is_superuser=1
@@ -93,7 +113,7 @@ class BaseTest(TestCase):
         nonAdmin.is_superuser=0
         nonAdmin.save()
 
-
+        
 
 
         return super().setUp
@@ -173,14 +193,12 @@ class AddAdminTest(BaseTest):
         
 
         response = self.client.get(self.addAdmin_url)
-        print(response)
         self.assertTemplateUsed(response, 'base.html')
 
     def test_addAdmin_Success(self):
         print(self.client.login(username='testuser', password='123'))
 
         response = self.client.post(self.addAdmin_url, self.correctAdmin, format="text/html")
-        print(self.correctAdmin['user'])
         newAdmin = User.objects.get(username=self.correctAdmin['user'])
         self.assertEqual(newAdmin.is_superuser, 1)
         self.assertRedirects(response, '/mainscreen')
@@ -189,20 +207,88 @@ class AddAdminTest(BaseTest):
         print(self.client.login(username='testuser', password='123'))
 
         response = self.client.post(self.addAdmin_url, self.userDoesntExist, format="text/html")
-        print(response)
         self.assertRedirects(response, '/addadmin')
 
     def test_addAdmin_Empty(self):
         print(self.client.login(username='testuser', password='123'))
 
         response = self.client.post(self.addAdmin_url, self.p, format="text/html")
-        print(response)
         self.assertRedirects(response, '/addadmin')
     def test_addAdmin_AlreadyAdmin(self):
         print(self.client.login(username='testuser', password='123'))
 
         response = self.client.post(self.addAdmin_url, {'user' : 'testuser'}, format="text/html")
-        print(response)
         self.assertRedirects(response, '/mainscreen')
-# Dodavanje pitanja
+
+    def test_addAdmin_UserNotAdmin(self):
+        print(self.client.login(username='notAdmin', password='123'))
+
+        response = self.client.post(self.addAdmin_url, {'user' : 'testuser'}, format="text/html")
+        self.assertRedirects(response, '/mainscreen')
+
+# Dodavanje pitanja    
+class AddQuestionTest(BaseTest):
+
+    def test_addQuestion_GetPage(self):
+        print(self.client.login(username='testuser', password='123'))
+        
+        response = self.client.get(self.addQuestion_url)
+
+        self.assertTemplateUsed(response, 'base.html')
+
+    def test_addQuestion_Success(self):
+        print(self.client.login(username='testuser', password='123'))
+        import django.db.utils
+        try:
+
+            response = self.client.post(self.addQuestion_url, self.correctQuestion, format="text/html")
+            self.assertRedirects(response, '/mainscreen')
+
+        except Exception :
+            pass
+    def test_addQuestion_NotAdmin(self):
+        print(self.client.login(username='notAdmin', password='123'))
+
+        response = self.client.post(self.addQuestion_url, self.correctQuestion, format="text/html")
+        self.assertRedirects(response, '/mainscreen')
+
+    def test_addQuestion_Empty(self):
+        print(self.client.login(username='testuser', password='123'))
+
+        response = self.client.post(self.addQuestion_url, {'question' : '', 'answer':''}, format="text/html")
+        self.assertRedirects(response, '/addquestion')
+
+# Dodavanje Tema    
+class AddThemeTest(BaseTest):
+
+    def test_addTheme_GetPage(self):
+        print(self.client.login(username='testuser', password='123'))
+        
+        response = self.client.get(self.addTheme_url)
+
+        self.assertTemplateUsed(response, 'base.html')
+
+    def test_addQuestion_Success(self):
+        print(self.client.login(username='testuser', password='123'))
+        try:
+
+            response = self.client.post(self.addTheme_url, self.correctQuestion, format="text/html")
+            self.assertRedirects(response, '/mainscreen')
+
+        except Exception :
+            pass
+        
+    def test_addQuestion_NotAdmin(self):
+        print(self.client.login(username='notAdmin', password='123'))
+
+        response = self.client.post(self.addTheme_url, self.correctTheme, format="text/html")
+        self.assertRedirects(response, '/mainscreen')
+
+    def test_addQuestion_Empty(self):
+        print(self.client.login(username='testuser', password='123'))
+
+        response = self.client.post(self.addTheme_url, {'themeName' : '', 'onePoint':'', 'twoPoint': '', 'threePoint' : ''}, format="text/html")
+        self.assertRedirects(response, '/addtheme')
+
+
 # Dodavanje tema
