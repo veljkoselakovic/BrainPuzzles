@@ -19,6 +19,9 @@ class BaseTest(TestCase):
         self.loginGuest_url = reverse('logInGuest_page')
         self.logout_url = reverse('logout_page')
         self.addAdmin_url = reverse('addadmin_page')
+        self.fightlist_url = reverse('fightlist_page')
+        self.scoreInfo_url = reverse('scoreInfo_info') 
+        self.mainscreeninfo_url = reverse('mainscreeninfo_page')
         self.addQuestion_url = reverse('addquestion_page')
         self.addTheme_url = reverse('addtheme_page')
 
@@ -106,6 +109,9 @@ class BaseTest(TestCase):
         admin = User.objects.create(username='testuser')
         admin.set_password('123')
         admin.is_superuser=1
+        admin.email='iva@gmail.com'
+        admin.titula='srebrni'
+        admin.opis='opis'
         admin.save()
 
         nonAdmin = User.objects.create(username='notAdmin')
@@ -191,7 +197,6 @@ class AddAdminTest(BaseTest):
     def test_addAdmin_GetPage(self):
         print(self.client.login(username='testuser', password='123'))
         
-
         response = self.client.get(self.addAdmin_url)
         self.assertTemplateUsed(response, 'base.html')
 
@@ -209,6 +214,67 @@ class AddAdminTest(BaseTest):
         response = self.client.post(self.addAdmin_url, self.userDoesntExist, format="text/html")
         self.assertRedirects(response, '/addadmin')
 
+class FightList(BaseTest):
+    # def test_fl_radi(self):
+    #     mec = Rezultat()
+    #     # mec.save()
+        
+    #     s = self.client.session
+    #     s.update({
+    #         "mId": mec.idm,
+    #     })
+    #     s.save()
+
+    #     response = self.client.get(self.fightlist_url)
+    #     self.assertTemplateUsed(response, 'base.html')
+
+    def test_fl_odigran(self):
+        print(self.client.login(username='testuser', password='123'))
+        s = self.client.session
+        s.save()
+
+        response = self.client.get(self.fightlist_url)
+        self.assertRedirects(response, '/mainscreen')
+
+class Mozgic(BaseTest):
+
+    def test_mozgic_odigran(self):
+        print(self.client.login(username='testuser', password='123'))
+        s = self.client.session
+        s.save()
+
+        response = self.client.get(self.fightlist_url)
+        self.assertRedirects(response, '/mainscreen')
+
+class KZZ(BaseTest):
+
+    def test_mozgic_odigran(self):
+        print(self.client.login(username='testuser', password='123'))
+        s = self.client.session
+        s.save()
+
+        response = self.client.get(self.fightlist_url)
+        self.assertRedirects(response, '/mainscreen')
+
+class ScoreInfo(BaseTest):
+
+    def score_info_get(self):
+        self.client.login(username='testuser', password='123')
+        response = self.client.get(self.scoreInfo_url)
+        self.assertJSONEqual(json.loads(response.content), json.dumps("{'ok': False, 'highScore':0, 'totalScore':0}"))
+
+class MainScreenInfoTest(BaseTest):
+
+    def mainscreeninfo_get(self):
+        self.client.login(username='testuser', password='123')
+
+        response = self.client.get(self.mainscreeninfo_url)
+
+        self.assertEqual(json.loads(response.content)['user'], User.objects.get(username="testuser").username)
+        self.assertEqual(json.loads(response.content)['email'], User.objects.get(username="testuser").email)
+        self.assertEqual(json.loads(response.content)['status'], User.objects.get(username="testuser").titula)
+        self.assertEqual(json.loads(response.content)['opis'], User.objects.get(username="testuser").opis)
+        self.assertEqual(json.loads(response.content)['isAdmin'], User.objects.get(username="testuser").is_superuser)
     def test_addAdmin_Empty(self):
         print(self.client.login(username='testuser', password='123'))
 
