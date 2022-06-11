@@ -45,7 +45,7 @@ export default {
 .hs {
     float:right;
 }
-.lef t{
+.left{
     text-align:left;
     margin-left: 23%;
     margin-right: 23%;
