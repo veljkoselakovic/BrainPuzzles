@@ -10,8 +10,6 @@ import json
 class BaseTestTeodor(TestCase):
     def setUp(self):
         self.aboutme_url = reverse('aboutme_page')
-        self.ranking_url = reverse('ranking_page')
-        self.rankinginfo_url = reverse('rankinginfo_page')
 
         admin = User.objects.create(username='testuser')
         admin.set_password('123')
