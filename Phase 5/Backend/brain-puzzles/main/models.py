@@ -153,7 +153,7 @@ class Rezultat(models.Model):
     vremeigranja = models.DateTimeField(db_column='vremeIgranja', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'rezultat'
 
 
