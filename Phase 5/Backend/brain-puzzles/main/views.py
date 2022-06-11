@@ -508,7 +508,7 @@ class AddQuestionView(View):
         trenutni_user = request.user
         pitanje_tekst = request.POST.get('question')
         odgovor_tekst = request.POST.get('answer')
-        if(not pitanje_tekst or not odgovor_tekst):
+        if(len(pitanje_tekst)==0 or len(odgovor_tekst)==0):
             return redirect('addquestion_page')
 
         pitanje = KzzPitanje()
