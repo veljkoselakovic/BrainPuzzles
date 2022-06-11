@@ -525,6 +525,7 @@ class AddQuestionView(View):
         pitanje_tekst = request.POST.get('question')
         odgovor_tekst = request.POST.get('answer')
         if(len(pitanje_tekst)==0 or len(odgovor_tekst)==0):
+            return redirect('addquestion_page')
         if pitanje_tekst is None or odgovor_tekst is None:
             return redirect('addquestion_page')
 

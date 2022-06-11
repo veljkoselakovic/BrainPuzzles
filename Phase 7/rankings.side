@@ -1,0 +1,46 @@
+{
+  "id": "b1ada2d0-4809-42b5-87f3-3f6384f89a7a",
+  "version": "2.0",
+  "name": "rankings",
+  "url": "http://127.0.0.1:8000",
+  "tests": [{
+    "id": "a4afac64-9323-4565-8d12-720d1416f181",
+    "name": "TP1-rankings",
+    "commands": [{
+      "id": "e99fe338-6d67-4fee-9d72-4269ef0a6e80",
+      "comment": "",
+      "command": "open",
+      "target": "/ranking",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "de5bb7eb-cc1c-4202-9432-da7985c9b2b4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1070x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa36ca07-7cfc-49a2-8894-3e44bef3491a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.canvas",
+      "targets": [
+        ["css=.canvas", "css:finder"],
+        ["xpath=//div[@id='app']/div/div", "xpath:idRelative"],
+        ["xpath=//form/div/div/div", "xpath:position"]
+      ],
+      "value": "Rankings"
+    }]
+  }],
+  "suites": [{
+    "id": "5cdd0307-7a7e-4a55-ad1c-febe6af67ad9",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://127.0.0.1:8000/"],
+  "plugins": []
+}

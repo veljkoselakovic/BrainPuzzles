@@ -1,17 +1,12 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+import json
 
 from main.models import *
+
 User = get_user_model()
 
-
-
-
-
-
-
-# Create your tests here.
 class BaseTest(TestCase):
     def setUp(self):
         self.register_url = reverse('registration_page')
@@ -24,6 +19,7 @@ class BaseTest(TestCase):
         self.mainscreeninfo_url = reverse('mainscreeninfo_page')
         self.addQuestion_url = reverse('addquestion_page')
         self.addTheme_url = reverse('addtheme_page')
+        self.aboutme_url = reverse('aboutme_page')
 
         self.user = {
             'user' : 'testname',
@@ -357,4 +353,11 @@ class AddThemeTest(BaseTest):
         self.assertRedirects(response, '/addtheme')
 
 
-# Dodavanje tema
+class AboutMeTest(BaseTest):
+    def test_ChangedAboutMe(self):
+        self.client.login(username='testuser', password='123')
+
+        response = self.client.post(self.aboutme_url, json.dumps({'aboutMe': 'someText'}), content_type="application/json")
+
+        self.assertEqual(User.objects.get(username="testuser").opis, "someText")
+        self.assertTrue(json.loads(response.content)['ok'])

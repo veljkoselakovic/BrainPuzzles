@@ -1,0 +1,105 @@
+{
+  "id": "5c159185-6871-449b-a704-3e434bd535a6",
+  "version": "2.0",
+  "name": "aboutMe",
+  "url": "http://127.0.0.1:8000/mainscreen",
+  "tests": [{
+    "id": "90a278f6-a5ba-4d42-8828-4b35873a6174",
+    "name": "TP1-dodavanje novog opisa",
+    "commands": [{
+      "id": "c459b3aa-4f02-4ba7-8440-b449c7a6a147",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/mainscreen",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6041686f-9d8e-4549-80bc-a31ed9ed4d4f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1070x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8ffd3ea9-6235-4d9c-9696-390180e6b89d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.slozi",
+      "targets": [
+        ["css=.slozi", "css:finder"],
+        ["xpath=//div[@id='txt']/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3426e317-79a1-4aec-a4bd-435b3c957723",
+      "comment": "",
+      "command": "click",
+      "target": "css=.slozi",
+      "targets": [
+        ["css=.slozi", "css:finder"],
+        ["xpath=//div[@id='txt']/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d889c38d-77cc-4c9f-81b5-1055bd6bbaeb",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=.slozi",
+      "targets": [
+        ["css=.slozi", "css:finder"],
+        ["xpath=//div[@id='txt']/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "040c3159-39d0-415c-9300-13fec78a18bb",
+      "comment": "",
+      "command": "click",
+      "target": "id=profComp",
+      "targets": [
+        ["id=profComp", "id"],
+        ["css=#profComp", "css:finder"],
+        ["xpath=//div[@id='profComp']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "64a43efe-2586-4e88-a8f9-dd7ede916cc6",
+      "comment": "",
+      "command": "type",
+      "target": "id=area",
+      "targets": [
+        ["id=area", "id"],
+        ["css=#area", "css:finder"],
+        ["xpath=//textarea[@id='area']", "xpath:attributes"],
+        ["xpath=//div[@id='txt']/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Novo"
+    }, {
+      "id": "57cda755-9af3-46fa-ae09-505bd31b0792",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.slozi",
+      "targets": [
+        ["css=.slozi", "css:finder"],
+        ["xpath=//div[@id='txt']/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "Novo"
+    }]
+  }],
+  "suites": [{
+    "id": "e7c8dd09-f822-4374-86dc-5e838ab699eb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["90a278f6-a5ba-4d42-8828-4b35873a6174"]
+  }],
+  "urls": [],
+  "plugins": []
+}

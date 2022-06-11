@@ -1,0 +1,84 @@
+{
+  "id": "917e6b01-1d75-4101-9622-59d4aa99ad6a",
+  "version": "2.0",
+  "name": "zapocinjanjeIgre",
+  "url": "http://127.0.0.1:8000/mainscreen",
+  "tests": [{
+    "id": "b75d8b8c-5dfb-4dfe-b691-74714fffccdb",
+    "name": "TP1-zapocinjanjeigre",
+    "commands": [{
+      "id": "7983030e-1908-4db3-a331-260769593501",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/mainscreen",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "38c06e34-7e84-4316-b433-4c5898ff96fb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1070x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "27fb28ce-39a9-4186-a46c-d44ef82ed11c",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(1) .buttonClass",
+      "targets": [
+        ["css=a:nth-child(1) .buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/a/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'START')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5e1c0fbe-7e1b-42e6-8d95-5ea6d1ffc669",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=game",
+      "targets": [
+        ["id=game", "id"],
+        ["css=.div:nth-child(6) #game", "css:finder"],
+        ["xpath=//div[@id='game']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//form/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "Fight list"
+    }, {
+      "id": "939245f2-3b51-40c6-9b2e-6faded565d30",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.div:nth-child(7) #game",
+      "targets": [
+        ["css=.div:nth-child(7) #game", "css:finder"],
+        ["xpath=(//div[@id='game'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[3]/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div", "xpath:position"]
+      ],
+      "value": "Mozgic"
+    }, {
+      "id": "5db27933-6e1b-43d2-9089-6933192416d2",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.disabled > #game",
+      "targets": [
+        ["css=.disabled > #game", "css:finder"],
+        ["xpath=(//div[@id='game'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[4]/div/div", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div", "xpath:position"]
+      ],
+      "value": "Ko zna zna"
+    }]
+  }],
+  "suites": [{
+    "id": "4c3ae0ae-4058-4c10-a048-53071159797e",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["b75d8b8c-5dfb-4dfe-b691-74714fffccdb"]
+  }],
+  "urls": [],
+  "plugins": []
+}
