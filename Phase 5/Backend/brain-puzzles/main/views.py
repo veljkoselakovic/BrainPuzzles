@@ -395,6 +395,9 @@ class AddThemeView(View):
         # ---------
         # HttpResponse
 
+        if not request.user.is_superuser:
+            return redirect("mainscreen_page")
+            
         
         info = {
             'user' :  request.user.username,
@@ -417,6 +420,10 @@ class AddThemeView(View):
         # Returns
         # ---------
         # HttpResponseRedirect
+
+        if not request.user.is_superuser:
+            return redirect("mainscreen_page")
+            
 
         trenutni_user = request.user
         tema_tekst = request.POST.get('themeName')
@@ -483,6 +490,12 @@ class AddQuestionView(View):
         # Returns
         # ---------
 
+        if not request.user.is_superuser:
+            # return render(request, 'base.html', {'jsonInfo': info})
+
+            return redirect("addadmin_page")
+            
+
         info = {
             'user' :  request.user.username,
             'email' : request.user.email,
@@ -505,10 +518,17 @@ class AddQuestionView(View):
         # ---------
         # HttpResponseRedirect
 
+        if not request.user.is_superuser:
+            return redirect("mainscreen_page")
+            
         trenutni_user = request.user
         pitanje_tekst = request.POST.get('question')
         odgovor_tekst = request.POST.get('answer')
         if(len(pitanje_tekst)==0 or len(odgovor_tekst)==0):
+        if pitanje_tekst is None or odgovor_tekst is None:
+            return redirect('addquestion_page')
+
+        if(not pitanje_tekst or not odgovor_tekst or len(pitanje_tekst) == 0 or len(odgovor_tekst) == 0):
             return redirect('addquestion_page')
 
         pitanje = KzzPitanje()
@@ -525,7 +545,7 @@ class AddQuestionView(View):
 
 class AddAdminView(View):
 # Klasa za prikaz stranice za dodavanje admina
-    
+
     @method_decorator(login_required)
     def get(self, request):
         # Dohvatanje get zahteva
@@ -538,6 +558,9 @@ class AddAdminView(View):
         # Returns
         # ---------
         # HttpResponse
+
+        if not request.user.is_superuser:
+            return redirect("mainscreen_page")
 
         info = {
             'user' :  request.user.username,
@@ -561,7 +584,9 @@ class AddAdminView(View):
     #     Returns
     #     ---------
     #     HttpResponseRedirect
-
+        if not request.user.is_superuser:
+            return redirect("mainscreen_page")
+                
         user = request.POST.get('user')
         try:
             newAdmin = Korisnik.objects.filter(username=user)[0]

@@ -1,0 +1,97 @@
+{
+  "id": "431667af-74aa-4daa-98df-87681cb80e81",
+  "version": "2.0",
+  "name": "addQuestion",
+  "url": "http://127.0.0.1:8000/addquestion",
+  "tests": [{
+    "id": "31a22ab8-509a-46a8-9d6b-ca002b605d70",
+    "name": "TP1-uneto novo pitanje",
+    "commands": [{
+      "id": "9428df51-ed65-4427-8f49-e159ab05a87a",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/addquestion",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fa9cf86a-38d7-4e06-b7f3-22bcf461e3eb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1070x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fab823b3-b6f9-4a66-bee7-a48edbf11608",
+      "comment": "",
+      "command": "click",
+      "target": "name=question",
+      "targets": [
+        ["name=question", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='question']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3ffd0dbf-d0a0-453a-999d-8342f78d0271",
+      "comment": "",
+      "command": "type",
+      "target": "name=question",
+      "targets": [
+        ["name=question", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='question']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "pitanje"
+    }, {
+      "id": "88d5265b-64cf-4106-a76b-8a9a082babbe",
+      "comment": "",
+      "command": "type",
+      "target": "name=answer",
+      "targets": [
+        ["name=answer", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='answer']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "odg"
+    }, {
+      "id": "f88256b9-1f3d-4e83-a08f-6fb3673d5444",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonClass",
+      "targets": [
+        ["css=.buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/form/div[3]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d8814cb-c1bc-492e-9aca-4fe77691c23f",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=a:nth-child(1) > .buttonContainer",
+      "targets": [
+        ["css=a:nth-child(1) > .buttonContainer", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/a/div", "xpath:idRelative"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "7dc8d9ea-ad4b-4e0f-be3c-bc60ca3c313e",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["31a22ab8-509a-46a8-9d6b-ca002b605d70"]
+  }],
+  "urls": ["http://127.0.0.1:8000/addquestion"],
+  "plugins": []
+}

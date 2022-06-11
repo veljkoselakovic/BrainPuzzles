@@ -1,0 +1,217 @@
+{
+  "id": "e6e131af-ec9a-4474-bbd6-2078219eaf5b",
+  "version": "2.0",
+  "name": "addTheme",
+  "url": "http://127.0.0.1:8000/addtheme",
+  "tests": [{
+    "id": "a4303712-bc45-41c9-a5a4-fddd6d27e863",
+    "name": "TP1-dodavanje teme",
+    "commands": [{
+      "id": "f0ceebf0-40c8-4640-addb-49db839f1cb3",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/addtheme",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "95e3fa33-d809-4ca2-bdf4-256b69fd581d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1070x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eb91555b-2b50-4a96-bb5e-7d2a8c63bb29",
+      "comment": "",
+      "command": "click",
+      "target": "name=themeName",
+      "targets": [
+        ["name=themeName", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='themeName']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d8d18aaf-0c25-49f8-aea6-e8b1b7a9eab3",
+      "comment": "",
+      "command": "type",
+      "target": "name=themeName",
+      "targets": [
+        ["name=themeName", "name"],
+        ["css=.inputContainer:nth-child(2) > .inputField", "css:finder"],
+        ["xpath=//input[@name='themeName']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "tems"
+    }, {
+      "id": "f8b1de41-18e7-4fd7-a7e7-0bf3d8867ac6",
+      "comment": "",
+      "command": "type",
+      "target": "name=onePoint",
+      "targets": [
+        ["name=onePoint", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='onePoint']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "odg1"
+    }, {
+      "id": "1f1f6976-1dac-45b4-afde-f7fed848944d",
+      "comment": "",
+      "command": "type",
+      "target": "name=twoPoints",
+      "targets": [
+        ["name=twoPoints", "name"],
+        ["css=.inputContainer:nth-child(4) > .inputField", "css:finder"],
+        ["xpath=//input[@name='twoPoints']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "odg2"
+    }, {
+      "id": "552bf052-59cf-4338-854f-974267c452c8",
+      "comment": "",
+      "command": "type",
+      "target": "name=threePoints",
+      "targets": [
+        ["name=threePoints", "name"],
+        ["css=.inputContainer:nth-child(5) > .inputField", "css:finder"],
+        ["xpath=//input[@name='threePoints']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "odg3"
+    }, {
+      "id": "683b9dba-279a-4d3a-b22a-806e019956d0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonClass",
+      "targets": [
+        ["css=.buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/form/div[6]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d5caf87e-34d7-4b10-b7a5-961bb1f81086",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=a:nth-child(1) > .buttonContainer",
+      "targets": [
+        ["css=a:nth-child(1) > .buttonContainer", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/a/div", "xpath:idRelative"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "e7ed670e-0c68-4520-b8a0-66f43a7838a4",
+    "name": "TP2-uneto prazno polje za temu",
+    "commands": [{
+      "id": "9cfcdad4-5df0-4040-9eff-25c48f387985",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/addtheme",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be3ee41a-00cc-4272-8e23-8d2e8dacd18b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1070x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8a25b973-0533-4269-be47-ab47f29bb243",
+      "comment": "",
+      "command": "click",
+      "target": "name=onePoint",
+      "targets": [
+        ["name=onePoint", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='onePoint']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1834c81f-bd75-452b-9e1c-1ad6c1108f21",
+      "comment": "",
+      "command": "type",
+      "target": "name=onePoint",
+      "targets": [
+        ["name=onePoint", "name"],
+        ["css=.inputContainer:nth-child(3) > .inputField", "css:finder"],
+        ["xpath=//input[@name='onePoint']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "odg"
+    }, {
+      "id": "3c0283f7-5ea0-4d7a-b4c6-80be0db28522",
+      "comment": "",
+      "command": "type",
+      "target": "name=twoPoints",
+      "targets": [
+        ["name=twoPoints", "name"],
+        ["css=.inputContainer:nth-child(4) > .inputField", "css:finder"],
+        ["xpath=//input[@name='twoPoints']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "odg"
+    }, {
+      "id": "e5f7dd98-7435-400f-979a-256c4ef5ac50",
+      "comment": "",
+      "command": "type",
+      "target": "name=threePoints",
+      "targets": [
+        ["name=threePoints", "name"],
+        ["css=.inputContainer:nth-child(5) > .inputField", "css:finder"],
+        ["xpath=//input[@name='threePoints']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "odg"
+    }, {
+      "id": "23748af4-5b18-4a9a-8242-2dfd301f534e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonClass",
+      "targets": [
+        ["css=.buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/form/div[6]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b74204e3-8ba7-4e7d-b51e-86aef9de5bd0",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'New theme')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "a40e0bfe-35d4-4098-a656-2a542dec7ac6",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a4303712-bc45-41c9-a5a4-fddd6d27e863"]
+  }],
+  "urls": ["http://127.0.0.1:8000/addtheme"],
+  "plugins": []
+}

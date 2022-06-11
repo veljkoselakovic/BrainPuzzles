@@ -1,0 +1,151 @@
+{
+  "id": "b3164c91-b837-4b89-b9ab-a7a21a033deb",
+  "version": "2.0",
+  "name": "addAdmin",
+  "url": "http://127.0.0.1:8000/addadmin",
+  "tests": [{
+    "id": "588b3331-b829-47ba-9581-17de71b836d3",
+    "name": "TP1-Uspesno dodavanje admina",
+    "commands": [{
+      "id": "8196e9dc-5995-431a-8739-05c18db826e7",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/addadmin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f126f77e-aa67-4293-ad83-5278c08b0866",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1076x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "95a2c5ae-3ec3-4dd1-aa63-11db6881048c",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c9743b9-ca36-488b-805d-7289d23bf3ca",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "veljko"
+    }, {
+      "id": "32215094-6cae-49d9-be74-5d02defc8f92",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonClass",
+      "targets": [
+        ["css=.buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/form/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d1799784-333c-49df-9ef8-70d395077c0d",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.canv",
+      "targets": [
+        ["css=.canv", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]", "xpath:idRelative"],
+        ["xpath=//form/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "f73eb2ad-0931-45d1-a0d2-d1502ccee9af",
+    "name": "TP2-neuspesno dodavanje admina",
+    "commands": [{
+      "id": "0727c2a7-4b3b-4430-8887-3c1cf81b966c",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8000/addadmin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0bf3104a-9aea-40da-b1ee-c39db36e19b3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1076x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0cd7e684-efa2-45d0-a8d4-a04ca9b7e822",
+      "comment": "",
+      "command": "click",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a281bb67-8efd-427b-a8c8-9b02b850d1d4",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=.inputField", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "fff"
+    }, {
+      "id": "4bdab555-0606-49cc-824d-3696d63c77e4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonClass",
+      "targets": [
+        ["css=.buttonClass", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/form/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6892f313-73f7-4544-8bb6-2593560578f7",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=form:nth-child(2)",
+      "targets": [
+        ["css=form:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/form", "xpath:idRelative"],
+        ["xpath=//div[2]/form", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "0f4d1863-28e8-4a6c-ab1c-b7ce71cdf169",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["588b3331-b829-47ba-9581-17de71b836d3"]
+  }],
+  "urls": [],
+  "plugins": []
+}
